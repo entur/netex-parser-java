@@ -18,14 +18,15 @@ public class NetexParser {
 
     public NetexEntityIndexReadOnlyView parseFromZip(String pathToZip) throws IOException {
         NetexEntityIndex index = new NetexEntityIndex();
-        ZipFile zipFile = new ZipFile(pathToZip);
-        Enumeration<? extends ZipEntry> entries = zipFile.entries();
-        while(entries.hasMoreElements()){
-            ZipEntry entry = entries.nextElement();
-            InputStream stream = zipFile.getInputStream(entry);
-            load(index, stream);
+        try(ZipFile zipFile = new ZipFile(pathToZip)) {
+            Enumeration<? extends ZipEntry> entries = zipFile.entries();
+            while(entries.hasMoreElements()){
+                ZipEntry entry = entries.nextElement();
+                InputStream stream = zipFile.getInputStream(entry);
+                load(index, stream);
+            }
+            return index.readOnlyView();
         }
-        return index.readOnlyView();
     }
 
     private void load(NetexEntityIndex index, InputStream inputStream) {
