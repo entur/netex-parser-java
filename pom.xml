@@ -100,7 +100,7 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${maven-surefire-plugin.version}</version>
                 <configuration>
-                    <argLine>@{argLine} -Xms500m -Xmx500m -Xss512k</argLine>
+                    <argLine>@{argLine} -Xms512m -Xmx2048m -Xss1048k</argLine>
                 </configuration>
             </plugin>
             <plugin>
