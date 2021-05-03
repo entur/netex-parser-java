@@ -4,9 +4,37 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.example</groupId>
+    <groupId>org.entur</groupId>
     <artifactId>netex-parser-java</artifactId>
     <version>1.0-SNAPSHOT</version>
+
+    <name>netex-java-parser</name>
+    <description>Library for parsing NeTEx files and looking up entities in an index.</description>
+    <url>https://github.com/entur/netex-java-parser</url>
+    <organization>
+        <name>Entur AS</name>
+        <url>http://www.entur.org/</url>
+    </organization>
+    <licenses>
+        <license>
+            <name>EUPL-1.2 with modifications</name>
+            <url>https://joinup.ec.europa.eu/software/page/eupl</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+    <scm>
+        <connection>scm:git:ssh://git@github.com/entur/netex-java-parser.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com/entur/netex-java-parser.git</developerConnection>
+        <url>https://github.com/entur/netex-java-parser/tree/master</url>
+        <tag>HEAD</tag>
+    </scm>
+    <distributionManagement>
+        <snapshotRepository>
+            <id>snapshots</id>
+            <name>entur2-snapshots</name>
+            <url>https://entur2.jfrog.io/entur2/libs-snapshot-local</url>
+        </snapshotRepository>
+    </distributionManagement>
 
     <properties>
         <maven.compiler.source>11</maven.compiler.source>

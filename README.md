@@ -1,3 +1,3 @@
 # netex-parser-java
 
-Library for parsing NeTEx files and looking entities in an index.
+Library for parsing NeTEx files and looking up entities in an index.
