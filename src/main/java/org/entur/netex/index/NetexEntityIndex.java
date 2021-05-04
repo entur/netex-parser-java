@@ -29,6 +29,7 @@ import org.rutebanken.netex.model.Operator;
 import org.rutebanken.netex.model.Parking;
 import org.rutebanken.netex.model.Quay;
 import org.rutebanken.netex.model.Route;
+import org.rutebanken.netex.model.ScheduledStopPoint;
 import org.rutebanken.netex.model.ServiceJourney;
 import org.rutebanken.netex.model.ServiceLink;
 import org.rutebanken.netex.model.StopPlace;
@@ -88,6 +89,7 @@ public class NetexEntityIndex {
     public final HierarchicalVersionMapById<Quay> quayById;
     public final HierarchicalMap<String, String> flexibleStopPlaceByStopPointRef;
     public final HierarchicalMap<String, String> quayIdByStopPointRef;
+    public final HierarchicalMap<String, String> stopPlaceIdByStopPointRef;
     public final HierarchicalMapById<Route> routeById;
     public final HierarchicalMapById<ServiceJourney> serviceJourneyById;
     public final HierarchicalMapById<ServiceLink> serviceLinkById;
@@ -95,6 +97,7 @@ public class NetexEntityIndex {
     public final HierarchicalMapById<TariffZone> tariffZonesById;
     public final HierarchicalMapById<TopographicPlace> topographicPlaceById;
     public final HierarchicalMapById<Parking> parkingById;
+    public final HierarchicalMapById<ScheduledStopPoint> scheduledStopPointById;
 
 
     // Relations between entities - The Netex XML sometimes rely on the the
@@ -134,6 +137,7 @@ public class NetexEntityIndex {
         this.quayById = new HierarchicalVersionMapById<>();
         this.flexibleStopPlaceByStopPointRef = new HierarchicalMap<>();
         this.quayIdByStopPointRef = new HierarchicalMap<>();
+        this.stopPlaceIdByStopPointRef = new HierarchicalMap<>();
         this.routeById = new HierarchicalMapById<>();
         this.serviceJourneyById = new HierarchicalMapById<>();
         this.serviceLinkById = new HierarchicalMapById<>();
@@ -142,6 +146,7 @@ public class NetexEntityIndex {
         this.timeZone = new HierarchicalElement<>();
         this.topographicPlaceById = new HierarchicalMapById<>();
         this.parkingById = new HierarchicalMapById<>();
+        this.scheduledStopPointById = new HierarchicalMapById<>();
     }
 
     /**
@@ -171,6 +176,7 @@ public class NetexEntityIndex {
         this.quayById = new HierarchicalVersionMapById<>(parent.quayById);
         this.flexibleStopPlaceByStopPointRef = new HierarchicalMap<>(parent.flexibleStopPlaceByStopPointRef);
         this.quayIdByStopPointRef = new HierarchicalMap<>(parent.quayIdByStopPointRef);
+        this.stopPlaceIdByStopPointRef = new HierarchicalMap<>(parent.stopPlaceIdByStopPointRef);
         this.routeById = new HierarchicalMapById<>(parent.routeById);
         this.serviceJourneyById = new HierarchicalMapById<>(parent.serviceJourneyById);
         this.serviceLinkById = new HierarchicalMapById<>(parent.serviceLinkById);
@@ -179,6 +185,7 @@ public class NetexEntityIndex {
         this.timeZone = new HierarchicalElement<>(parent.timeZone);
         this.topographicPlaceById = new HierarchicalMapById<>(parent.topographicPlaceById);
         this.parkingById = new HierarchicalMapById<>(parent.parkingById);
+        this.scheduledStopPointById = new HierarchicalMapById<>(parent.scheduledStopPointById);
     }
 
 
@@ -315,6 +322,11 @@ public class NetexEntityIndex {
             }
 
             @Override
+            public ReadOnlyHierarchicalMap<String, String> getStopPlaceIdByStopPointRef() {
+                return stopPlaceIdByStopPointRef;
+            }
+
+            @Override
             public ReadOnlyHierarchicalMapById<Route> getRouteById() {
                 return routeById;
             }
@@ -352,6 +364,11 @@ public class NetexEntityIndex {
             @Override
             public String getTimeZone() {
                 return timeZone.get();
+            }
+
+            @Override
+            public ReadOnlyHierarchicalMapById<ScheduledStopPoint> getScheduledStopPointById() {
+                return scheduledStopPointById;
             }
         };
     }

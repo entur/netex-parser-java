@@ -19,6 +19,7 @@ import org.rutebanken.netex.model.Operator;
 import org.rutebanken.netex.model.Parking;
 import org.rutebanken.netex.model.Quay;
 import org.rutebanken.netex.model.Route;
+import org.rutebanken.netex.model.ScheduledStopPoint;
 import org.rutebanken.netex.model.ServiceJourney;
 import org.rutebanken.netex.model.ServiceLink;
 import org.rutebanken.netex.model.StopPlace;
@@ -46,6 +47,7 @@ public interface NetexEntityIndexReadOnlyView {
     ReadOnlyHierarchicalMapById<Operator> getOperatorsById();
     ReadOnlyHierarchicalVersionMapById<Quay> getQuayById();
     ReadOnlyHierarchicalMap<String, String> getQuayIdByStopPointRef();
+    ReadOnlyHierarchicalMap<String, String> getStopPlaceIdByStopPointRef();
     ReadOnlyHierarchicalMap<String, String> getFlexibleStopPlaceByStopPointRef();
     ReadOnlyHierarchicalMapById<Route> getRouteById();
     ReadOnlyHierarchicalMapById<ServiceJourney> getServiceJourneyById();
@@ -54,5 +56,6 @@ public interface NetexEntityIndexReadOnlyView {
     ReadOnlyHierarchicalMapById<TariffZone> getTariffZonesById();
     ReadOnlyHierarchicalMapById<TopographicPlace> getTopographicPlaceById();
     ReadOnlyHierarchicalMapById<Parking> getParkingById();
+    ReadOnlyHierarchicalMapById<ScheduledStopPoint> getScheduledStopPointById();
     String getTimeZone();
 }

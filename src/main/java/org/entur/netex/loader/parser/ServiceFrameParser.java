@@ -18,6 +18,8 @@ import org.rutebanken.netex.model.NetworksInFrame_RelStructure;
 import org.rutebanken.netex.model.PassengerStopAssignment;
 import org.rutebanken.netex.model.Route;
 import org.rutebanken.netex.model.RoutesInFrame_RelStructure;
+import org.rutebanken.netex.model.ScheduledStopPoint;
+import org.rutebanken.netex.model.ScheduledStopPointsInFrame_RelStructure;
 import org.rutebanken.netex.model.ServiceLink;
 import org.rutebanken.netex.model.ServiceLinksInFrame_RelStructure;
 import org.rutebanken.netex.model.Service_VersionFrameStructure;
@@ -55,9 +57,13 @@ class ServiceFrameParser extends NetexParser<Service_VersionFrameStructure> {
 
     private final Map<String, String> quayIdByStopPointRef = new HashMap<>();
 
+    private final Map<String, String> stopPlaceIdByStopPointRef = new HashMap<>();
+
     private final Map<String, String> flexibleStopPlaceByStopPointRef = new HashMap<>();
 
     private final Collection<ServiceLink> serviceLinks = new ArrayList<>();
+
+    private final Collection<ScheduledStopPoint> scheduledStopPoints = new ArrayList<>();
 
     private final NoticeParser noticeParser = new NoticeParser();
 
@@ -79,6 +85,7 @@ class ServiceFrameParser extends NetexParser<Service_VersionFrameStructure> {
         parseJourneyPatterns(frame.getJourneyPatterns());
         parseDestinationDisplays(frame.getDestinationDisplays());
         parseServiceLinks(frame.getServiceLinks());
+        parseScheduledStopPoints(frame.getScheduledStopPoints());
 
         // Keep list sorted alphabetically
         warnOnMissingMapping(LOG, frame.getAdditionalNetworks());
@@ -98,7 +105,6 @@ class ServiceFrameParser extends NetexParser<Service_VersionFrameStructure> {
         warnOnMissingMapping(LOG, frame.getRouteLinks());
         warnOnMissingMapping(LOG, frame.getRoutePoints());
         warnOnMissingMapping(LOG, frame.getRoutingConstraintZones());
-        warnOnMissingMapping(LOG, frame.getScheduledStopPoints());
         warnOnMissingMapping(LOG, frame.getServiceExclusions());
         warnOnMissingMapping(LOG, frame.getServicePatterns());
         warnOnMissingMapping(LOG, frame.getStopAreas());
@@ -125,9 +131,11 @@ class ServiceFrameParser extends NetexParser<Service_VersionFrameStructure> {
         index.networkById.addAll(networks);
         noticeParser.setResultOnIndex(index);
         index.quayIdByStopPointRef.addAll(quayIdByStopPointRef);
+        index.stopPlaceIdByStopPointRef.addAll(stopPlaceIdByStopPointRef);
         index.flexibleStopPlaceByStopPointRef.addAll(flexibleStopPlaceByStopPointRef);
         index.routeById.addAll(routes);
         index.serviceLinkById.addAll(serviceLinks);
+        index.scheduledStopPointById.addAll(scheduledStopPoints);
 
         // update references
         index.networkIdByGroupOfLineId.addAll(networkIdByGroupOfLineId);
@@ -139,9 +147,17 @@ class ServiceFrameParser extends NetexParser<Service_VersionFrameStructure> {
         for (JAXBElement<?> stopAssignment : stopAssignments.getStopAssignment()) {
             if (stopAssignment.getValue() instanceof PassengerStopAssignment) {
                 var assignment = (PassengerStopAssignment) stopAssignment.getValue();
-                String quayRef = assignment.getQuayRef().getRef();
                 String stopPointRef = assignment.getScheduledStopPointRef().getValue().getRef();
-                quayIdByStopPointRef.put(stopPointRef, quayRef);
+
+                if (assignment.getQuayRef() != null) {
+                    String quayRef = assignment.getQuayRef().getRef();
+                    quayIdByStopPointRef.put(stopPointRef, quayRef);
+                }
+
+                if (assignment.getStopPlaceRef() != null) {
+                    String stopPlaceRef = assignment.getStopPlaceRef().getRef();
+                    stopPlaceIdByStopPointRef.put(stopPointRef, stopPlaceRef);
+                }
             }
             else if (stopAssignment.getValue() instanceof FlexibleStopAssignment) {
                 FlexibleStopAssignment assignment = (FlexibleStopAssignment) stopAssignment.getValue();
@@ -243,5 +259,11 @@ class ServiceFrameParser extends NetexParser<Service_VersionFrameStructure> {
         if (serviceLinks == null) return;
 
         this.serviceLinks.addAll(serviceLinks.getServiceLink());
+    }
+
+    private void parseScheduledStopPoints(ScheduledStopPointsInFrame_RelStructure scheduledStopPoints) {
+        if (scheduledStopPoints == null) return;
+
+        this.scheduledStopPoints.addAll(scheduledStopPoints.getScheduledStopPoint());
     }
 }
