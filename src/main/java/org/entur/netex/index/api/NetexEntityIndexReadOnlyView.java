@@ -5,6 +5,7 @@ import org.rutebanken.netex.model.DatedServiceJourney;
 import org.rutebanken.netex.model.DayType;
 import org.rutebanken.netex.model.DayTypeAssignment;
 import org.rutebanken.netex.model.DestinationDisplay;
+import org.rutebanken.netex.model.FareZone;
 import org.rutebanken.netex.model.FlexibleLine;
 import org.rutebanken.netex.model.FlexibleStopPlace;
 import org.rutebanken.netex.model.GroupOfStopPlaces;
@@ -57,5 +58,6 @@ public interface NetexEntityIndexReadOnlyView {
     ReadOnlyHierarchicalMapById<TopographicPlace> getTopographicPlaceById();
     ReadOnlyHierarchicalMapById<Parking> getParkingById();
     ReadOnlyHierarchicalMapById<ScheduledStopPoint> getScheduledStopPointById();
+    ReadOnlyHierarchicalMapById<FareZone> getFareZoneById();
     String getTimeZone();
 }

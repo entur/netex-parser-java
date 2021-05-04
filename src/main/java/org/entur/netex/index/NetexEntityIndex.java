@@ -14,6 +14,7 @@ import org.rutebanken.netex.model.DatedServiceJourney;
 import org.rutebanken.netex.model.DayType;
 import org.rutebanken.netex.model.DayTypeAssignment;
 import org.rutebanken.netex.model.DestinationDisplay;
+import org.rutebanken.netex.model.FareZone;
 import org.rutebanken.netex.model.FlexibleLine;
 import org.rutebanken.netex.model.FlexibleStopPlace;
 import org.rutebanken.netex.model.GroupOfLines;
@@ -98,6 +99,7 @@ public class NetexEntityIndex {
     public final HierarchicalMapById<TopographicPlace> topographicPlaceById;
     public final HierarchicalMapById<Parking> parkingById;
     public final HierarchicalMapById<ScheduledStopPoint> scheduledStopPointById;
+    public final HierarchicalMapById<FareZone> fareZoneById;
 
 
     // Relations between entities - The Netex XML sometimes rely on the the
@@ -147,6 +149,7 @@ public class NetexEntityIndex {
         this.topographicPlaceById = new HierarchicalMapById<>();
         this.parkingById = new HierarchicalMapById<>();
         this.scheduledStopPointById = new HierarchicalMapById<>();
+        this.fareZoneById = new HierarchicalMapById<>();
     }
 
     /**
@@ -186,6 +189,7 @@ public class NetexEntityIndex {
         this.topographicPlaceById = new HierarchicalMapById<>(parent.topographicPlaceById);
         this.parkingById = new HierarchicalMapById<>(parent.parkingById);
         this.scheduledStopPointById = new HierarchicalMapById<>(parent.scheduledStopPointById);
+        this.fareZoneById = new HierarchicalMapById<>(parent.fareZoneById);
     }
 
 
@@ -362,13 +366,18 @@ public class NetexEntityIndex {
             }
 
             @Override
-            public String getTimeZone() {
-                return timeZone.get();
+            public ReadOnlyHierarchicalMapById<ScheduledStopPoint> getScheduledStopPointById() {
+                return scheduledStopPointById;
             }
 
             @Override
-            public ReadOnlyHierarchicalMapById<ScheduledStopPoint> getScheduledStopPointById() {
-                return scheduledStopPointById;
+            public ReadOnlyHierarchicalMapById<FareZone> getFareZoneById() {
+                return fareZoneById;
+            }
+
+            @Override
+            public String getTimeZone() {
+                return timeZone.get();
             }
         };
     }
