@@ -87,14 +87,14 @@ public class NetexEntityIndex {
     public final HierarchicalMapById<OperatingDay> operatingDayById;
     public final HierarchicalMapById<OperatingPeriod> operatingPeriodById;
     public final HierarchicalMapById<Operator> operatorsById;
-    public final HierarchicalVersionMapById<Quay> quayById;
+    public final HierarchicalMapById<Quay> quayById;
     public final HierarchicalMap<String, String> flexibleStopPlaceByStopPointRef;
     public final HierarchicalMap<String, String> quayIdByStopPointRef;
     public final HierarchicalMap<String, String> stopPlaceIdByStopPointRef;
     public final HierarchicalMapById<Route> routeById;
     public final HierarchicalMapById<ServiceJourney> serviceJourneyById;
     public final HierarchicalMapById<ServiceLink> serviceLinkById;
-    public final HierarchicalVersionMapById<StopPlace> stopPlaceById;
+    public final HierarchicalMapById<StopPlace> stopPlaceById;
     public final HierarchicalMapById<TariffZone> tariffZonesById;
     public final HierarchicalMapById<TopographicPlace> topographicPlaceById;
     public final HierarchicalMapById<Parking> parkingById;
@@ -136,14 +136,14 @@ public class NetexEntityIndex {
         this.operatingDayById = new HierarchicalMapById<>();
         this.operatingPeriodById = new HierarchicalMapById<>();
         this.operatorsById = new HierarchicalMapById<>();
-        this.quayById = new HierarchicalVersionMapById<>();
+        this.quayById = new HierarchicalMapById<>();
         this.flexibleStopPlaceByStopPointRef = new HierarchicalMap<>();
         this.quayIdByStopPointRef = new HierarchicalMap<>();
         this.stopPlaceIdByStopPointRef = new HierarchicalMap<>();
         this.routeById = new HierarchicalMapById<>();
         this.serviceJourneyById = new HierarchicalMapById<>();
         this.serviceLinkById = new HierarchicalMapById<>();
-        this.stopPlaceById = new HierarchicalVersionMapById<>();
+        this.stopPlaceById = new HierarchicalMapById<>();
         this.tariffZonesById = new HierarchicalMapById<>();
         this.timeZone = new HierarchicalElement<>();
         this.topographicPlaceById = new HierarchicalMapById<>();
@@ -176,14 +176,14 @@ public class NetexEntityIndex {
         this.operatingDayById = new HierarchicalMapById<>(parent.operatingDayById);
         this.operatingPeriodById = new HierarchicalMapById<>(parent.operatingPeriodById);
         this.operatorsById = new HierarchicalMapById<>(parent.operatorsById);
-        this.quayById = new HierarchicalVersionMapById<>(parent.quayById);
+        this.quayById = new HierarchicalMapById<>(parent.quayById);
         this.flexibleStopPlaceByStopPointRef = new HierarchicalMap<>(parent.flexibleStopPlaceByStopPointRef);
         this.quayIdByStopPointRef = new HierarchicalMap<>(parent.quayIdByStopPointRef);
         this.stopPlaceIdByStopPointRef = new HierarchicalMap<>(parent.stopPlaceIdByStopPointRef);
         this.routeById = new HierarchicalMapById<>(parent.routeById);
         this.serviceJourneyById = new HierarchicalMapById<>(parent.serviceJourneyById);
         this.serviceLinkById = new HierarchicalMapById<>(parent.serviceLinkById);
-        this.stopPlaceById = new HierarchicalVersionMapById<>(parent.stopPlaceById);
+        this.stopPlaceById = new HierarchicalMapById<>(parent.stopPlaceById);
         this.tariffZonesById = new HierarchicalMapById<>(parent.tariffZonesById);
         this.timeZone = new HierarchicalElement<>(parent.timeZone);
         this.topographicPlaceById = new HierarchicalMapById<>(parent.topographicPlaceById);
@@ -311,7 +311,7 @@ public class NetexEntityIndex {
             }
 
             @Override
-            public ReadOnlyHierarchicalVersionMapById<Quay> getQuayById() {
+            public ReadOnlyHierarchicalMapById<Quay> getQuayById() {
                 return quayById;
             }
 
@@ -346,7 +346,7 @@ public class NetexEntityIndex {
             }
 
             @Override
-            public ReadOnlyHierarchicalVersionMapById<StopPlace> getStopPlaceById() {
+            public ReadOnlyHierarchicalMapById<StopPlace> getStopPlaceById() {
                 return stopPlaceById;
             }
 

@@ -20,9 +20,15 @@ public class TestStopPlacesExport {
 
     @Test
     public void testGetStopPlace() {
-        var stopPlace = index.getStopPlaceById().lookupLastVersionById("NSR:StopPlace:337");
+        var stopPlace = index.getStopPlaceById().lookup("NSR:StopPlace:337");
         Assertions.assertEquals("Oslo S", stopPlace.getName().getValue());
         Assertions.assertEquals("NSR:StopPlace:59872", stopPlace.getParentSiteRef().getRef());
+    }
+
+    @Test
+    public void testQuay() {
+        var quay = index.getQuayById().lookup("NSR:Quay:3691");
+        Assertions.assertEquals("01", quay.getPrivateCode().getValue());
     }
 
     @Test
