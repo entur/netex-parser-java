@@ -40,19 +40,19 @@
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
 
-        <netex-java-model.version>1.0.11</netex-java-model.version>
+        <netex-java-model.version>1.0.12</netex-java-model.version>
         <guava.version>30.1.1-jre</guava.version>
 
         <maven-exec-plugin.version>1.6.0</maven-exec-plugin.version>
         <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
 
-        <jacoco-maven-plugin.version>0.8.5</jacoco-maven-plugin.version>
+        <jacoco-maven-plugin.version>0.8.7</jacoco-maven-plugin.version>
         <!-- empty argLine property, the value is set up by Jacoco during unit tests execution -->
         <argLine />
 
         <!-- Unit test frameworks versions -->
-        <assertj.core.version>3.17.1</assertj.core.version>
-        <junit.version>5.6.2</junit.version>
+        <assertj.core.version>3.19.0</assertj.core.version>
+        <junit.version>5.7.1</junit.version>
         <slf4j.version>1.7.30</slf4j.version>
     </properties>
 
