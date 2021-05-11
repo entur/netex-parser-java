@@ -16,7 +16,7 @@ import java.util.zip.ZipFile;
 public class NetexParser {
     private final NetexXmlParser xmlParser = new NetexXmlParser();
 
-    public NetexEntityIndexReadOnlyView parseFromZip(String pathToZip) throws IOException {
+    public NetexEntityIndexReadOnlyView parse(String pathToZip) throws IOException {
         NetexEntityIndex index = new NetexEntityIndex();
         try(ZipFile zipFile = new ZipFile(pathToZip)) {
             Enumeration<? extends ZipEntry> entries = zipFile.entries();
@@ -27,6 +27,12 @@ public class NetexParser {
             }
             return index.readOnlyView();
         }
+    }
+
+    public NetexEntityIndexReadOnlyView parse(InputStream inputStream) {
+        NetexEntityIndex index = new NetexEntityIndex();
+        load(index, inputStream);
+        return index.readOnlyView();
     }
 
     private void load(NetexEntityIndex index, InputStream inputStream) {

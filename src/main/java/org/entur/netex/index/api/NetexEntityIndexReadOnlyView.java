@@ -46,14 +46,14 @@ public interface NetexEntityIndexReadOnlyView {
     ReadOnlyHierarchicalMapById<OperatingDay> getOperatingDayById();
     ReadOnlyHierarchicalMapById<OperatingPeriod> getOperatingPeriodById();
     ReadOnlyHierarchicalMapById<Operator> getOperatorsById();
-    ReadOnlyHierarchicalMapById<Quay> getQuayById();
+    ReadOnlyHierarchicalVersionMapById<Quay> getQuayById();
     ReadOnlyHierarchicalMap<String, String> getQuayIdByStopPointRef();
     ReadOnlyHierarchicalMap<String, String> getStopPlaceIdByStopPointRef();
     ReadOnlyHierarchicalMap<String, String> getFlexibleStopPlaceByStopPointRef();
     ReadOnlyHierarchicalMapById<Route> getRouteById();
     ReadOnlyHierarchicalMapById<ServiceJourney> getServiceJourneyById();
     ReadOnlyHierarchicalMapById<ServiceLink> getServiceLinkById();
-    ReadOnlyHierarchicalMapById<StopPlace> getStopPlaceById();
+    ReadOnlyHierarchicalVersionMapById<StopPlace> getStopPlaceById();
     ReadOnlyHierarchicalMapById<TariffZone> getTariffZonesById();
     ReadOnlyHierarchicalMapById<TopographicPlace> getTopographicPlaceById();
     ReadOnlyHierarchicalMapById<Parking> getParkingById();

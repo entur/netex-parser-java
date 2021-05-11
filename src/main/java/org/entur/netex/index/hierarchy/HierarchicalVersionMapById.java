@@ -76,6 +76,11 @@ public class HierarchicalVersionMapById<V extends EntityInVersionStructure>
     }
 
     @Override
+    public Collection<V> lookupAllVersionsById(String id) {
+        return lookup(id);
+    }
+
+    @Override
     public boolean isNewerOrSameVersionComparedWithExistingValues(V value) {
         return versionOf(value) >= latestVersionIn(lookup(value.getId()));
     }

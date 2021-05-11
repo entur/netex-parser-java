@@ -1,0 +1,815 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:ns2="http://www.opengis.net/gml/3.2" xmlns:ns3="http://www.siri.org.uk/siri" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="61" xsi:schemaLocation="">
+    <PublicationTimestamp>2021-05-11T10:58:40.776</PublicationTimestamp>
+    <ParticipantRef>NSR</ParticipantRef>
+    <dataObjects>
+        <SiteFrame modification="new" version="1" id="NSR:SiteFrame:2076247377">
+            <Description>Site frame ExportParams{topographicPlaceExportMode=NONE, municipalityReferences=[], countyReferences=[], countryReferences=[], stopPlaceSearch=StopPlaceSearch{stopPlaceType=[], netexIdList=[NSR:StopPlace:5543], allVersions=false, versionValidity=ALL, withoutLocationOnly=false, withoutQuaysOnly=false, withDuplicatedQuayImportedIds=false, withTags=[], tags=[], page=0, size=20}, tariffZoneExportMode=NONE, serviceFrameExportMode=NONE}</Description>
+            <FrameDefaults>
+                <DefaultLocale>
+                    <TimeZone>Europe/Oslo</TimeZone>
+                </DefaultLocale>
+            </FrameDefaults>
+            <stopPlaces>
+                <StopPlace created="2017-06-19T19:18:57.495" changed="2021-04-15T21:06:07.174" modification="new" version="7" id="NSR:StopPlace:5543">
+                    <ValidBetween>
+                        <FromDate>2021-04-15T21:06:02</FromDate>
+                        <ToDate>2021-04-15T21:06:15.999</ToDate>
+                    </ValidBetween>
+                    <keyList>
+                        <KeyValue>
+                            <Key>imported-id</Key>
+                            <Value>RUT:StopPlace:2310170,RUT:StopPlace:02310170</Value>
+                        </KeyValue>
+                        <KeyValue>
+                            <Key>CHANGED_BY</Key>
+                            <Value>assad.riaz</Value>
+                        </KeyValue>
+                        <KeyValue>
+                            <Key>VERSION_COMMENT</Key>
+                            <Value>test</Value>
+                        </KeyValue>
+                        <KeyValue>
+                            <Key>IS_PARENT_STOP_PLACE</Key>
+                            <Value>false</Value>
+                        </KeyValue>
+                    </keyList>
+                    <Name lang="no">Landskronaveien</Name>
+                    <Description lang="no">test</Description>
+                    <PrivateCode></PrivateCode>
+                    <Centroid>
+                        <Location>
+                            <Longitude>10.992827</Longitude>
+                            <Latitude>59.968738</Latitude>
+                        </Location>
+                    </Centroid>
+                    <AccessibilityAssessment modification="new" version="7" id="NSR:AccessibilityAssessment:5543">
+                        <MobilityImpairedAccess>unknown</MobilityImpairedAccess>
+                        <limitations>
+                            <AccessibilityLimitation modification="new" version="1" id="147750">
+<WheelchairAccess>unknown</WheelchairAccess>
+<StepFreeAccess>unknown</StepFreeAccess>
+<EscalatorFreeAccess>unknown</EscalatorFreeAccess>
+<LiftFreeAccess>unknown</LiftFreeAccess>
+<AudibleSignalsAvailable>unknown</AudibleSignalsAvailable>
+                            </AccessibilityLimitation>
+                        </limitations>
+                    </AccessibilityAssessment>
+                    <TopographicPlaceRef ref="KVE:TopographicPlace:3030" created="2021-05-11T10:58:40.788"/>
+                    <placeEquipments id="NSR:PlaceEquipment:60526">
+                        <ShelterEquipment modification="new" version="1" id="104084">
+                            <Seats>1</Seats>
+                            <StepFree>false</StepFree>
+                            <Enclosed>false</Enclosed>
+                        </ShelterEquipment>
+                    </placeEquipments>
+                    <TransportMode>bus</TransportMode>
+                    <OtherTransportModes></OtherTransportModes>
+                    <tariffZones>
+                        <TariffZoneRef ref="RUT:TariffZone:2Ø"/>
+                    </tariffZones>
+                    <StopPlaceType>onstreetBus</StopPlaceType>
+                    <Weighting>interchangeAllowed</Weighting>
+                    <quays>
+                        <Quay changed="2021-04-15T21:06:07.17" modification="new" version="7" id="NSR:Quay:10148">
+                            <keyList>
+<KeyValue>
+    <Key>imported-id</Key>
+    <Value>RUT:Quay:231017001,RUT:Quay:0231017001</Value>
+</KeyValue>
+                            </keyList>
+                            <PrivateCode>1</PrivateCode>
+                            <Centroid>
+<Location>
+    <Longitude>10.992832</Longitude>
+    <Latitude>59.968805</Latitude>
+</Location>
+                            </Centroid>
+                            <placeEquipments id="NSR:PlaceEquipment:60527">
+<ShelterEquipment modification="new" version="1" id="104086">
+    <Seats>1</Seats>
+    <StepFree>false</StepFree>
+    <Enclosed>false</Enclosed>
+</ShelterEquipment>
+                            </placeEquipments>
+                            <OtherTransportModes></OtherTransportModes>
+                            <PublicCode></PublicCode>
+                            <CompassBearing>216.0</CompassBearing>
+                        </Quay>
+                        <Quay changed="2021-04-15T21:06:07.17" modification="new" version="7" id="NSR:Quay:10149">
+                            <keyList>
+<KeyValue>
+    <Key>imported-id</Key>
+    <Value>RUT:Quay:231017002,RUT:Quay:0231017002</Value>
+</KeyValue>
+                            </keyList>
+                            <PrivateCode>2</PrivateCode>
+                            <Centroid>
+<Location>
+    <Longitude>10.992822</Longitude>
+    <Latitude>59.968665</Latitude>
+</Location>
+                            </Centroid>
+                            <placeEquipments id="NSR:PlaceEquipment:60528">
+<ShelterEquipment modification="new" version="1" id="104088">
+    <Seats>1</Seats>
+    <StepFree>false</StepFree>
+    <Enclosed>false</Enclosed>
+</ShelterEquipment>
+                            </placeEquipments>
+                            <OtherTransportModes></OtherTransportModes>
+                            <PublicCode></PublicCode>
+                        </Quay>
+                    </quays>
+                </StopPlace>
+                <StopPlace created="2017-06-19T19:18:57.495" changed="2019-03-17T15:24:36.221" modification="new" version="1" id="NSR:StopPlace:5543">
+                    <ValidBetween>
+                        <FromDate>2017-06-19T19:18:57.495</FromDate>
+                        <ToDate>2019-03-27T12:28:52.999</ToDate>
+                    </ValidBetween>
+                    <keyList>
+                        <KeyValue>
+                            <Key>imported-id</Key>
+                            <Value>RUT:StopPlace:02310170-2,RUT:StopPlace:2310170-2,RUT:StopPlace:02310170</Value>
+                        </KeyValue>
+                        <KeyValue>
+                            <Key>IS_PARENT_STOP_PLACE</Key>
+                            <Value>false</Value>
+                        </KeyValue>
+                    </keyList>
+                    <Name lang="nor">Landskronaveien</Name>
+                    <Centroid>
+                        <Location>
+                            <Longitude>10.992744</Longitude>
+                            <Latitude>59.968732</Latitude>
+                        </Location>
+                    </Centroid>
+                    <AccessibilityAssessment modification="new" version="1" id="NSR:AccessibilityAssessment:5543">
+                        <MobilityImpairedAccess>unknown</MobilityImpairedAccess>
+                        <limitations>
+                            <AccessibilityLimitation modification="new" version="1" id="4774">
+<WheelchairAccess>unknown</WheelchairAccess>
+<StepFreeAccess>unknown</StepFreeAccess>
+                            </AccessibilityLimitation>
+                        </limitations>
+                    </AccessibilityAssessment>
+                    <TopographicPlaceRef ref="KVE:TopographicPlace:0231" created="2021-05-11T10:58:40.839"/>
+                    <TransportMode>bus</TransportMode>
+                    <OtherTransportModes></OtherTransportModes>
+                    <StopPlaceType>onstreetBus</StopPlaceType>
+                    <Weighting>interchangeAllowed</Weighting>
+                    <quays>
+                        <Quay modification="new" version="1" id="NSR:Quay:10149">
+                            <keyList>
+<KeyValue>
+    <Key>imported-id</Key>
+    <Value>RUT:Quay:231017002,RUT:Quay:0231017002</Value>
+</KeyValue>
+                            </keyList>
+                            <PrivateCode type="StopPoint">2</PrivateCode>
+                            <Centroid>
+<Location>
+    <Longitude>10.992737</Longitude>
+    <Latitude>59.968682</Latitude>
+</Location>
+                            </Centroid>
+                            <OtherTransportModes></OtherTransportModes>
+                            <PublicCode></PublicCode>
+                        </Quay>
+                        <Quay modification="new" version="1" id="NSR:Quay:10148">
+                            <keyList>
+<KeyValue>
+    <Key>imported-id</Key>
+    <Value>RUT:Quay:231017001,RUT:Quay:0231017001</Value>
+</KeyValue>
+                            </keyList>
+                            <PrivateCode type="StopPoint">1</PrivateCode>
+                            <Centroid>
+<Location>
+    <Longitude>10.992752</Longitude>
+    <Latitude>59.968781</Latitude>
+</Location>
+                            </Centroid>
+                            <OtherTransportModes></OtherTransportModes>
+                            <PublicCode></PublicCode>
+                            <CompassBearing>216.0</CompassBearing>
+                        </Quay>
+                    </quays>
+                </StopPlace>
+                <StopPlace created="2017-06-19T19:18:57.495" changed="2019-12-16T15:28:57.173" modification="new" version="2" id="NSR:StopPlace:5543">
+                    <ValidBetween>
+                        <FromDate>2019-03-27T12:28:53</FromDate>
+                        <ToDate>2019-12-18T09:59:10.999</ToDate>
+                    </ValidBetween>
+                    <keyList>
+                        <KeyValue>
+                            <Key>imported-id</Key>
+                            <Value>RUT:StopPlace:02310170-2,RUT:StopPlace:2310170-2,RUT:StopPlace:02310170</Value>
+                        </KeyValue>
+                        <KeyValue>
+                            <Key>CHANGED_BY</Key>
+                            <Value>assad.riaz</Value>
+                        </KeyValue>
+                        <KeyValue>
+                            <Key>VERSION_COMMENT</Key>
+                            <Value>Added bus shelter</Value>
+                        </KeyValue>
+                        <KeyValue>
+                            <Key>IS_PARENT_STOP_PLACE</Key>
+                            <Value>false</Value>
+                        </KeyValue>
+                    </keyList>
+                    <Name lang="no">Landskronaveien</Name>
+                    <Description lang="no"/>
+                    <Centroid>
+                        <Location>
+                            <Longitude>10.992744</Longitude>
+                            <Latitude>59.968732</Latitude>
+                        </Location>
+                    </Centroid>
+                    <AccessibilityAssessment modification="new" version="2" id="NSR:AccessibilityAssessment:5543">
+                        <MobilityImpairedAccess>unknown</MobilityImpairedAccess>
+                        <limitations>
+                            <AccessibilityLimitation modification="new" version="1" id="107905">
+<WheelchairAccess>unknown</WheelchairAccess>
+<StepFreeAccess>unknown</StepFreeAccess>
+<EscalatorFreeAccess>unknown</EscalatorFreeAccess>
+<LiftFreeAccess>unknown</LiftFreeAccess>
+<AudibleSignalsAvailable>unknown</AudibleSignalsAvailable>
+                            </AccessibilityLimitation>
+                        </limitations>
+                    </AccessibilityAssessment>
+                    <TopographicPlaceRef ref="KVE:TopographicPlace:0231" created="2021-05-11T10:58:40.893"/>
+                    <placeEquipments id="NSR:PlaceEquipment:49383">
+                        <ShelterEquipment modification="new" version="1" id="78473">
+                            <Seats>1</Seats>
+                            <StepFree>false</StepFree>
+                            <Enclosed>false</Enclosed>
+                        </ShelterEquipment>
+                    </placeEquipments>
+                    <TransportMode>bus</TransportMode>
+                    <OtherTransportModes></OtherTransportModes>
+                    <StopPlaceType>onstreetBus</StopPlaceType>
+                    <Weighting>interchangeAllowed</Weighting>
+                    <quays>
+                        <Quay changed="2019-03-27T12:29:17.43" modification="new" version="2" id="NSR:Quay:10149">
+                            <keyList>
+<KeyValue>
+    <Key>imported-id</Key>
+    <Value>RUT:Quay:231017002,RUT:Quay:0231017002</Value>
+</KeyValue>
+                            </keyList>
+                            <PrivateCode>2</PrivateCode>
+                            <Centroid>
+<Location>
+    <Longitude>10.992737</Longitude>
+    <Latitude>59.968682</Latitude>
+</Location>
+                            </Centroid>
+                            <OtherTransportModes></OtherTransportModes>
+                            <PublicCode></PublicCode>
+                        </Quay>
+                        <Quay changed="2019-03-27T12:29:17.43" modification="new" version="2" id="NSR:Quay:10148">
+                            <keyList>
+<KeyValue>
+    <Key>imported-id</Key>
+    <Value>RUT:Quay:231017001,RUT:Quay:0231017001</Value>
+</KeyValue>
+                            </keyList>
+                            <PrivateCode>1</PrivateCode>
+                            <Centroid>
+<Location>
+    <Longitude>10.992752</Longitude>
+    <Latitude>59.968781</Latitude>
+</Location>
+                            </Centroid>
+                            <OtherTransportModes></OtherTransportModes>
+                            <PublicCode></PublicCode>
+                            <CompassBearing>216.0</CompassBearing>
+                        </Quay>
+                    </quays>
+                </StopPlace>
+                <StopPlace created="2017-06-19T19:18:57.495" changed="2019-12-18T09:59:13.806" modification="new" version="3" id="NSR:StopPlace:5543">
+                    <ValidBetween>
+                        <FromDate>2019-12-18T09:59:11</FromDate>
+                        <ToDate>2019-12-18T09:59:45.999</ToDate>
+                    </ValidBetween>
+                    <keyList>
+                        <KeyValue>
+                            <Key>imported-id</Key>
+                            <Value>RUT:StopPlace:02310170-2,RUT:StopPlace:02310170,RUT:StopPlace:2310170-2</Value>
+                        </KeyValue>
+                        <KeyValue>
+                            <Key>CHANGED_BY</Key>
+                            <Value>assad.riaz</Value>
+                        </KeyValue>
+                        <KeyValue>
+                            <Key>VERSION_COMMENT</Key>
+                            <Value></Value>
+                        </KeyValue>
+                        <KeyValue>
+                            <Key>IS_PARENT_STOP_PLACE</Key>
+                            <Value>false</Value>
+                        </KeyValue>
+                    </keyList>
+                    <Name lang="no">Landskronaveien</Name>
+                    <Description lang="no">test</Description>
+                    <PrivateCode></PrivateCode>
+                    <Centroid>
+                        <Location>
+                            <Longitude>10.992744</Longitude>
+                            <Latitude>59.968732</Latitude>
+                        </Location>
+                    </Centroid>
+                    <AccessibilityAssessment modification="new" version="3" id="NSR:AccessibilityAssessment:5543">
+                        <MobilityImpairedAccess>unknown</MobilityImpairedAccess>
+                        <limitations>
+                            <AccessibilityLimitation modification="new" version="1" id="120972">
+<WheelchairAccess>unknown</WheelchairAccess>
+<StepFreeAccess>unknown</StepFreeAccess>
+<EscalatorFreeAccess>unknown</EscalatorFreeAccess>
+<LiftFreeAccess>unknown</LiftFreeAccess>
+<AudibleSignalsAvailable>unknown</AudibleSignalsAvailable>
+                            </AccessibilityLimitation>
+                        </limitations>
+                    </AccessibilityAssessment>
+                    <TopographicPlaceRef ref="KVE:TopographicPlace:0231" created="2021-05-11T10:58:40.93"/>
+                    <placeEquipments id="NSR:PlaceEquipment:52875">
+                        <ShelterEquipment modification="new" version="1" id="86833">
+                            <Seats>1</Seats>
+                            <StepFree>false</StepFree>
+                            <Enclosed>false</Enclosed>
+                        </ShelterEquipment>
+                    </placeEquipments>
+                    <TransportMode>bus</TransportMode>
+                    <OtherTransportModes></OtherTransportModes>
+                    <StopPlaceType>onstreetBus</StopPlaceType>
+                    <Weighting>interchangeAllowed</Weighting>
+                    <quays>
+                        <Quay changed="2019-12-18T09:59:13.791" modification="new" version="3" id="NSR:Quay:10149">
+                            <keyList>
+<KeyValue>
+    <Key>imported-id</Key>
+    <Value>RUT:Quay:0231017002,RUT:Quay:231017002</Value>
+</KeyValue>
+                            </keyList>
+                            <PrivateCode>2</PrivateCode>
+                            <Centroid>
+<Location>
+    <Longitude>10.992737</Longitude>
+    <Latitude>59.968682</Latitude>
+</Location>
+                            </Centroid>
+                            <OtherTransportModes></OtherTransportModes>
+                            <PublicCode></PublicCode>
+                        </Quay>
+                        <Quay changed="2019-12-18T09:59:13.792" modification="new" version="3" id="NSR:Quay:10148">
+                            <keyList>
+<KeyValue>
+    <Key>imported-id</Key>
+    <Value>RUT:Quay:0231017001,RUT:Quay:231017001</Value>
+</KeyValue>
+                            </keyList>
+                            <PrivateCode>1</PrivateCode>
+                            <Centroid>
+<Location>
+    <Longitude>10.992752</Longitude>
+    <Latitude>59.968781</Latitude>
+</Location>
+                            </Centroid>
+                            <OtherTransportModes></OtherTransportModes>
+                            <PublicCode></PublicCode>
+                            <CompassBearing>216.0</CompassBearing>
+                        </Quay>
+                    </quays>
+                </StopPlace>
+                <StopPlace created="2017-06-19T19:18:57.495" changed="2021-05-03T08:22:22.32" modification="new" version="8" id="NSR:StopPlace:5543">
+                    <ValidBetween>
+                        <FromDate>2021-04-15T21:06:16</FromDate>
+                    </ValidBetween>
+                    <keyList>
+                        <KeyValue>
+                            <Key>imported-id</Key>
+                            <Value>RUT:StopPlace:2310170,RUT:StopPlace:02310170</Value>
+                        </KeyValue>
+                        <KeyValue>
+                            <Key>CHANGED_BY</Key>
+                            <Value>assad.riaz</Value>
+                        </KeyValue>
+                        <KeyValue>
+                            <Key>VERSION_COMMENT</Key>
+                            <Value>undo test</Value>
+                        </KeyValue>
+                        <KeyValue>
+                            <Key>IS_PARENT_STOP_PLACE</Key>
+                            <Value>false</Value>
+                        </KeyValue>
+                    </keyList>
+                    <Name lang="no">Landskronaveien</Name>
+                    <Description lang="no"/>
+                    <PrivateCode></PrivateCode>
+                    <Centroid>
+                        <Location>
+                            <Longitude>10.992827</Longitude>
+                            <Latitude>59.968738</Latitude>
+                        </Location>
+                    </Centroid>
+                    <AccessibilityAssessment modification="new" version="8" id="NSR:AccessibilityAssessment:5543">
+                        <MobilityImpairedAccess>unknown</MobilityImpairedAccess>
+                        <limitations>
+                            <AccessibilityLimitation modification="new" version="1" id="147738">
+<WheelchairAccess>unknown</WheelchairAccess>
+<StepFreeAccess>unknown</StepFreeAccess>
+<EscalatorFreeAccess>unknown</EscalatorFreeAccess>
+<LiftFreeAccess>unknown</LiftFreeAccess>
+<AudibleSignalsAvailable>unknown</AudibleSignalsAvailable>
+                            </AccessibilityLimitation>
+                        </limitations>
+                    </AccessibilityAssessment>
+                    <TopographicPlaceRef ref="KVE:TopographicPlace:3030" created="2021-05-11T10:58:40.996"/>
+                    <placeEquipments id="NSR:PlaceEquipment:60529">
+                        <ShelterEquipment modification="new" version="1" id="104051">
+                            <Seats>1</Seats>
+                            <StepFree>false</StepFree>
+                            <Enclosed>false</Enclosed>
+                        </ShelterEquipment>
+                    </placeEquipments>
+                    <TransportMode>bus</TransportMode>
+                    <OtherTransportModes></OtherTransportModes>
+                    <tariffZones>
+                        <TariffZoneRef ref="RUT:TariffZone:2Ø"/>
+                    </tariffZones>
+                    <StopPlaceType>onstreetBus</StopPlaceType>
+                    <Weighting>interchangeAllowed</Weighting>
+                    <quays>
+                        <Quay changed="2021-04-15T21:06:24.07" modification="new" version="8" id="NSR:Quay:10148">
+                            <keyList>
+<KeyValue>
+    <Key>imported-id</Key>
+    <Value>RUT:Quay:231017001,RUT:Quay:0231017001</Value>
+</KeyValue>
+                            </keyList>
+                            <PrivateCode>1</PrivateCode>
+                            <Centroid>
+<Location>
+    <Longitude>10.992832</Longitude>
+    <Latitude>59.968805</Latitude>
+</Location>
+                            </Centroid>
+                            <placeEquipments id="NSR:PlaceEquipment:60530">
+<ShelterEquipment modification="new" version="1" id="104093">
+    <Seats>1</Seats>
+    <StepFree>false</StepFree>
+    <Enclosed>false</Enclosed>
+</ShelterEquipment>
+                            </placeEquipments>
+                            <OtherTransportModes></OtherTransportModes>
+                            <PublicCode></PublicCode>
+                            <CompassBearing>216.0</CompassBearing>
+                        </Quay>
+                        <Quay changed="2021-04-15T21:06:24.07" modification="new" version="8" id="NSR:Quay:10149">
+                            <keyList>
+<KeyValue>
+    <Key>imported-id</Key>
+    <Value>RUT:Quay:231017002,RUT:Quay:0231017002</Value>
+</KeyValue>
+                            </keyList>
+                            <PrivateCode>2</PrivateCode>
+                            <Centroid>
+<Location>
+    <Longitude>10.992822</Longitude>
+    <Latitude>59.968665</Latitude>
+</Location>
+                            </Centroid>
+                            <placeEquipments id="NSR:PlaceEquipment:60531">
+<ShelterEquipment modification="new" version="1" id="104095">
+    <Seats>1</Seats>
+    <StepFree>false</StepFree>
+    <Enclosed>false</Enclosed>
+</ShelterEquipment>
+                            </placeEquipments>
+                            <OtherTransportModes></OtherTransportModes>
+                            <PublicCode></PublicCode>
+                        </Quay>
+                    </quays>
+                </StopPlace>
+                <StopPlace created="2017-06-19T19:18:57.495" changed="2019-12-31T15:59:25.704" modification="new" version="4" id="NSR:StopPlace:5543">
+                    <ValidBetween>
+                        <FromDate>2019-12-18T09:59:46</FromDate>
+                        <ToDate>2020-02-18T10:29:20.999</ToDate>
+                    </ValidBetween>
+                    <keyList>
+                        <KeyValue>
+                            <Key>imported-id</Key>
+                            <Value>RUT:StopPlace:02310170-2,RUT:StopPlace:02310170,RUT:StopPlace:2310170-2</Value>
+                        </KeyValue>
+                        <KeyValue>
+                            <Key>CHANGED_BY</Key>
+                            <Value>assad.riaz</Value>
+                        </KeyValue>
+                        <KeyValue>
+                            <Key>VERSION_COMMENT</Key>
+                            <Value></Value>
+                        </KeyValue>
+                        <KeyValue>
+                            <Key>IS_PARENT_STOP_PLACE</Key>
+                            <Value>false</Value>
+                        </KeyValue>
+                    </keyList>
+                    <Name lang="no">Landskronaveien</Name>
+                    <Description lang="no"/>
+                    <PrivateCode></PrivateCode>
+                    <Centroid>
+                        <Location>
+                            <Longitude>10.992744</Longitude>
+                            <Latitude>59.968732</Latitude>
+                        </Location>
+                    </Centroid>
+                    <AccessibilityAssessment modification="new" version="4" id="NSR:AccessibilityAssessment:5543">
+                        <MobilityImpairedAccess>unknown</MobilityImpairedAccess>
+                        <limitations>
+                            <AccessibilityLimitation modification="new" version="1" id="120982">
+<WheelchairAccess>unknown</WheelchairAccess>
+<StepFreeAccess>unknown</StepFreeAccess>
+<EscalatorFreeAccess>unknown</EscalatorFreeAccess>
+<LiftFreeAccess>unknown</LiftFreeAccess>
+<AudibleSignalsAvailable>unknown</AudibleSignalsAvailable>
+                            </AccessibilityLimitation>
+                        </limitations>
+                    </AccessibilityAssessment>
+                    <TopographicPlaceRef ref="KVE:TopographicPlace:3030" created="2021-05-11T10:58:41.093"/>
+                    <placeEquipments id="NSR:PlaceEquipment:52876">
+                        <ShelterEquipment modification="new" version="1" id="86843">
+                            <Seats>1</Seats>
+                            <StepFree>false</StepFree>
+                            <Enclosed>false</Enclosed>
+                        </ShelterEquipment>
+                    </placeEquipments>
+                    <TransportMode>bus</TransportMode>
+                    <OtherTransportModes></OtherTransportModes>
+                    <StopPlaceType>onstreetBus</StopPlaceType>
+                    <Weighting>interchangeAllowed</Weighting>
+                    <quays>
+                        <Quay changed="2019-12-18T09:59:50.726" modification="new" version="4" id="NSR:Quay:10149">
+                            <keyList>
+<KeyValue>
+    <Key>imported-id</Key>
+    <Value>RUT:Quay:0231017002,RUT:Quay:231017002</Value>
+</KeyValue>
+                            </keyList>
+                            <PrivateCode>2</PrivateCode>
+                            <Centroid>
+<Location>
+    <Longitude>10.992737</Longitude>
+    <Latitude>59.968682</Latitude>
+</Location>
+                            </Centroid>
+                            <OtherTransportModes></OtherTransportModes>
+                            <PublicCode></PublicCode>
+                        </Quay>
+                        <Quay changed="2019-12-18T09:59:50.727" modification="new" version="4" id="NSR:Quay:10148">
+                            <keyList>
+<KeyValue>
+    <Key>imported-id</Key>
+    <Value>RUT:Quay:0231017001,RUT:Quay:231017001</Value>
+</KeyValue>
+                            </keyList>
+                            <PrivateCode>1</PrivateCode>
+                            <Centroid>
+<Location>
+    <Longitude>10.992752</Longitude>
+    <Latitude>59.968781</Latitude>
+</Location>
+                            </Centroid>
+                            <OtherTransportModes></OtherTransportModes>
+                            <PublicCode></PublicCode>
+                            <CompassBearing>216.0</CompassBearing>
+                        </Quay>
+                    </quays>
+                </StopPlace>
+                <StopPlace created="2017-06-19T19:18:57.495" changed="2021-01-19T11:42:12.845" modification="new" version="5" id="NSR:StopPlace:5543">
+                    <ValidBetween>
+                        <FromDate>2020-02-18T10:29:21</FromDate>
+                        <ToDate>2021-02-12T15:18:51.999</ToDate>
+                    </ValidBetween>
+                    <keyList>
+                        <KeyValue>
+                            <Key>imported-id</Key>
+                            <Value>RUT:StopPlace:02310170-2,RUT:StopPlace:2310170-2,RUT:StopPlace:02310170</Value>
+                        </KeyValue>
+                        <KeyValue>
+                            <Key>CHANGED_BY</Key>
+                            <Value>johan</Value>
+                        </KeyValue>
+                        <KeyValue>
+                            <Key>VERSION_COMMENT</Key>
+                            <Value>Posisjon, skur</Value>
+                        </KeyValue>
+                        <KeyValue>
+                            <Key>IS_PARENT_STOP_PLACE</Key>
+                            <Value>false</Value>
+                        </KeyValue>
+                    </keyList>
+                    <Name lang="no">Landskronaveien</Name>
+                    <Description lang="no"/>
+                    <PrivateCode></PrivateCode>
+                    <Centroid>
+                        <Location>
+                            <Longitude>10.992822</Longitude>
+                            <Latitude>59.968734</Latitude>
+                        </Location>
+                    </Centroid>
+                    <AccessibilityAssessment modification="new" version="5" id="NSR:AccessibilityAssessment:5543">
+                        <MobilityImpairedAccess>unknown</MobilityImpairedAccess>
+                        <limitations>
+                            <AccessibilityLimitation modification="new" version="1" id="122492">
+<WheelchairAccess>unknown</WheelchairAccess>
+<StepFreeAccess>unknown</StepFreeAccess>
+<EscalatorFreeAccess>unknown</EscalatorFreeAccess>
+<LiftFreeAccess>unknown</LiftFreeAccess>
+<AudibleSignalsAvailable>unknown</AudibleSignalsAvailable>
+                            </AccessibilityLimitation>
+                        </limitations>
+                    </AccessibilityAssessment>
+                    <TopographicPlaceRef ref="KVE:TopographicPlace:3030" created="2021-05-11T10:58:41.183"/>
+                    <placeEquipments id="NSR:PlaceEquipment:53416">
+                        <ShelterEquipment modification="new" version="1" id="88061">
+                            <Seats>1</Seats>
+                            <StepFree>false</StepFree>
+                            <Enclosed>false</Enclosed>
+                        </ShelterEquipment>
+                    </placeEquipments>
+                    <TransportMode>bus</TransportMode>
+                    <OtherTransportModes></OtherTransportModes>
+                    <tariffZones>
+                        <TariffZoneRef ref="RUT:TariffZone:2Ø"/>
+                    </tariffZones>
+                    <StopPlaceType>onstreetBus</StopPlaceType>
+                    <Weighting>interchangeAllowed</Weighting>
+                    <quays>
+                        <Quay changed="2020-02-18T10:29:24.742" modification="new" version="5" id="NSR:Quay:10149">
+                            <keyList>
+<KeyValue>
+    <Key>imported-id</Key>
+    <Value>RUT:Quay:231017002,RUT:Quay:0231017002</Value>
+</KeyValue>
+                            </keyList>
+                            <PrivateCode>2</PrivateCode>
+                            <Centroid>
+<Location>
+    <Longitude>10.992806</Longitude>
+    <Latitude>59.968666</Latitude>
+</Location>
+                            </Centroid>
+                            <placeEquipments id="NSR:PlaceEquipment:53417">
+<ShelterEquipment modification="new" version="1" id="88063">
+    <Seats>1</Seats>
+    <StepFree>false</StepFree>
+    <Enclosed>false</Enclosed>
+</ShelterEquipment>
+                            </placeEquipments>
+                            <OtherTransportModes></OtherTransportModes>
+                            <PublicCode></PublicCode>
+                        </Quay>
+                        <Quay changed="2020-02-18T10:29:24.742" modification="new" version="5" id="NSR:Quay:10148">
+                            <keyList>
+<KeyValue>
+    <Key>imported-id</Key>
+    <Value>RUT:Quay:231017001,RUT:Quay:0231017001</Value>
+</KeyValue>
+                            </keyList>
+                            <PrivateCode>1</PrivateCode>
+                            <Centroid>
+<Location>
+    <Longitude>10.992838</Longitude>
+    <Latitude>59.968803</Latitude>
+</Location>
+                            </Centroid>
+                            <placeEquipments id="NSR:PlaceEquipment:53418">
+<ShelterEquipment modification="new" version="1" id="88065">
+    <Seats>1</Seats>
+    <StepFree>false</StepFree>
+    <Enclosed>false</Enclosed>
+</ShelterEquipment>
+                            </placeEquipments>
+                            <OtherTransportModes></OtherTransportModes>
+                            <PublicCode></PublicCode>
+                            <CompassBearing>216.0</CompassBearing>
+                        </Quay>
+                    </quays>
+                </StopPlace>
+                <StopPlace created="2017-06-19T19:18:57.495" changed="2021-04-15T20:17:20.511" modification="new" version="6" id="NSR:StopPlace:5543">
+                    <ValidBetween>
+                        <FromDate>2021-02-12T15:18:52</FromDate>
+                        <ToDate>2021-04-15T21:06:01.999</ToDate>
+                    </ValidBetween>
+                    <keyList>
+                        <KeyValue>
+                            <Key>imported-id</Key>
+                            <Value>RUT:StopPlace:2310170,RUT:StopPlace:02310170</Value>
+                        </KeyValue>
+                        <KeyValue>
+                            <Key>CHANGED_BY</Key>
+                            <Value>audun.andersen</Value>
+                        </KeyValue>
+                        <KeyValue>
+                            <Key>VERSION_COMMENT</Key>
+                            <Value></Value>
+                        </KeyValue>
+                        <KeyValue>
+                            <Key>IS_PARENT_STOP_PLACE</Key>
+                            <Value>false</Value>
+                        </KeyValue>
+                    </keyList>
+                    <Name lang="no">Landskronaveien</Name>
+                    <Description lang="no"/>
+                    <PrivateCode></PrivateCode>
+                    <Centroid>
+                        <Location>
+                            <Longitude>10.992827</Longitude>
+                            <Latitude>59.968738</Latitude>
+                        </Location>
+                    </Centroid>
+                    <AccessibilityAssessment modification="new" version="6" id="NSR:AccessibilityAssessment:5543">
+                        <MobilityImpairedAccess>unknown</MobilityImpairedAccess>
+                        <limitations>
+                            <AccessibilityLimitation modification="new" version="1" id="143177">
+<WheelchairAccess>unknown</WheelchairAccess>
+<StepFreeAccess>unknown</StepFreeAccess>
+<EscalatorFreeAccess>unknown</EscalatorFreeAccess>
+<LiftFreeAccess>unknown</LiftFreeAccess>
+<AudibleSignalsAvailable>unknown</AudibleSignalsAvailable>
+                            </AccessibilityLimitation>
+                        </limitations>
+                    </AccessibilityAssessment>
+                    <TopographicPlaceRef ref="KVE:TopographicPlace:3030" created="2021-05-11T10:58:41.285"/>
+                    <placeEquipments id="NSR:PlaceEquipment:59114">
+                        <ShelterEquipment modification="new" version="1" id="100812">
+                            <Seats>1</Seats>
+                            <StepFree>false</StepFree>
+                            <Enclosed>false</Enclosed>
+                        </ShelterEquipment>
+                    </placeEquipments>
+                    <TransportMode>bus</TransportMode>
+                    <OtherTransportModes></OtherTransportModes>
+                    <tariffZones>
+                        <TariffZoneRef ref="RUT:TariffZone:2Ø"/>
+                    </tariffZones>
+                    <StopPlaceType>onstreetBus</StopPlaceType>
+                    <Weighting>interchangeAllowed</Weighting>
+                    <quays>
+                        <Quay changed="2021-02-12T15:18:54.063" modification="new" version="6" id="NSR:Quay:10148">
+                            <keyList>
+<KeyValue>
+    <Key>imported-id</Key>
+    <Value>RUT:Quay:0231017001,RUT:Quay:231017001</Value>
+</KeyValue>
+                            </keyList>
+                            <PrivateCode>1</PrivateCode>
+                            <Centroid>
+<Location>
+    <Longitude>10.992832</Longitude>
+    <Latitude>59.968805</Latitude>
+</Location>
+                            </Centroid>
+                            <placeEquipments id="NSR:PlaceEquipment:59116">
+<ShelterEquipment modification="new" version="1" id="100816">
+    <Seats>1</Seats>
+    <StepFree>false</StepFree>
+    <Enclosed>false</Enclosed>
+</ShelterEquipment>
+                            </placeEquipments>
+                            <OtherTransportModes></OtherTransportModes>
+                            <PublicCode></PublicCode>
+                            <CompassBearing>216.0</CompassBearing>
+                        </Quay>
+                        <Quay changed="2021-02-12T15:18:54.063" modification="new" version="6" id="NSR:Quay:10149">
+                            <keyList>
+<KeyValue>
+    <Key>imported-id</Key>
+    <Value>RUT:Quay:0231017002,RUT:Quay:231017002</Value>
+</KeyValue>
+                            </keyList>
+                            <PrivateCode>2</PrivateCode>
+                            <Centroid>
+<Location>
+    <Longitude>10.992822</Longitude>
+    <Latitude>59.968665</Latitude>
+</Location>
+                            </Centroid>
+                            <placeEquipments id="NSR:PlaceEquipment:59115">
+<ShelterEquipment modification="new" version="1" id="100814">
+    <Seats>1</Seats>
+    <StepFree>false</StepFree>
+    <Enclosed>false</Enclosed>
+</ShelterEquipment>
+                            </placeEquipments>
+                            <OtherTransportModes></OtherTransportModes>
+                            <PublicCode></PublicCode>
+                        </Quay>
+                    </quays>
+                </StopPlace>
+            </stopPlaces>
+        </SiteFrame>
+    </dataObjects>
+</PublicationDelivery>

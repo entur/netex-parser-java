@@ -19,6 +19,13 @@ public interface ReadOnlyHierarchicalVersionMapById<V> {
     V lookupLastVersionById(String id);
 
     /**
+     * Lookup all versions of element with the given {@code id}.
+     *
+     * @return an empty collection if no elements are found.
+     */
+    Collection<V> lookupAllVersionsById(String id);
+
+    /**
      * Return {@code true} if the given {@code value.version} is larger or equals to all the
      * maximum version of all elements in the collection.
      * <p/>
