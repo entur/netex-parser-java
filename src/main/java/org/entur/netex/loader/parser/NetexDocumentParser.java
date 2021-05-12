@@ -112,7 +112,7 @@ public class NetexDocumentParser {
             timeZone = frameDefaults.getDefaultLocale().getTimeZone();
         }
 
-        netexIndex.timeZone.set(timeZone);
+        netexIndex.setTimeZone(timeZone);
     }
 
     private <T> void parse(T node, NetexParser<T> parser) {

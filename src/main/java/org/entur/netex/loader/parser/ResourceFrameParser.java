@@ -45,8 +45,8 @@ class ResourceFrameParser extends NetexParser<ResourceFrame_VersionFrameStructur
     }
 
     @Override void setResultOnIndex(NetexEntityIndex netexIndex) {
-        netexIndex.authoritiesById.addAll(authorities);
-        netexIndex.operatorsById.addAll(operators);
+        netexIndex.authoritiesById.putAll(authorities);
+        netexIndex.operatorsById.putAll(operators);
     }
 
 
