@@ -82,7 +82,7 @@ public class NetexEntityIndex {
 
     public final Map<String, String> networkIdByGroupOfLineId;
 
-    public String timeZone;
+    private String timeZone;
 
     public void setTimeZone(String timeZone) {
         this.timeZone = timeZone;
@@ -138,7 +138,7 @@ public class NetexEntityIndex {
              */
             @Override
             public Network lookupNetworkForLine(String groupOfLineOrNetworkId) {
-                GroupOfLines groupOfLines = groupOfLinesById.get(groupOfLineOrNetworkId);
+                var groupOfLines = groupOfLinesById.get(groupOfLineOrNetworkId);
 
                 String networkId = groupOfLines == null
                         ? groupOfLineOrNetworkId

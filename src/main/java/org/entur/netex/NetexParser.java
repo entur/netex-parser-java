@@ -16,7 +16,7 @@ public class NetexParser {
     private final NetexXmlParser xmlParser = new NetexXmlParser();
 
     public NetexEntityIndex parse(String pathToZip) throws IOException {
-        org.entur.netex.index.NetexEntityIndex index = new org.entur.netex.index.NetexEntityIndex();
+        var index = new org.entur.netex.index.NetexEntityIndex();
         try(ZipFile zipFile = new ZipFile(pathToZip)) {
             Enumeration<? extends ZipEntry> entries = zipFile.entries();
             while(entries.hasMoreElements()){
@@ -29,7 +29,7 @@ public class NetexParser {
     }
 
     public NetexEntityIndex parse(InputStream inputStream) {
-        org.entur.netex.index.NetexEntityIndex index = new org.entur.netex.index.NetexEntityIndex();
+        var index = new org.entur.netex.index.NetexEntityIndex();
         load(index, inputStream);
         return index.api();
     }

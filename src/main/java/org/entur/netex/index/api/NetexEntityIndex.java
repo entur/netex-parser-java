@@ -28,7 +28,6 @@ import org.rutebanken.netex.model.StopPlace;
 import org.rutebanken.netex.model.TariffZone;
 import org.rutebanken.netex.model.TopographicPlace;
 
-import java.util.Collection;
 import java.util.Map;
 
 public interface NetexEntityIndex {
