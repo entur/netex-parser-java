@@ -27,4 +27,10 @@ public class TestMultipleVersionsStopPlaces {
         var stopPlaces = index.getStopPlaceById().getAllVersions("NSR:StopPlace:5543");
         Assertions.assertEquals(8, stopPlaces.size());
     }
+
+    @Test
+    void testGetAllVersionsOfAllStopPlaces() {
+        var stopPlaces = index.getStopPlaceById().getAllVersions();
+        Assertions.assertEquals(8, stopPlaces.get("NSR:StopPlace:5543").size());
+    }
 }
