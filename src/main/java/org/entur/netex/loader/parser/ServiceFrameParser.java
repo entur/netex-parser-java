@@ -1,7 +1,7 @@
 package org.entur.netex.loader.parser;
 
 import org.entur.netex.index.NetexEntityIndex;
-import org.entur.netex.index.api.ReadOnlyHierarchicalMapById;
+import org.entur.netex.index.api.EntityMapById;
 import org.rutebanken.netex.model.DestinationDisplay;
 import org.rutebanken.netex.model.DestinationDisplaysInFrame_RelStructure;
 import org.rutebanken.netex.model.FlexibleLine;
@@ -37,7 +37,7 @@ class ServiceFrameParser extends NetexParser<Service_VersionFrameStructure> {
 
     private static final Logger LOG = LoggerFactory.getLogger(ServiceFrameParser.class);
 
-    private final ReadOnlyHierarchicalMapById<FlexibleStopPlace> flexibleStopPlaceById;
+    private final EntityMapById<FlexibleStopPlace> flexibleStopPlaceById;
 
     private final Collection<Network> networks = new ArrayList<>();
 
@@ -68,7 +68,7 @@ class ServiceFrameParser extends NetexParser<Service_VersionFrameStructure> {
     private final NoticeParser noticeParser = new NoticeParser();
 
     ServiceFrameParser(
-        ReadOnlyHierarchicalMapById<FlexibleStopPlace> flexibleStopPlaceById
+        EntityMapById<FlexibleStopPlace> flexibleStopPlaceById
     ) {
         this.flexibleStopPlaceById = flexibleStopPlaceById;
     }
@@ -123,22 +123,22 @@ class ServiceFrameParser extends NetexParser<Service_VersionFrameStructure> {
     @Override
     void setResultOnIndex(NetexEntityIndex index) {
         // update entities
-        index.destinationDisplayById.addAll(destinationDisplays);
-        index.groupOfLinesById.addAll(groupOfLines);
-        index.journeyPatternsById.addAll(journeyPatterns);
-        index.flexibleLineByid.addAll(flexibleLines);
-        index.lineById.addAll(lines);
-        index.networkById.addAll(networks);
+        index.destinationDisplayById.putAll(destinationDisplays);
+        index.groupOfLinesById.putAll(groupOfLines);
+        index.journeyPatternsById.putAll(journeyPatterns);
+        index.flexibleLineByid.putAll(flexibleLines);
+        index.lineById.putAll(lines);
+        index.networkById.putAll(networks);
         noticeParser.setResultOnIndex(index);
-        index.quayIdByStopPointRef.addAll(quayIdByStopPointRef);
-        index.stopPlaceIdByStopPointRef.addAll(stopPlaceIdByStopPointRef);
-        index.flexibleStopPlaceByStopPointRef.addAll(flexibleStopPlaceByStopPointRef);
-        index.routeById.addAll(routes);
-        index.serviceLinkById.addAll(serviceLinks);
-        index.scheduledStopPointById.addAll(scheduledStopPoints);
+        index.quayIdByStopPointRef.putAll(quayIdByStopPointRef);
+        index.stopPlaceIdByStopPointRef.putAll(stopPlaceIdByStopPointRef);
+        index.flexibleStopPlaceByStopPointRef.putAll(flexibleStopPlaceByStopPointRef);
+        index.routeById.putAll(routes);
+        index.serviceLinkById.putAll(serviceLinks);
+        index.scheduledStopPointById.putAll(scheduledStopPoints);
 
         // update references
-        index.networkIdByGroupOfLineId.addAll(networkIdByGroupOfLineId);
+        index.networkIdByGroupOfLineId.putAll(networkIdByGroupOfLineId);
     }
 
     private void parseStopAssignments(StopAssignmentsInFrame_RelStructure stopAssignments) {
@@ -166,7 +166,7 @@ class ServiceFrameParser extends NetexParser<Service_VersionFrameStructure> {
                 // TODO OTP2 - This check belongs to the mapping or as a separate validation
                 //           - step. The problem is that we do not want to relay on the
                 //           - the order in witch elements are loaded.
-                FlexibleStopPlace flexibleStopPlace = flexibleStopPlaceById.lookup(
+                FlexibleStopPlace flexibleStopPlace = flexibleStopPlaceById.get(
                     flexibleStopPlaceRef);
 
                 if (flexibleStopPlace != null) {

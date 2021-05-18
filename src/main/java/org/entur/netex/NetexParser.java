@@ -1,7 +1,6 @@
 package org.entur.netex;
 
-import org.entur.netex.index.NetexEntityIndex;
-import org.entur.netex.index.api.NetexEntityIndexReadOnlyView;
+import org.entur.netex.index.api.NetexEntityIndex;
 import org.entur.netex.loader.NetexXmlParser;
 import org.entur.netex.loader.parser.NetexDocumentParser;
 import org.rutebanken.netex.model.PublicationDeliveryStructure;
@@ -16,8 +15,8 @@ import java.util.zip.ZipFile;
 public class NetexParser {
     private final NetexXmlParser xmlParser = new NetexXmlParser();
 
-    public NetexEntityIndexReadOnlyView parse(String pathToZip) throws IOException {
-        NetexEntityIndex index = new NetexEntityIndex();
+    public NetexEntityIndex parse(String pathToZip) throws IOException {
+        var index = new org.entur.netex.index.NetexEntityIndex();
         try(ZipFile zipFile = new ZipFile(pathToZip)) {
             Enumeration<? extends ZipEntry> entries = zipFile.entries();
             while(entries.hasMoreElements()){
@@ -25,17 +24,17 @@ public class NetexParser {
                 InputStream stream = zipFile.getInputStream(entry);
                 load(index, stream);
             }
-            return index.readOnlyView();
+            return index.api();
         }
     }
 
-    public NetexEntityIndexReadOnlyView parse(InputStream inputStream) {
-        NetexEntityIndex index = new NetexEntityIndex();
+    public NetexEntityIndex parse(InputStream inputStream) {
+        var index = new org.entur.netex.index.NetexEntityIndex();
         load(index, inputStream);
-        return index.readOnlyView();
+        return index.api();
     }
 
-    private void load(NetexEntityIndex index, InputStream inputStream) {
+    private void load(org.entur.netex.index.NetexEntityIndex index, InputStream inputStream) {
         try {
             PublicationDeliveryStructure doc = xmlParser.parseXmlDoc(inputStream);
             NetexDocumentParser.parseAndPopulateIndex(index, doc);
