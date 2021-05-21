@@ -1,12 +1,12 @@
 package org.entur.netex;
 
-import org.entur.netex.index.api.NetexEntityIndex;
+import org.entur.netex.index.api.NetexEntitiesIndex;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 public class TestStopPlacesExport {
-    private static NetexEntityIndex index;
+    private static NetexEntitiesIndex index;
 
     @BeforeAll
     static void init() {
@@ -39,7 +39,7 @@ public class TestStopPlacesExport {
 
     @Test
     public void testGetTariffZone() {
-        var tariffZone = index.getTariffZonesById().get("MOR:TariffZone:108");
+        var tariffZone = index.getTariffZoneById().get("MOR:TariffZone:108");
         Assertions.assertEquals("Standal", tariffZone.getName().getValue());
     }
 

@@ -1,64 +1,25 @@
 package org.entur.netex.index.api;
 
-import com.google.common.collect.Multimap;
-import org.rutebanken.netex.model.Authority;
-import org.rutebanken.netex.model.DatedServiceJourney;
-import org.rutebanken.netex.model.DayType;
-import org.rutebanken.netex.model.DayTypeAssignment;
-import org.rutebanken.netex.model.DestinationDisplay;
-import org.rutebanken.netex.model.FareZone;
-import org.rutebanken.netex.model.FlexibleLine;
-import org.rutebanken.netex.model.FlexibleStopPlace;
-import org.rutebanken.netex.model.GroupOfStopPlaces;
-import org.rutebanken.netex.model.JourneyPattern;
-import org.rutebanken.netex.model.Line;
-import org.rutebanken.netex.model.Network;
-import org.rutebanken.netex.model.Notice;
-import org.rutebanken.netex.model.NoticeAssignment;
-import org.rutebanken.netex.model.OperatingDay;
-import org.rutebanken.netex.model.OperatingPeriod;
-import org.rutebanken.netex.model.Operator;
-import org.rutebanken.netex.model.Parking;
-import org.rutebanken.netex.model.Quay;
-import org.rutebanken.netex.model.Route;
-import org.rutebanken.netex.model.ScheduledStopPoint;
-import org.rutebanken.netex.model.ServiceJourney;
-import org.rutebanken.netex.model.ServiceLink;
-import org.rutebanken.netex.model.StopPlace;
-import org.rutebanken.netex.model.TariffZone;
-import org.rutebanken.netex.model.TopographicPlace;
+import org.rutebanken.netex.model.EntityStructure;
 
-import java.util.Map;
+import java.util.Collection;
 
-public interface NetexEntityIndex {
-    Network lookupNetworkForLine(String groupOfLineOrNetworkId);
-    EntityMapById<Authority> getAuthoritiesById();
-    EntityMapById<DayType> getDayTypeById();
-    Multimap<String, DayTypeAssignment> getDayTypeAssignmentByDayTypeId();
-    EntityMapById<DatedServiceJourney> getDatedServiceJourneys();
-    EntityMapById<DestinationDisplay> getDestinationDisplayById();
-    EntityMapById<FlexibleStopPlace> getFlexibleStopPlacesById();
-    EntityMapById<GroupOfStopPlaces> getGroupOfStopPlacesById();
-    EntityMapById<JourneyPattern> getJourneyPatternsById();
-    EntityMapById<FlexibleLine> getFlexibleLineById();
-    EntityMapById<Line> getLineById();
-    EntityMapById<Notice> getNoticeById();
-    EntityMapById<NoticeAssignment> getNoticeAssignmentById();
-    EntityMapById<OperatingDay> getOperatingDayById();
-    EntityMapById<OperatingPeriod> getOperatingPeriodById();
-    EntityMapById<Operator> getOperatorsById();
-    EntityVersionMapById<Quay> getQuayById();
-    Map<String, String> getQuayIdByStopPointRef();
-    Map<String, String> getStopPlaceIdByStopPointRef();
-    Map<String, String> getFlexibleStopPlaceByStopPointRef();
-    EntityMapById<Route> getRouteById();
-    EntityMapById<ServiceJourney> getServiceJourneyById();
-    EntityMapById<ServiceLink> getServiceLinkById();
-    EntityVersionMapById<StopPlace> getStopPlaceById();
-    EntityMapById<TariffZone> getTariffZonesById();
-    EntityMapById<TopographicPlace> getTopographicPlaceById();
-    EntityMapById<Parking> getParkingById();
-    EntityMapById<ScheduledStopPoint> getScheduledStopPointById();
-    EntityMapById<FareZone> getFareZoneById();
-    String getTimeZone();
+/**
+ * A simple index of NeTEx entities of a specific type
+ * @param <V>
+ */
+public interface NetexEntityIndex<V extends EntityStructure> {
+    /**
+     * Get an entity by its id
+     *
+     * @param id
+     * @return The entity
+     */
+    V get(String id);
+
+    /**
+     * Put all entities into the collection
+     * @param entities
+     */
+    void putAll(Collection<V> entities);
 }

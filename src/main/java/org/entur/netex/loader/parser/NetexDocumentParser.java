@@ -1,6 +1,6 @@
 package org.entur.netex.loader.parser;
 
-import org.entur.netex.index.NetexEntityIndex;
+import org.entur.netex.index.api.NetexEntitiesIndex;
 import org.rutebanken.netex.model.Common_VersionFrameStructure;
 import org.rutebanken.netex.model.CompositeFrame;
 import org.rutebanken.netex.model.FareFrame;
@@ -11,7 +11,6 @@ import org.rutebanken.netex.model.ResourceFrame;
 import org.rutebanken.netex.model.ServiceCalendarFrame;
 import org.rutebanken.netex.model.ServiceFrame;
 import org.rutebanken.netex.model.SiteFrame;
-import org.rutebanken.netex.model.Site_VersionFrameStructure;
 import org.rutebanken.netex.model.TimetableFrame;
 import org.rutebanken.netex.model.VersionFrameDefaultsStructure;
 import org.slf4j.Logger;
@@ -30,9 +29,9 @@ import java.util.List;
 public class NetexDocumentParser {
     private static final Logger LOG = LoggerFactory.getLogger(NetexDocumentParser.class);
 
-    private final NetexEntityIndex netexIndex;
+    private final NetexEntitiesIndex netexIndex;
 
-    private NetexDocumentParser(NetexEntityIndex netexIndex) {
+    private NetexDocumentParser(NetexEntitiesIndex netexIndex) {
         this.netexIndex = netexIndex;
     }
 
@@ -40,7 +39,7 @@ public class NetexDocumentParser {
      * This static method create a new parser and parse the document. The result is added
      * to given index for further processing.
      */
-    public static void parseAndPopulateIndex(NetexEntityIndex index, PublicationDeliveryStructure doc) {
+    public static void parseAndPopulateIndex(NetexEntitiesIndex index, PublicationDeliveryStructure doc) {
         new NetexDocumentParser(index).parse(doc);
     }
 
@@ -64,7 +63,7 @@ public class NetexDocumentParser {
             parse((TimetableFrame) value, new TimeTableFrameParser());
         } else if(value instanceof ServiceFrame) {
             parse((ServiceFrame) value, new ServiceFrameParser(
-                netexIndex.flexibleStopPlaceById
+                netexIndex.getFlexibleStopPlaceById()
             ));
         }  else if (value instanceof SiteFrame) {
             parse((SiteFrame) value, new SiteFrameParser());

@@ -1,6 +1,6 @@
 package org.entur.netex;
 
-import org.entur.netex.index.api.NetexEntityIndex;
+import org.entur.netex.index.api.NetexEntitiesIndex;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -9,7 +9,7 @@ import java.io.File;
 import java.io.FileInputStream;
 
 public class TestMultipleVersionsStopPlaces {
-    private static NetexEntityIndex index;
+    private static NetexEntitiesIndex index;
 
     @BeforeAll
     static void init() {

@@ -1,13 +1,15 @@
 package org.entur.netex.index.api;
 
+import org.rutebanken.netex.model.EntityStructure;
+
 import java.util.Collection;
 import java.util.Map;
 
-public interface EntityVersionMapById<V> extends PutAllCollection<V> {
-    /**
-     * Alias for getLatestVersion
-     */
-    V get(String id);
+/**
+ * An index of versioned NeTEx entities
+ * @param <V>
+ */
+public interface VersionedNetexEntityIndex<V extends EntityStructure> extends NetexEntityIndex<V> {
 
     /**
      * Return the element with the latest version with the given {@code id}. Returns
@@ -27,11 +29,4 @@ public interface EntityVersionMapById<V> extends PutAllCollection<V> {
      * @return
      */
     Map<String, Collection<V>> getAllVersions();
-
-    /**
-     * Add all versioned entities to collection
-     * @param entities
-     */
-    @Override
-    void putAll(Collection<V> entities);
 }
