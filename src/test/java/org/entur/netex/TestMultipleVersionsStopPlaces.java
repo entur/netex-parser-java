@@ -1,6 +1,6 @@
 package org.entur.netex;
 
-import org.entur.netex.index.api.NetexEntityIndex;
+import org.entur.netex.index.api.NetexEntitiesIndex;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -9,7 +9,7 @@ import java.io.File;
 import java.io.FileInputStream;
 
 public class TestMultipleVersionsStopPlaces {
-    private static NetexEntityIndex index;
+    private static NetexEntitiesIndex index;
 
     @BeforeAll
     static void init() {
@@ -24,13 +24,13 @@ public class TestMultipleVersionsStopPlaces {
 
     @Test
     void testGetAllVersionsOfStopPlace() {
-        var stopPlaces = index.getStopPlaceById().getAllVersions("NSR:StopPlace:5543");
+        var stopPlaces = index.getStopPlaceIndex().getAllVersions("NSR:StopPlace:5543");
         Assertions.assertEquals(8, stopPlaces.size());
     }
 
     @Test
     void testGetAllVersionsOfAllStopPlaces() {
-        var stopPlaces = index.getStopPlaceById().getAllVersions();
+        var stopPlaces = index.getStopPlaceIndex().getAllVersions();
         Assertions.assertEquals(8, stopPlaces.get("NSR:StopPlace:5543").size());
     }
 }

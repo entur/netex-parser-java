@@ -2,7 +2,7 @@ package org.entur.netex.loader.parser;
 
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Multimap;
-import org.entur.netex.index.NetexEntityIndex;
+import org.entur.netex.index.api.NetexEntitiesIndex;
 import org.rutebanken.netex.model.DayType;
 import org.rutebanken.netex.model.DayTypeAssignment;
 import org.rutebanken.netex.model.DayTypeAssignmentsInFrame_RelStructure;
@@ -51,11 +51,11 @@ class ServiceCalendarFrameParser extends NetexParser<ServiceCalendarFrame_Versio
     }
 
     @Override
-    void setResultOnIndex(NetexEntityIndex netexIndex) {
-        netexIndex.dayTypeById.putAll(dayTypes);
-        netexIndex.operatingPeriodById.putAll(operatingPeriods);
-        netexIndex.operatingDayById.putAll(operatingDays);
-        netexIndex.dayTypeAssignmentByDayTypeId.putAll(dayTypeAssignmentByDayTypeId);
+    void setResultOnIndex(NetexEntitiesIndex netexIndex) {
+        netexIndex.getDayTypeIndex().putAll(dayTypes);
+        netexIndex.getOperatingPeriodIndex().putAll(operatingPeriods);
+        netexIndex.getOperatingDayIndex().putAll(operatingDays);
+        netexIndex.getDayTypeAssignmentsByDayTypeIdIndex().putAll(dayTypeAssignmentByDayTypeId);
     }
 
     private void parseServiceCalendar(ServiceCalendar serviceCalendar) {

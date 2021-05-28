@@ -1,6 +1,6 @@
 package org.entur.netex.loader.parser;
 
-import org.entur.netex.index.NetexEntityIndex;
+import org.entur.netex.index.api.NetexEntitiesIndex;
 import org.rutebanken.netex.model.Authority;
 import org.rutebanken.netex.model.Operator;
 import org.rutebanken.netex.model.Organisation_VersionStructure;
@@ -44,9 +44,9 @@ class ResourceFrameParser extends NetexParser<ResourceFrame_VersionFrameStructur
         verifyCommonUnusedPropertiesIsNotSet(LOG, frame);
     }
 
-    @Override void setResultOnIndex(NetexEntityIndex netexIndex) {
-        netexIndex.authoritiesById.putAll(authorities);
-        netexIndex.operatorsById.putAll(operators);
+    @Override void setResultOnIndex(NetexEntitiesIndex netexIndex) {
+        netexIndex.getAuthorityIndex().putAll(authorities);
+        netexIndex.getOperatorIndex().putAll(operators);
     }
 
 

@@ -45,6 +45,8 @@
 
         <maven-exec-plugin.version>1.6.0</maven-exec-plugin.version>
         <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
+        <maven-javadoc-plugin.version>3.2.0</maven-javadoc-plugin.version>
+        <sonar-maven-plugin.version>3.7.0.1746</sonar-maven-plugin.version>
 
         <jacoco-maven-plugin.version>0.8.7</jacoco-maven-plugin.version>
         <!-- empty argLine property, the value is set up by Jacoco during unit tests execution -->
@@ -132,6 +134,14 @@
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>${maven-javadoc-plugin.version}</version>
+                <configuration>
+                    <source>1.8</source>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
     <profiles>
@@ -143,7 +153,6 @@
 
             <properties>
                 <jdk.version>11</jdk.version>
-                <sonar-maven-plugin.version>3.7.0.1746</sonar-maven-plugin.version>
             </properties>
 
             <build>

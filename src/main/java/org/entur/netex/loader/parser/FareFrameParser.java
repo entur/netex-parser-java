@@ -1,6 +1,6 @@
 package org.entur.netex.loader.parser;
 
-import org.entur.netex.index.NetexEntityIndex;
+import org.entur.netex.index.api.NetexEntitiesIndex;
 import org.rutebanken.netex.model.FareFrame_VersionFrameStructure;
 import org.rutebanken.netex.model.FareZone;
 import org.slf4j.Logger;
@@ -22,8 +22,8 @@ public class FareFrameParser extends NetexParser<FareFrame_VersionFrameStructure
     }
 
     @Override
-    void setResultOnIndex(NetexEntityIndex netexIndex) {
-        netexIndex.fareZoneById.putAll(fareZones);
+    void setResultOnIndex(NetexEntitiesIndex netexIndex) {
+        netexIndex.getFareZoneIndex().putAll(fareZones);
     }
 
     private void parseFareZones(Collection<FareZone> fareZoneList) {

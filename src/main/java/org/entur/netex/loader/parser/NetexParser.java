@@ -1,6 +1,6 @@
 package org.entur.netex.loader.parser;
 
-import org.entur.netex.index.NetexEntityIndex;
+import org.entur.netex.index.api.NetexEntitiesIndex;
 import org.rutebanken.netex.model.VersionFrame_VersionStructure;
 import org.slf4j.Logger;
 
@@ -20,7 +20,7 @@ abstract class NetexParser<T> {
     abstract void parse(T node);
 
     /** Add the result - the parsed objects - to the index. */
-    abstract void setResultOnIndex(NetexEntityIndex netexIndex);
+    abstract void setResultOnIndex(NetexEntitiesIndex netexIndex);
 
 
     /* static methods for logging unhandled elements - this ensure consistent logging. */

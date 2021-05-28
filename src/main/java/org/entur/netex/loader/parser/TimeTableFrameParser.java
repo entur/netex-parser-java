@@ -1,6 +1,6 @@
 package org.entur.netex.loader.parser;
 
-import org.entur.netex.index.NetexEntityIndex;
+import org.entur.netex.index.api.NetexEntitiesIndex;
 import org.rutebanken.netex.model.DatedServiceJourney;
 import org.rutebanken.netex.model.Journey_VersionStructure;
 import org.rutebanken.netex.model.JourneysInFrame_RelStructure;
@@ -63,9 +63,9 @@ class TimeTableFrameParser extends NetexParser<Timetable_VersionFrameStructure> 
     }
 
     @Override
-    void setResultOnIndex(NetexEntityIndex netexIndex) {
-        netexIndex.serviceJourneyById.putAll(serviceJourneys);
-        netexIndex.datedServiceJourneys.putAll(datedServiceJourneys);
+    void setResultOnIndex(NetexEntitiesIndex netexIndex) {
+        netexIndex.getServiceJourneyIndex().putAll(serviceJourneys);
+        netexIndex.getDatedServiceJourneyIndex().putAll(datedServiceJourneys);
         noticeParser.setResultOnIndex(netexIndex);
     }
 

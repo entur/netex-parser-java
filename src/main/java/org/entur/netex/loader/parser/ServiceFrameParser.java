@@ -1,7 +1,7 @@
 package org.entur.netex.loader.parser;
 
-import org.entur.netex.index.NetexEntityIndex;
-import org.entur.netex.index.api.EntityMapById;
+import org.entur.netex.index.api.NetexEntityIndex;
+import org.entur.netex.index.api.NetexEntitiesIndex;
 import org.rutebanken.netex.model.DestinationDisplay;
 import org.rutebanken.netex.model.DestinationDisplaysInFrame_RelStructure;
 import org.rutebanken.netex.model.FlexibleLine;
@@ -37,7 +37,7 @@ class ServiceFrameParser extends NetexParser<Service_VersionFrameStructure> {
 
     private static final Logger LOG = LoggerFactory.getLogger(ServiceFrameParser.class);
 
-    private final EntityMapById<FlexibleStopPlace> flexibleStopPlaceById;
+    private final NetexEntityIndex<FlexibleStopPlace> flexibleStopPlaceById;
 
     private final Collection<Network> networks = new ArrayList<>();
 
@@ -67,9 +67,7 @@ class ServiceFrameParser extends NetexParser<Service_VersionFrameStructure> {
 
     private final NoticeParser noticeParser = new NoticeParser();
 
-    ServiceFrameParser(
-        EntityMapById<FlexibleStopPlace> flexibleStopPlaceById
-    ) {
+    ServiceFrameParser(NetexEntityIndex<FlexibleStopPlace> flexibleStopPlaceById) {
         this.flexibleStopPlaceById = flexibleStopPlaceById;
     }
 
@@ -121,24 +119,24 @@ class ServiceFrameParser extends NetexParser<Service_VersionFrameStructure> {
     }
 
     @Override
-    void setResultOnIndex(NetexEntityIndex index) {
+    void setResultOnIndex(NetexEntitiesIndex index) {
         // update entities
-        index.destinationDisplayById.putAll(destinationDisplays);
-        index.groupOfLinesById.putAll(groupOfLines);
-        index.journeyPatternsById.putAll(journeyPatterns);
-        index.flexibleLineByid.putAll(flexibleLines);
-        index.lineById.putAll(lines);
-        index.networkById.putAll(networks);
+        index.getDestinationDisplayIndex().putAll(destinationDisplays);
+        index.getGroupOfLinesIndex().putAll(groupOfLines);
+        index.getJourneyPatternIndex().putAll(journeyPatterns);
+        index.getFlexibleLineIndex().putAll(flexibleLines);
+        index.getLineIndex().putAll(lines);
+        index.getNetworkIndex().putAll(networks);
         noticeParser.setResultOnIndex(index);
-        index.quayIdByStopPointRef.putAll(quayIdByStopPointRef);
-        index.stopPlaceIdByStopPointRef.putAll(stopPlaceIdByStopPointRef);
-        index.flexibleStopPlaceByStopPointRef.putAll(flexibleStopPlaceByStopPointRef);
-        index.routeById.putAll(routes);
-        index.serviceLinkById.putAll(serviceLinks);
-        index.scheduledStopPointById.putAll(scheduledStopPoints);
+        index.getQuayIdByStopPointRefIndex().putAll(quayIdByStopPointRef);
+        index.getStopPlaceIdByStopPointRefIndex().putAll(stopPlaceIdByStopPointRef);
+        index.getFlexibleStopPlaceIdByStopPointRefIndex().putAll(flexibleStopPlaceByStopPointRef);
+        index.getRouteIndex().putAll(routes);
+        index.getServiceLinkIndex().putAll(serviceLinks);
+        index.getScheduledStopPointIndex().putAll(scheduledStopPoints);
 
         // update references
-        index.networkIdByGroupOfLineId.putAll(networkIdByGroupOfLineId);
+        index.getNetworkIdByGroupOfLineIdIndex().putAll(networkIdByGroupOfLineId);
     }
 
     private void parseStopAssignments(StopAssignmentsInFrame_RelStructure stopAssignments) {

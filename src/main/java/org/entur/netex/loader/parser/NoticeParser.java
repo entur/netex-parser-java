@@ -1,6 +1,6 @@
 package org.entur.netex.loader.parser;
 
-import org.entur.netex.index.NetexEntityIndex;
+import org.entur.netex.index.api.NetexEntitiesIndex;
 import org.rutebanken.netex.model.DataManagedObjectStructure;
 import org.rutebanken.netex.model.Notice;
 import org.rutebanken.netex.model.NoticeAssignment;
@@ -57,9 +57,9 @@ class NoticeParser {
         }
     }
 
-    void setResultOnIndex(NetexEntityIndex index) {
+    void setResultOnIndex(NetexEntitiesIndex index) {
         // update entities
-        index.noticeById.putAll(notices);
-        index.noticeAssignmentById.putAll(noticeAssignments);
+        index.getNoticeIndex().putAll(notices);
+        index.getNoticeAssignmentIndex().putAll(noticeAssignments);
     }
 }

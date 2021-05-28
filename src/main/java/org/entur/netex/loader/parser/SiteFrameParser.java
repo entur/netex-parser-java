@@ -1,6 +1,6 @@
 package org.entur.netex.loader.parser;
 
-import org.entur.netex.index.NetexEntityIndex;
+import org.entur.netex.index.api.NetexEntitiesIndex;
 import org.rutebanken.netex.model.FlexibleStopPlace;
 import org.rutebanken.netex.model.GroupOfStopPlaces;
 import org.rutebanken.netex.model.Parking;
@@ -81,14 +81,14 @@ class SiteFrameParser extends NetexParser<Site_VersionFrameStructure> {
     }
 
     @Override
-    void setResultOnIndex(NetexEntityIndex netexIndex) {
-        netexIndex.flexibleStopPlaceById.putAll(flexibleStopPlaces);
-        netexIndex.groupOfStopPlacesById.putAll(groupsOfStopPlaces);
-        netexIndex.stopPlaceById.putAll(stopPlaces);
-        netexIndex.tariffZonesById.putAll(tariffZones);
-        netexIndex.topographicPlaceById.putAll(topographicPlaces);
-        netexIndex.parkingById.putAll(parkings);
-        netexIndex.quayById.putAll(quays);
+    void setResultOnIndex(NetexEntitiesIndex netexIndex) {
+        netexIndex.getFlexibleStopPlaceIndex().putAll(flexibleStopPlaces);
+        netexIndex.getGroupOfStopPlacesIndex().putAll(groupsOfStopPlaces);
+        netexIndex.getStopPlaceIndex().putAll(stopPlaces);
+        netexIndex.getTariffZoneIndex().putAll(tariffZones);
+        netexIndex.getTopographicPlaceIndex().putAll(topographicPlaces);
+        netexIndex.getParkingIndex().putAll(parkings);
+        netexIndex.getQuayIndex().putAll(quays);
     }
 
     private void parseFlexibleStopPlaces(Collection<FlexibleStopPlace> flexibleStopPlacesList ) {
