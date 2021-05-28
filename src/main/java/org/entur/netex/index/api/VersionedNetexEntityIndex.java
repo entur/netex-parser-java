@@ -9,7 +9,7 @@ import java.util.Map;
  * An index of versioned NeTEx entities
  * @param <V>
  */
-public interface VersionedNetexEntityIndex<V extends EntityStructure> extends NetexEntityIndex<V> {
+public interface VersionedNetexEntityIndex<V extends EntityStructure> {
 
     /**
      * Return the element with the latest version with the given {@code id}. Returns
@@ -29,4 +29,10 @@ public interface VersionedNetexEntityIndex<V extends EntityStructure> extends Ne
      * @return
      */
     Map<String, Collection<V>> getAllVersions();
+
+    /**
+     * Put all entities into the collection
+     * @param entities
+     */
+    void putAll(Collection<V> entities);
 }

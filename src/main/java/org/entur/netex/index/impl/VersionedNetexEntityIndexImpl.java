@@ -15,11 +15,6 @@ public class VersionedNetexEntityIndexImpl<V extends EntityInVersionStructure> i
     private final Multimap<String,V> map  = Multimaps.synchronizedListMultimap(ArrayListMultimap.create());
 
     @Override
-    public V get(String id) {
-        return getLatestVersion(id);
-    }
-    
-    @Override
     public V getLatestVersion(String id) {
         return latestVersionedElementIn(map.get(id));
     }

@@ -18,6 +18,13 @@ public interface NetexEntityIndex<V extends EntityStructure> {
     V get(String id);
 
     /**
+     * Get all entities in the index
+     *
+     * @return A collection of the entity type
+     */
+    Collection<V> getAll();
+
+    /**
      * Put all entities into the collection
      * @param entities
      */
