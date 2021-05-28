@@ -24,13 +24,13 @@ public class TestMultipleVersionsStopPlaces {
 
     @Test
     void testGetAllVersionsOfStopPlace() {
-        var stopPlaces = index.getStopPlaceById().getAllVersions("NSR:StopPlace:5543");
+        var stopPlaces = index.getStopPlaceIndex().getAllVersions("NSR:StopPlace:5543");
         Assertions.assertEquals(8, stopPlaces.size());
     }
 
     @Test
     void testGetAllVersionsOfAllStopPlaces() {
-        var stopPlaces = index.getStopPlaceById().getAllVersions();
+        var stopPlaces = index.getStopPlaceIndex().getAllVersions();
         Assertions.assertEquals(8, stopPlaces.get("NSR:StopPlace:5543").size());
     }
 }

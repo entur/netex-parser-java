@@ -121,22 +121,22 @@ class ServiceFrameParser extends NetexParser<Service_VersionFrameStructure> {
     @Override
     void setResultOnIndex(NetexEntitiesIndex index) {
         // update entities
-        index.getDestinationDisplayById().putAll(destinationDisplays);
-        index.getGroupOfLinesById().putAll(groupOfLines);
-        index.getJourneyPatternById().putAll(journeyPatterns);
-        index.getFlexibleLineById().putAll(flexibleLines);
-        index.getLineById().putAll(lines);
-        index.getNetworkById().putAll(networks);
+        index.getDestinationDisplayIndex().putAll(destinationDisplays);
+        index.getGroupOfLinesIndex().putAll(groupOfLines);
+        index.getJourneyPatternIndex().putAll(journeyPatterns);
+        index.getFlexibleLineIndex().putAll(flexibleLines);
+        index.getLineIndex().putAll(lines);
+        index.getNetworkIndex().putAll(networks);
         noticeParser.setResultOnIndex(index);
-        index.getQuayIdByStopPointRef().putAll(quayIdByStopPointRef);
-        index.getStopPlaceIdByStopPointRef().putAll(stopPlaceIdByStopPointRef);
-        index.getFlexibleStopPlaceIdByStopPointRef().putAll(flexibleStopPlaceByStopPointRef);
-        index.getRouteById().putAll(routes);
-        index.getServiceLinkById().putAll(serviceLinks);
-        index.getScheduledStopPointById().putAll(scheduledStopPoints);
+        index.getQuayIdByStopPointRefIndex().putAll(quayIdByStopPointRef);
+        index.getStopPlaceIdByStopPointRefIndex().putAll(stopPlaceIdByStopPointRef);
+        index.getFlexibleStopPlaceIdByStopPointRefIndex().putAll(flexibleStopPlaceByStopPointRef);
+        index.getRouteIndex().putAll(routes);
+        index.getServiceLinkIndex().putAll(serviceLinks);
+        index.getScheduledStopPointIndex().putAll(scheduledStopPoints);
 
         // update references
-        index.getNetworkIdByGroupOfLineId().putAll(networkIdByGroupOfLineId);
+        index.getNetworkIdByGroupOfLineIdIndex().putAll(networkIdByGroupOfLineId);
     }
 
     private void parseStopAssignments(StopAssignmentsInFrame_RelStructure stopAssignments) {

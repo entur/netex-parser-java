@@ -40,188 +40,188 @@ public interface NetexEntitiesIndex {
      * Get an entity index of GroupOfLines
      * @return
      */
-    NetexEntityIndex<GroupOfLines> getGroupOfLinesById();
+    NetexEntityIndex<GroupOfLines> getGroupOfLinesIndex();
 
     /**
      * Get an entity index of Network
      * @return
      */
-    NetexEntityIndex<Network> getNetworkById();
+    NetexEntityIndex<Network> getNetworkIndex();
 
     /**
      * Get a map of Network id by GroupOfLine id
      * @return
      */
-    Map<String, String> getNetworkIdByGroupOfLineId();
+    Map<String, String> getNetworkIdByGroupOfLineIdIndex();
 
     /**
      * Get an enitity index of Authority
      * @return
      */
-    NetexEntityIndex<Authority> getAuthorityById();
+    NetexEntityIndex<Authority> getAuthorityIndex();
 
     /**
      * Get an entity index of DayType
      * @return
      */
-    NetexEntityIndex<DayType> getDayTypeById();
+    NetexEntityIndex<DayType> getDayTypeIndex();
 
     /**
      * Get a Multimap of DayTypeAssignment by DayType id
      * @return
      */
-    Multimap<String, DayTypeAssignment> getDayTypeAssignmentByDayTypeId();
+    Multimap<String, DayTypeAssignment> getDayTypeAssignmentsByDayTypeIdIndex();
 
     /**
      * Get an enitity index of DatedServiceJourney
      * @return
      */
-    NetexEntityIndex<DatedServiceJourney> getDatedServiceJourneyById();
+    NetexEntityIndex<DatedServiceJourney> getDatedServiceJourneyIndex();
 
     /**
      * Get an enitity index of DestinationDisplay
      * @return
      */
-    NetexEntityIndex<DestinationDisplay> getDestinationDisplayById();
+    NetexEntityIndex<DestinationDisplay> getDestinationDisplayIndex();
 
     /**
      * Get an enitity index of FlexibleStopPlace
      * @return
      */
-    NetexEntityIndex<FlexibleStopPlace> getFlexibleStopPlaceById();
+    NetexEntityIndex<FlexibleStopPlace> getFlexibleStopPlaceIndex();
 
     /**
      * Get an enitity index of GroupOfStopPlaces
      * @return
      */
-    NetexEntityIndex<GroupOfStopPlaces> getGroupOfStopPlacesById();
+    NetexEntityIndex<GroupOfStopPlaces> getGroupOfStopPlacesIndex();
 
     /**
      * Get an enitity index of JourneyPattern
      * @return
      */
-    NetexEntityIndex<JourneyPattern> getJourneyPatternById();
+    NetexEntityIndex<JourneyPattern> getJourneyPatternIndex();
 
     /**
      * Get an enitity index of FlexibleLine
      * @return
      */
-    NetexEntityIndex<FlexibleLine> getFlexibleLineById();
+    NetexEntityIndex<FlexibleLine> getFlexibleLineIndex();
 
     /**
      * Get an enitity index of Line
      * @return
      */
-    NetexEntityIndex<Line> getLineById();
+    NetexEntityIndex<Line> getLineIndex();
 
     /**
      * Get an enitity index of Notice
      * @return
      */
-    NetexEntityIndex<Notice> getNoticeById();
+    NetexEntityIndex<Notice> getNoticeIndex();
 
     /**
      * Get an enitity index of NoticeAssignment
      * @return
      */
-    NetexEntityIndex<NoticeAssignment> getNoticeAssignmentById();
+    NetexEntityIndex<NoticeAssignment> getNoticeAssignmentIndex();
 
     /**
      * Get an enitity index of OperatingDay
      * @return
      */
-    NetexEntityIndex<OperatingDay> getOperatingDayById();
+    NetexEntityIndex<OperatingDay> getOperatingDayIndex();
 
     /**
      * Get an enitity index of OperatingPeriod
      * @return
      */
-    NetexEntityIndex<OperatingPeriod> getOperatingPeriodById();
+    NetexEntityIndex<OperatingPeriod> getOperatingPeriodIndex();
 
     /**
      * Get an enitity index of Operator
      * @return
      */
-    NetexEntityIndex<Operator> getOperatorById();
+    NetexEntityIndex<Operator> getOperatorIndex();
 
     /**
      * Get a versioned entity index of Quay
      * @return
      */
-    VersionedNetexEntityIndex<Quay> getQuayById();
+    VersionedNetexEntityIndex<Quay> getQuayIndex();
 
     /**
      * Get a map of Quay id by StopPoint ref
      * @return
      */
-    Map<String, String> getQuayIdByStopPointRef();
+    Map<String, String> getQuayIdByStopPointRefIndex();
 
     /**
      * Get a map of StopPlace id by StopPoint ref
      * @return
      */
-    Map<String, String> getStopPlaceIdByStopPointRef();
+    Map<String, String> getStopPlaceIdByStopPointRefIndex();
 
     /**
      * Get a map of FlexibleStopPlace id by StopPoint ref
      * @return
      */
-    Map<String, String> getFlexibleStopPlaceIdByStopPointRef();
+    Map<String, String> getFlexibleStopPlaceIdByStopPointRefIndex();
 
     /**
      * Get an enitity index of Route
      * @return
      */
-    NetexEntityIndex<Route> getRouteById();
+    NetexEntityIndex<Route> getRouteIndex();
 
     /**
      * Get an enitity index of ServiceJourney
      * @return
      */
-    NetexEntityIndex<ServiceJourney> getServiceJourneyById();
+    NetexEntityIndex<ServiceJourney> getServiceJourneyIndex();
 
     /**
      * Get an enitity index of ServiceLink
      * @return
      */
-    NetexEntityIndex<ServiceLink> getServiceLinkById();
+    NetexEntityIndex<ServiceLink> getServiceLinkIndex();
 
     /**
      * Get a versioned entity index of StopPlace
      * @return
      */
-    VersionedNetexEntityIndex<StopPlace> getStopPlaceById();
+    VersionedNetexEntityIndex<StopPlace> getStopPlaceIndex();
 
     /**
      * Get an enitity index of TariffZone
      * @return
      */
-    NetexEntityIndex<TariffZone> getTariffZoneById();
+    NetexEntityIndex<TariffZone> getTariffZoneIndex();
 
     /**
      * Get an enitity index of TopographicPlace
      * @return
      */
-    NetexEntityIndex<TopographicPlace> getTopographicPlaceById();
+    NetexEntityIndex<TopographicPlace> getTopographicPlaceIndex();
 
     /**
      * Get an enitity index of Parking
      * @return
      */
-    NetexEntityIndex<Parking> getParkingById();
+    NetexEntityIndex<Parking> getParkingIndex();
 
     /**
      * Get an enitity index of ScheduledStopPoint
      * @return
      */
-    NetexEntityIndex<ScheduledStopPoint> getScheduledStopPointById();
+    NetexEntityIndex<ScheduledStopPoint> getScheduledStopPointIndex();
 
 
     /**
      * Get an enitity index of FareZone
      * @return
      */
-    NetexEntityIndex<FareZone> getFareZoneById();
+    NetexEntityIndex<FareZone> getFareZoneIndex();
 
     /**
      * Set timezone of publication delivery

@@ -59,7 +59,7 @@ class NoticeParser {
 
     void setResultOnIndex(NetexEntitiesIndex index) {
         // update entities
-        index.getNoticeById().putAll(notices);
-        index.getNoticeAssignmentById().putAll(noticeAssignments);
+        index.getNoticeIndex().putAll(notices);
+        index.getNoticeAssignmentIndex().putAll(noticeAssignments);
     }
 }

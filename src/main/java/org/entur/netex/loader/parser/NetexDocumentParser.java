@@ -63,7 +63,7 @@ public class NetexDocumentParser {
             parse((TimetableFrame) value, new TimeTableFrameParser());
         } else if(value instanceof ServiceFrame) {
             parse((ServiceFrame) value, new ServiceFrameParser(
-                netexIndex.getFlexibleStopPlaceById()
+                netexIndex.getFlexibleStopPlaceIndex()
             ));
         }  else if (value instanceof SiteFrame) {
             parse((SiteFrame) value, new SiteFrameParser());

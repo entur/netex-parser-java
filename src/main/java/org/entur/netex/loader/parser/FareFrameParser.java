@@ -23,7 +23,7 @@ public class FareFrameParser extends NetexParser<FareFrame_VersionFrameStructure
 
     @Override
     void setResultOnIndex(NetexEntitiesIndex netexIndex) {
-        netexIndex.getFareZoneById().putAll(fareZones);
+        netexIndex.getFareZoneIndex().putAll(fareZones);
     }
 
     private void parseFareZones(Collection<FareZone> fareZoneList) {

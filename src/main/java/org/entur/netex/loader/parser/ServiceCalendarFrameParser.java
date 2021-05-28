@@ -52,10 +52,10 @@ class ServiceCalendarFrameParser extends NetexParser<ServiceCalendarFrame_Versio
 
     @Override
     void setResultOnIndex(NetexEntitiesIndex netexIndex) {
-        netexIndex.getDayTypeById().putAll(dayTypes);
-        netexIndex.getOperatingPeriodById().putAll(operatingPeriods);
-        netexIndex.getOperatingDayById().putAll(operatingDays);
-        netexIndex.getDayTypeAssignmentByDayTypeId().putAll(dayTypeAssignmentByDayTypeId);
+        netexIndex.getDayTypeIndex().putAll(dayTypes);
+        netexIndex.getOperatingPeriodIndex().putAll(operatingPeriods);
+        netexIndex.getOperatingDayIndex().putAll(operatingDays);
+        netexIndex.getDayTypeAssignmentsByDayTypeIdIndex().putAll(dayTypeAssignmentByDayTypeId);
     }
 
     private void parseServiceCalendar(ServiceCalendar serviceCalendar) {

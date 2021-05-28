@@ -82,13 +82,13 @@ class SiteFrameParser extends NetexParser<Site_VersionFrameStructure> {
 
     @Override
     void setResultOnIndex(NetexEntitiesIndex netexIndex) {
-        netexIndex.getFlexibleStopPlaceById().putAll(flexibleStopPlaces);
-        netexIndex.getGroupOfStopPlacesById().putAll(groupsOfStopPlaces);
-        netexIndex.getStopPlaceById().putAll(stopPlaces);
-        netexIndex.getTariffZoneById().putAll(tariffZones);
-        netexIndex.getTopographicPlaceById().putAll(topographicPlaces);
-        netexIndex.getParkingById().putAll(parkings);
-        netexIndex.getQuayById().putAll(quays);
+        netexIndex.getFlexibleStopPlaceIndex().putAll(flexibleStopPlaces);
+        netexIndex.getGroupOfStopPlacesIndex().putAll(groupsOfStopPlaces);
+        netexIndex.getStopPlaceIndex().putAll(stopPlaces);
+        netexIndex.getTariffZoneIndex().putAll(tariffZones);
+        netexIndex.getTopographicPlaceIndex().putAll(topographicPlaces);
+        netexIndex.getParkingIndex().putAll(parkings);
+        netexIndex.getQuayIndex().putAll(quays);
     }
 
     private void parseFlexibleStopPlaces(Collection<FlexibleStopPlace> flexibleStopPlacesList ) {

@@ -125,27 +125,27 @@ public class NetexEntitiesIndexImpl implements NetexEntitiesIndex {
     }
 
     @Override
-    public NetexEntityIndex<GroupOfLines> getGroupOfLinesById() {
+    public NetexEntityIndex<GroupOfLines> getGroupOfLinesIndex() {
         return groupOfLinesById;
     }
 
     @Override
-    public NetexEntityIndex<Network> getNetworkById() {
+    public NetexEntityIndex<Network> getNetworkIndex() {
         return networkById;
     }
 
     @Override
-    public Map<String, String> getNetworkIdByGroupOfLineId() {
+    public Map<String, String> getNetworkIdByGroupOfLineIdIndex() {
         return networkIdByGroupOfLineId;
     }
 
     @Override
-    public NetexEntityIndex<Authority> getAuthorityById() {
+    public NetexEntityIndex<Authority> getAuthorityIndex() {
         return authoritiesById;
     }
 
     @Override
-    public NetexEntityIndex<DayType> getDayTypeById() {
+    public NetexEntityIndex<DayType> getDayTypeIndex() {
         return dayTypeById;
     }
 
@@ -155,132 +155,132 @@ public class NetexEntitiesIndexImpl implements NetexEntitiesIndex {
      * @return
      */
     @Deprecated
-    public Multimap<String, DayTypeAssignment> getDayTypeAssignmentByDayTypeId() {
+    public Multimap<String, DayTypeAssignment> getDayTypeAssignmentsByDayTypeIdIndex() {
         return dayTypeAssignmentByDayTypeId;
     }
 
     @Override
-    public NetexEntityIndex<DatedServiceJourney> getDatedServiceJourneyById() {
+    public NetexEntityIndex<DatedServiceJourney> getDatedServiceJourneyIndex() {
         return datedServiceJourneys;
     }
 
     @Override
-    public NetexEntityIndex<DestinationDisplay> getDestinationDisplayById() {
+    public NetexEntityIndex<DestinationDisplay> getDestinationDisplayIndex() {
         return destinationDisplayById;
     }
 
     @Override
-    public NetexEntityIndex<FlexibleStopPlace> getFlexibleStopPlaceById() {
+    public NetexEntityIndex<FlexibleStopPlace> getFlexibleStopPlaceIndex() {
         return flexibleStopPlaceById;
     }
 
     @Override
-    public NetexEntityIndex<GroupOfStopPlaces> getGroupOfStopPlacesById() {
+    public NetexEntityIndex<GroupOfStopPlaces> getGroupOfStopPlacesIndex() {
         return groupOfStopPlacesById;
     }
 
     @Override
-    public NetexEntityIndex<JourneyPattern> getJourneyPatternById() {
+    public NetexEntityIndex<JourneyPattern> getJourneyPatternIndex() {
         return journeyPatternsById;
     }
 
     @Override
-    public NetexEntityIndex<FlexibleLine> getFlexibleLineById() {
+    public NetexEntityIndex<FlexibleLine> getFlexibleLineIndex() {
         return flexibleLineByid;
     }
 
     @Override
-    public NetexEntityIndex<Line> getLineById() {
+    public NetexEntityIndex<Line> getLineIndex() {
         return lineById;
     }
 
     @Override
-    public NetexEntityIndex<Notice> getNoticeById() {
+    public NetexEntityIndex<Notice> getNoticeIndex() {
         return noticeById;
     }
 
     @Override
-    public NetexEntityIndex<NoticeAssignment> getNoticeAssignmentById() {
+    public NetexEntityIndex<NoticeAssignment> getNoticeAssignmentIndex() {
         return noticeAssignmentById;
     }
 
     @Override
-    public NetexEntityIndex<OperatingDay> getOperatingDayById() {
+    public NetexEntityIndex<OperatingDay> getOperatingDayIndex() {
         return operatingDayById;
     }
 
     @Override
-    public NetexEntityIndex<OperatingPeriod> getOperatingPeriodById() {
+    public NetexEntityIndex<OperatingPeriod> getOperatingPeriodIndex() {
         return operatingPeriodById;
     }
 
     @Override
-    public NetexEntityIndex<Operator> getOperatorById() {
+    public NetexEntityIndex<Operator> getOperatorIndex() {
         return operatorsById;
     }
 
     @Override
-    public VersionedNetexEntityIndex<Quay> getQuayById() {
+    public VersionedNetexEntityIndex<Quay> getQuayIndex() {
         return quayById;
     }
 
     @Override
-    public Map<String, String> getFlexibleStopPlaceIdByStopPointRef() {
+    public Map<String, String> getFlexibleStopPlaceIdByStopPointRefIndex() {
         return flexibleStopPlaceByStopPointRef;
     }
 
     @Override
-    public Map<String, String> getQuayIdByStopPointRef() {
+    public Map<String, String> getQuayIdByStopPointRefIndex() {
         return quayIdByStopPointRef;
     }
 
     @Override
-    public Map<String, String> getStopPlaceIdByStopPointRef() {
+    public Map<String, String> getStopPlaceIdByStopPointRefIndex() {
         return stopPlaceIdByStopPointRef;
     }
 
     @Override
-    public NetexEntityIndex<Route> getRouteById() {
+    public NetexEntityIndex<Route> getRouteIndex() {
         return routeById;
     }
 
     @Override
-    public NetexEntityIndex<ServiceJourney> getServiceJourneyById() {
+    public NetexEntityIndex<ServiceJourney> getServiceJourneyIndex() {
         return serviceJourneyById;
     }
 
     @Override
-    public NetexEntityIndex<ServiceLink> getServiceLinkById() {
+    public NetexEntityIndex<ServiceLink> getServiceLinkIndex() {
         return serviceLinkById;
     }
 
     @Override
-    public VersionedNetexEntityIndex<StopPlace> getStopPlaceById() {
+    public VersionedNetexEntityIndex<StopPlace> getStopPlaceIndex() {
         return stopPlaceById;
     }
 
     @Override
-    public NetexEntityIndex<TariffZone> getTariffZoneById() {
+    public NetexEntityIndex<TariffZone> getTariffZoneIndex() {
         return tariffZonesById;
     }
 
     @Override
-    public NetexEntityIndex<TopographicPlace> getTopographicPlaceById() {
+    public NetexEntityIndex<TopographicPlace> getTopographicPlaceIndex() {
         return topographicPlaceById;
     }
 
     @Override
-    public NetexEntityIndex<Parking> getParkingById() {
+    public NetexEntityIndex<Parking> getParkingIndex() {
         return parkingById;
     }
 
     @Override
-    public NetexEntityIndex<ScheduledStopPoint> getScheduledStopPointById() {
+    public NetexEntityIndex<ScheduledStopPoint> getScheduledStopPointIndex() {
         return scheduledStopPointById;
     }
 
     @Override
-    public NetexEntityIndex<FareZone> getFareZoneById() {
+    public NetexEntityIndex<FareZone> getFareZoneIndex() {
         return fareZoneById;
     }
 

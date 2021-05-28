@@ -64,8 +64,8 @@ class TimeTableFrameParser extends NetexParser<Timetable_VersionFrameStructure> 
 
     @Override
     void setResultOnIndex(NetexEntitiesIndex netexIndex) {
-        netexIndex.getServiceJourneyById().putAll(serviceJourneys);
-        netexIndex.getDatedServiceJourneyById().putAll(datedServiceJourneys);
+        netexIndex.getServiceJourneyIndex().putAll(serviceJourneys);
+        netexIndex.getDatedServiceJourneyIndex().putAll(datedServiceJourneys);
         noticeParser.setResultOnIndex(netexIndex);
     }
 
