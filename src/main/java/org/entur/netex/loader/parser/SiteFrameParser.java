@@ -63,19 +63,19 @@ class SiteFrameParser extends NetexParser<Site_VersionFrameStructure> {
         }
 
         // Keep list sorted alphabetically
-        warnOnMissingMapping(LOG, frame.getAccesses());
-        warnOnMissingMapping(LOG, frame.getAddresses());
-        warnOnMissingMapping(LOG, frame.getCountries());
-        warnOnMissingMapping(LOG, frame.getCheckConstraints());
-        warnOnMissingMapping(LOG, frame.getCheckConstraintDelays());
-        warnOnMissingMapping(LOG, frame.getCheckConstraintThroughputs());
-        warnOnMissingMapping(LOG, frame.getNavigationPaths());
-        warnOnMissingMapping(LOG, frame.getPathJunctions());
-        warnOnMissingMapping(LOG, frame.getPathLinks());
-        warnOnMissingMapping(LOG, frame.getPointsOfInterest());
-        warnOnMissingMapping(LOG, frame.getPointOfInterestClassifications());
-        warnOnMissingMapping(LOG, frame.getPointOfInterestClassificationHierarchies());
-        warnOnMissingMapping(LOG, frame.getSiteFacilitySets());
+        informOnElementIntentionallySkipped(LOG, frame.getAccesses());
+        informOnElementIntentionallySkipped(LOG, frame.getAddresses());
+        informOnElementIntentionallySkipped(LOG, frame.getCountries());
+        informOnElementIntentionallySkipped(LOG, frame.getCheckConstraints());
+        informOnElementIntentionallySkipped(LOG, frame.getCheckConstraintDelays());
+        informOnElementIntentionallySkipped(LOG, frame.getCheckConstraintThroughputs());
+        informOnElementIntentionallySkipped(LOG, frame.getNavigationPaths());
+        informOnElementIntentionallySkipped(LOG, frame.getPathJunctions());
+        informOnElementIntentionallySkipped(LOG, frame.getPathLinks());
+        informOnElementIntentionallySkipped(LOG, frame.getPointsOfInterest());
+        informOnElementIntentionallySkipped(LOG, frame.getPointOfInterestClassifications());
+        informOnElementIntentionallySkipped(LOG, frame.getPointOfInterestClassificationHierarchies());
+        informOnElementIntentionallySkipped(LOG, frame.getSiteFacilitySets());
 
         verifyCommonUnusedPropertiesIsNotSet(LOG, frame);
     }

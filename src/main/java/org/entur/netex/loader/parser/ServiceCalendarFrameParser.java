@@ -43,9 +43,9 @@ class ServiceCalendarFrameParser extends NetexParser<ServiceCalendarFrame_Versio
 
         // Keep list sorted alphabetically
 
-        warnOnMissingMapping(LOG, frame.getTimebands());
-        warnOnMissingMapping(LOG, frame.getGroupOfTimebands());
-        warnOnMissingMapping(LOG, frame.getOperatingDays());
+        informOnElementIntentionallySkipped(LOG, frame.getTimebands());
+        informOnElementIntentionallySkipped(LOG, frame.getGroupOfTimebands());
+        informOnElementIntentionallySkipped(LOG, frame.getOperatingDays());
 
         verifyCommonUnusedPropertiesIsNotSet(LOG, frame);
     }

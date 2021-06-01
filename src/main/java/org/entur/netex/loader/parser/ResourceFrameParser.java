@@ -24,22 +24,22 @@ class ResourceFrameParser extends NetexParser<ResourceFrame_VersionFrameStructur
         parseOrganization(frame.getOrganisations());
 
         // Keep list sorted alphabetically
-        warnOnMissingMapping(LOG, frame.getBlacklists());
-        warnOnMissingMapping(LOG, frame.getControlCentres());
-        warnOnMissingMapping(LOG, frame.getDataSources());
-        warnOnMissingMapping(LOG, frame.getEquipments());
-        warnOnMissingMapping(LOG, frame.getGroupsOfEntities());
-        warnOnMissingMapping(LOG, frame.getGroupsOfOperators());
-        warnOnMissingMapping(LOG, frame.getOperationalContexts());
-        warnOnMissingMapping(LOG, frame.getResponsibilitySets());
-        warnOnMissingMapping(LOG, frame.getSchematicMaps());
-        warnOnMissingMapping(LOG, frame.getTypesOfValue());
-        warnOnMissingMapping(LOG, frame.getVehicles());
-        warnOnMissingMapping(LOG, frame.getVehicleEquipmentProfiles());
-        warnOnMissingMapping(LOG, frame.getVehicleModels());
-        warnOnMissingMapping(LOG, frame.getVehicleTypes());
-        warnOnMissingMapping(LOG, frame.getWhitelists());
-        warnOnMissingMapping(LOG, frame.getZones());
+        informOnElementIntentionallySkipped(LOG, frame.getBlacklists());
+        informOnElementIntentionallySkipped(LOG, frame.getControlCentres());
+        informOnElementIntentionallySkipped(LOG, frame.getDataSources());
+        informOnElementIntentionallySkipped(LOG, frame.getEquipments());
+        informOnElementIntentionallySkipped(LOG, frame.getGroupsOfEntities());
+        informOnElementIntentionallySkipped(LOG, frame.getGroupsOfOperators());
+        informOnElementIntentionallySkipped(LOG, frame.getOperationalContexts());
+        informOnElementIntentionallySkipped(LOG, frame.getResponsibilitySets());
+        informOnElementIntentionallySkipped(LOG, frame.getSchematicMaps());
+        informOnElementIntentionallySkipped(LOG, frame.getTypesOfValue());
+        informOnElementIntentionallySkipped(LOG, frame.getVehicles());
+        informOnElementIntentionallySkipped(LOG, frame.getVehicleEquipmentProfiles());
+        informOnElementIntentionallySkipped(LOG, frame.getVehicleModels());
+        informOnElementIntentionallySkipped(LOG, frame.getVehicleTypes());
+        informOnElementIntentionallySkipped(LOG, frame.getWhitelists());
+        informOnElementIntentionallySkipped(LOG, frame.getZones());
 
         verifyCommonUnusedPropertiesIsNotSet(LOG, frame);
     }
@@ -64,7 +64,7 @@ class ResourceFrameParser extends NetexParser<ResourceFrame_VersionFrameStructur
         } else if (element instanceof Operator) {
                 operators.add((Operator) element);
         } else {
-            warnOnMissingMapping(LOG, element);
+            informOnElementIntentionallySkipped(LOG, element);
         }
     }
 }

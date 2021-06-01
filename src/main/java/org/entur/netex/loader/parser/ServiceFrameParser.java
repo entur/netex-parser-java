@@ -86,34 +86,34 @@ class ServiceFrameParser extends NetexParser<Service_VersionFrameStructure> {
         parseScheduledStopPoints(frame.getScheduledStopPoints());
 
         // Keep list sorted alphabetically
-        warnOnMissingMapping(LOG, frame.getAdditionalNetworks());
-        warnOnMissingMapping(LOG, frame.getCommonSections());
-        warnOnMissingMapping(LOG, frame.getConnections());
-        warnOnMissingMapping(LOG, frame.getDirections());
-        warnOnMissingMapping(LOG, frame.getDisplayAssignments());
-        warnOnMissingMapping(LOG, frame.getFlexibleLinkProperties());
-        warnOnMissingMapping(LOG, frame.getFlexiblePointProperties());
-        warnOnMissingMapping(LOG, frame.getGeneralSections());
-        warnOnMissingMapping(LOG, frame.getGroupsOfLines());
-        warnOnMissingMapping(LOG, frame.getGroupsOfLinks());
-        warnOnMissingMapping(LOG, frame.getGroupsOfPoints());
-        warnOnMissingMapping(LOG, frame.getLineNetworks());
-        warnOnMissingMapping(LOG, frame.getLogicalDisplays());
-        warnOnMissingMapping(LOG, frame.getPassengerInformationEquipments());
-        warnOnMissingMapping(LOG, frame.getRouteLinks());
-        warnOnMissingMapping(LOG, frame.getRoutePoints());
-        warnOnMissingMapping(LOG, frame.getRoutingConstraintZones());
-        warnOnMissingMapping(LOG, frame.getServiceExclusions());
-        warnOnMissingMapping(LOG, frame.getServicePatterns());
-        warnOnMissingMapping(LOG, frame.getStopAreas());
-        warnOnMissingMapping(LOG, frame.getTariffZones());
-        warnOnMissingMapping(LOG, frame.getTimeDemandTypes());
-        warnOnMissingMapping(LOG, frame.getTimeDemandTypeAssignments());
-        warnOnMissingMapping(LOG, frame.getTimingPoints());
-        warnOnMissingMapping(LOG, frame.getTimingLinks());
-        warnOnMissingMapping(LOG, frame.getTimingLinkGroups());
-        warnOnMissingMapping(LOG, frame.getTimingPatterns());
-        warnOnMissingMapping(LOG, frame.getTransferRestrictions());
+        informOnElementIntentionallySkipped(LOG, frame.getAdditionalNetworks());
+        informOnElementIntentionallySkipped(LOG, frame.getCommonSections());
+        informOnElementIntentionallySkipped(LOG, frame.getConnections());
+        informOnElementIntentionallySkipped(LOG, frame.getDirections());
+        informOnElementIntentionallySkipped(LOG, frame.getDisplayAssignments());
+        informOnElementIntentionallySkipped(LOG, frame.getFlexibleLinkProperties());
+        informOnElementIntentionallySkipped(LOG, frame.getFlexiblePointProperties());
+        informOnElementIntentionallySkipped(LOG, frame.getGeneralSections());
+        informOnElementIntentionallySkipped(LOG, frame.getGroupsOfLines());
+        informOnElementIntentionallySkipped(LOG, frame.getGroupsOfLinks());
+        informOnElementIntentionallySkipped(LOG, frame.getGroupsOfPoints());
+        informOnElementIntentionallySkipped(LOG, frame.getLineNetworks());
+        informOnElementIntentionallySkipped(LOG, frame.getLogicalDisplays());
+        informOnElementIntentionallySkipped(LOG, frame.getPassengerInformationEquipments());
+        informOnElementIntentionallySkipped(LOG, frame.getRouteLinks());
+        informOnElementIntentionallySkipped(LOG, frame.getRoutePoints());
+        informOnElementIntentionallySkipped(LOG, frame.getRoutingConstraintZones());
+        informOnElementIntentionallySkipped(LOG, frame.getServiceExclusions());
+        informOnElementIntentionallySkipped(LOG, frame.getServicePatterns());
+        informOnElementIntentionallySkipped(LOG, frame.getStopAreas());
+        informOnElementIntentionallySkipped(LOG, frame.getTariffZones());
+        informOnElementIntentionallySkipped(LOG, frame.getTimeDemandTypes());
+        informOnElementIntentionallySkipped(LOG, frame.getTimeDemandTypeAssignments());
+        informOnElementIntentionallySkipped(LOG, frame.getTimingPoints());
+        informOnElementIntentionallySkipped(LOG, frame.getTimingLinks());
+        informOnElementIntentionallySkipped(LOG, frame.getTimingLinkGroups());
+        informOnElementIntentionallySkipped(LOG, frame.getTimingPatterns());
+        informOnElementIntentionallySkipped(LOG, frame.getTransferRestrictions());
 
         verifyCommonUnusedPropertiesIsNotSet(LOG, frame);
     }
@@ -229,7 +229,7 @@ class ServiceFrameParser extends NetexParser<Service_VersionFrameStructure> {
                 this.flexibleLines.add((FlexibleLine) element.getValue());
             }
             else {
-                warnOnMissingMapping(LOG, element.getValue());
+                informOnElementIntentionallySkipped(LOG, element.getValue());
             }
         }
     }
@@ -242,7 +242,7 @@ class ServiceFrameParser extends NetexParser<Service_VersionFrameStructure> {
                 this.journeyPatterns.add((JourneyPattern) pattern.getValue());
             }
             else {
-                warnOnMissingMapping(LOG, pattern.getValue());
+                informOnElementIntentionallySkipped(LOG, pattern.getValue());
             }
         }
     }

@@ -29,35 +29,35 @@ class TimeTableFrameParser extends NetexParser<Timetable_VersionFrameStructure> 
         noticeParser.parseNotices(frame.getNotices());
         noticeParser.parseNoticeAssignments(frame.getNoticeAssignments());
 
-        warnOnMissingMapping(LOG, frame.getNetworkView());
-        warnOnMissingMapping(LOG, frame.getLineView());
-        warnOnMissingMapping(LOG, frame.getOperatorView());
-        warnOnMissingMapping(LOG, frame.getAccessibilityAssessment());
+        informOnElementIntentionallySkipped(LOG, frame.getNetworkView());
+        informOnElementIntentionallySkipped(LOG, frame.getLineView());
+        informOnElementIntentionallySkipped(LOG, frame.getOperatorView());
+        informOnElementIntentionallySkipped(LOG, frame.getAccessibilityAssessment());
 
         // Keep list sorted alphabetically
-        warnOnMissingMapping(LOG, frame.getBookingTimes());
-        warnOnMissingMapping(LOG, frame.getVehicleTypeRef());
-        warnOnMissingMapping(LOG, frame.getCoupledJourneys());
-        warnOnMissingMapping(LOG, frame.getDefaultInterchanges());
-        warnOnMissingMapping(LOG, frame.getFlexibleServiceProperties());
-        warnOnMissingMapping(LOG, frame.getFrequencyGroups());
-        warnOnMissingMapping(LOG, frame.getGroupsOfServices());
-        warnOnMissingMapping(LOG, frame.getInterchangeRules());
-        warnOnMissingMapping(LOG, frame.getJourneyAccountingRef());
-        warnOnMissingMapping(LOG, frame.getJourneyAccountings());
-        warnOnMissingMapping(LOG, frame.getJourneyInterchanges());
-        warnOnMissingMapping(LOG, frame.getJourneyMeetings());
-        warnOnMissingMapping(LOG, frame.getJourneyPartCouples());
-        warnOnMissingMapping(LOG, frame.getNotices());
-        warnOnMissingMapping(LOG, frame.getNoticeAssignments());
-        warnOnMissingMapping(LOG, frame.getServiceCalendarFrameRef());
-        warnOnMissingMapping(LOG, frame.getServiceFacilitySets());
-        warnOnMissingMapping(LOG, frame.getTimeDemandTypes());
-        warnOnMissingMapping(LOG, frame.getTimeDemandTypeAssignments());
-        warnOnMissingMapping(LOG, frame.getTimingLinkGroups());
-        warnOnMissingMapping(LOG, frame.getTrainNumbers());
-        warnOnMissingMapping(LOG, frame.getTypesOfService());
-        warnOnMissingMapping(LOG, frame.getVehicleTypes());
+        informOnElementIntentionallySkipped(LOG, frame.getBookingTimes());
+        informOnElementIntentionallySkipped(LOG, frame.getVehicleTypeRef());
+        informOnElementIntentionallySkipped(LOG, frame.getCoupledJourneys());
+        informOnElementIntentionallySkipped(LOG, frame.getDefaultInterchanges());
+        informOnElementIntentionallySkipped(LOG, frame.getFlexibleServiceProperties());
+        informOnElementIntentionallySkipped(LOG, frame.getFrequencyGroups());
+        informOnElementIntentionallySkipped(LOG, frame.getGroupsOfServices());
+        informOnElementIntentionallySkipped(LOG, frame.getInterchangeRules());
+        informOnElementIntentionallySkipped(LOG, frame.getJourneyAccountingRef());
+        informOnElementIntentionallySkipped(LOG, frame.getJourneyAccountings());
+        informOnElementIntentionallySkipped(LOG, frame.getJourneyInterchanges());
+        informOnElementIntentionallySkipped(LOG, frame.getJourneyMeetings());
+        informOnElementIntentionallySkipped(LOG, frame.getJourneyPartCouples());
+        informOnElementIntentionallySkipped(LOG, frame.getNotices());
+        informOnElementIntentionallySkipped(LOG, frame.getNoticeAssignments());
+        informOnElementIntentionallySkipped(LOG, frame.getServiceCalendarFrameRef());
+        informOnElementIntentionallySkipped(LOG, frame.getServiceFacilitySets());
+        informOnElementIntentionallySkipped(LOG, frame.getTimeDemandTypes());
+        informOnElementIntentionallySkipped(LOG, frame.getTimeDemandTypeAssignments());
+        informOnElementIntentionallySkipped(LOG, frame.getTimingLinkGroups());
+        informOnElementIntentionallySkipped(LOG, frame.getTrainNumbers());
+        informOnElementIntentionallySkipped(LOG, frame.getTypesOfService());
+        informOnElementIntentionallySkipped(LOG, frame.getVehicleTypes());
 
         verifyCommonUnusedPropertiesIsNotSet(LOG, frame);
     }
@@ -78,7 +78,7 @@ class TimeTableFrameParser extends NetexParser<Timetable_VersionFrameStructure> 
                 datedServiceJourneys.add((DatedServiceJourney) it);
             }
             else {
-                warnOnMissingMapping(LOG, it);
+                informOnElementIntentionallySkipped(LOG, it);
             }
         }
     }

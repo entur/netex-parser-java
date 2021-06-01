@@ -81,7 +81,7 @@ public class NetexDocumentParser {
         ) {
             NetexParser.informOnElementIntentionallySkipped(LOG, value);
         } else {
-            NetexParser.warnOnMissingMapping(LOG, value);
+            NetexParser.informOnElementIntentionallySkipped(LOG, value);
         }
     }
 
