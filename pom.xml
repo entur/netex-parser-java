@@ -29,6 +29,11 @@
         <tag>HEAD</tag>
     </scm>
     <distributionManagement>
+        <repository>
+            <id>central</id>
+            <name>entur2-releases</name>
+            <url>https://entur2.jfrog.io/entur2/libs-release-local</url>
+        </repository>
         <snapshotRepository>
             <id>snapshots</id>
             <name>entur2-snapshots</name>
@@ -47,6 +52,7 @@
         <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
         <maven-javadoc-plugin.version>3.2.0</maven-javadoc-plugin.version>
         <sonar-maven-plugin.version>3.7.0.1746</sonar-maven-plugin.version>
+        <gitflow-maven-plugin.version>1.14.0</gitflow-maven-plugin.version>
 
         <jacoco-maven-plugin.version>0.8.7</jacoco-maven-plugin.version>
         <!-- empty argLine property, the value is set up by Jacoco during unit tests execution -->
@@ -140,6 +146,24 @@
                 <version>${maven-javadoc-plugin.version}</version>
                 <configuration>
                     <source>1.8</source>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>com.amashchenko.maven.plugin</groupId>
+                <artifactId>gitflow-maven-plugin</artifactId>
+                <version>${gitflow-maven-plugin.version}</version>
+                <configuration>
+                    <allowSnapshots>false</allowSnapshots>
+                    <fetchRemote>false</fetchRemote>
+                    <gitFlowConfig>
+                        <productionBranch>master</productionBranch>
+                        <developmentBranch>master</developmentBranch>
+                    </gitFlowConfig>
+                    <commitMessages>
+                        <releaseFinishMessage>Update for next development version [ci skip]</releaseFinishMessage>
+                        <releaseVersionUpdateMessage>Update for next development version [ci skip]
+                        </releaseVersionUpdateMessage>
+                    </commitMessages>
                 </configuration>
             </plugin>
         </plugins>
