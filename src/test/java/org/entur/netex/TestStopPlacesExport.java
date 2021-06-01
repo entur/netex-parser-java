@@ -32,6 +32,12 @@ public class TestStopPlacesExport {
     }
 
     @Test
+    public void getStopPlaceIdByQuayId() {
+        var stopPlaceId = index.getStopPlaceIdByQuayIdIndex().get("NSR:Quay:3691");
+        Assertions.assertEquals("NSR:StopPlace:2133", stopPlaceId);
+    }
+
+    @Test
     public void testGetGroupOfStopPlaces() {
         var groupOfStopPlaces = index.getGroupOfStopPlacesIndex().get("NSR:GroupOfStopPlaces:1");
         Assertions.assertEquals("Oslo", groupOfStopPlaces.getName().getValue());

@@ -17,7 +17,9 @@ import org.slf4j.LoggerFactory;
 import javax.xml.bind.JAXBElement;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 class SiteFrameParser extends NetexParser<Site_VersionFrameStructure> {
     private static final Logger LOG = LoggerFactory.getLogger(NetexParser.class);
@@ -35,6 +37,8 @@ class SiteFrameParser extends NetexParser<Site_VersionFrameStructure> {
     private final Collection<Parking> parkings = new ArrayList<>();
 
     private final Collection<Quay> quays = new ArrayList<>();
+
+    private final Map<String, String> stopPlaceIdByQuayId = new HashMap<>();
 
     @Override
     public void parse(Site_VersionFrameStructure frame) {
@@ -89,6 +93,7 @@ class SiteFrameParser extends NetexParser<Site_VersionFrameStructure> {
         netexIndex.getTopographicPlaceIndex().putAll(topographicPlaces);
         netexIndex.getParkingIndex().putAll(parkings);
         netexIndex.getQuayIndex().putAll(quays);
+        netexIndex.getStopPlaceIdByQuayIdIndex().putAll(stopPlaceIdByQuayId);
     }
 
     private void parseFlexibleStopPlaces(Collection<FlexibleStopPlace> flexibleStopPlacesList ) {
@@ -103,7 +108,7 @@ class SiteFrameParser extends NetexParser<Site_VersionFrameStructure> {
         for (StopPlace stopPlace : stopPlaceList) {
                 stopPlaces.add(stopPlace);
                 if (!isMultiModalStopPlace(stopPlace)) {
-                    parseQuays(stopPlace.getQuays());
+                    parseQuays(stopPlace.getQuays(), stopPlace.getId());
                 }
         }
     }
@@ -124,12 +129,13 @@ class SiteFrameParser extends NetexParser<Site_VersionFrameStructure> {
         parkings.addAll(parkingList);
     }
 
-    private void parseQuays(Quays_RelStructure quayRefOrQuay) {
+    private void parseQuays(Quays_RelStructure quayRefOrQuay, String stopPlaceId) {
         if(quayRefOrQuay == null) return;
 
         for (Object quayObject : quayRefOrQuay.getQuayRefOrQuay()) {
             if (quayObject instanceof Quay) {
                 quays.add((Quay) quayObject);
+                stopPlaceIdByQuayId.put(((Quay) quayObject).getId(), stopPlaceId);
             }
         }
     }

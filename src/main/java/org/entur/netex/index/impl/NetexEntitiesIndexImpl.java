@@ -64,6 +64,7 @@ public class NetexEntitiesIndexImpl implements NetexEntitiesIndex {
     public final Map<String, String> flexibleStopPlaceByStopPointRef;
     public final Map<String, String> quayIdByStopPointRef;
     public final Map<String, String> stopPlaceIdByStopPointRef;
+    public final Map<String, String> stopPlaceIdByQuayId;
     public final NetexEntityIndex<Route> routeById;
     public final NetexEntityIndex<ServiceJourney> serviceJourneyById;
     public final NetexEntityIndex<ServiceLink> serviceLinkById;
@@ -113,6 +114,7 @@ public class NetexEntitiesIndexImpl implements NetexEntitiesIndex {
         this.flexibleStopPlaceByStopPointRef = new ConcurrentHashMap<>();
         this.quayIdByStopPointRef = new ConcurrentHashMap<>();
         this.stopPlaceIdByStopPointRef = new ConcurrentHashMap<>();
+        this.stopPlaceIdByQuayId = new ConcurrentHashMap<>();
         this.routeById = new NetexEntityMapByIdImpl<>();
         this.serviceJourneyById = new NetexEntityMapByIdImpl<>();
         this.serviceLinkById = new NetexEntityMapByIdImpl<>();
@@ -237,6 +239,11 @@ public class NetexEntitiesIndexImpl implements NetexEntitiesIndex {
     @Override
     public Map<String, String> getStopPlaceIdByStopPointRefIndex() {
         return stopPlaceIdByStopPointRef;
+    }
+
+    @Override
+    public Map<String, String> getStopPlaceIdByQuayIdIndex() {
+        return stopPlaceIdByQuayId;
     }
 
     @Override
