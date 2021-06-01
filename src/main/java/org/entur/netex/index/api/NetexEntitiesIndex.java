@@ -163,6 +163,12 @@ public interface NetexEntitiesIndex {
     Map<String, String> getStopPlaceIdByStopPointRefIndex();
 
     /**
+     * Get a map of StopPlace id by Quay id
+     * @return
+     */
+    Map<String, String> getStopPlaceIdByQuayIdIndex();
+
+    /**
      * Get a map of FlexibleStopPlace id by StopPoint ref
      * @return
      */
