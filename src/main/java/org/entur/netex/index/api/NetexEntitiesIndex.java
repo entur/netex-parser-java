@@ -20,6 +20,7 @@ import org.rutebanken.netex.model.OperatingDay;
 import org.rutebanken.netex.model.OperatingPeriod;
 import org.rutebanken.netex.model.Operator;
 import org.rutebanken.netex.model.Parking;
+import org.rutebanken.netex.model.PassengerStopAssignment;
 import org.rutebanken.netex.model.Quay;
 import org.rutebanken.netex.model.Route;
 import org.rutebanken.netex.model.ScheduledStopPoint;
@@ -71,6 +72,13 @@ public interface NetexEntitiesIndex {
      * @return
      */
     Multimap<String, DayTypeAssignment> getDayTypeAssignmentsByDayTypeIdIndex();
+
+
+    /**
+     * Get a Multimap of PassengerStopAssignment by StopPoint ref
+     * * @return
+     */
+    Multimap<String, PassengerStopAssignment> getPassengerStopAssignmentsByStopPointRefIndex();
 
     /**
      * Get an enitity index of DatedServiceJourney

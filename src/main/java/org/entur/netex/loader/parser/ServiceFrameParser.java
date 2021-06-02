@@ -1,5 +1,7 @@
 package org.entur.netex.loader.parser;
 
+import com.google.common.collect.ArrayListMultimap;
+import com.google.common.collect.Multimap;
 import org.entur.netex.index.api.NetexEntityIndex;
 import org.entur.netex.index.api.NetexEntitiesIndex;
 import org.rutebanken.netex.model.DestinationDisplay;
@@ -64,6 +66,8 @@ class ServiceFrameParser extends NetexParser<Service_VersionFrameStructure> {
     private final Collection<ServiceLink> serviceLinks = new ArrayList<>();
 
     private final Collection<ScheduledStopPoint> scheduledStopPoints = new ArrayList<>();
+
+    private final Multimap<String, PassengerStopAssignment> passengerStopAssignmentByStopPointRef = ArrayListMultimap.create();
 
     private final NoticeParser noticeParser = new NoticeParser();
 
@@ -134,6 +138,7 @@ class ServiceFrameParser extends NetexParser<Service_VersionFrameStructure> {
         index.getRouteIndex().putAll(routes);
         index.getServiceLinkIndex().putAll(serviceLinks);
         index.getScheduledStopPointIndex().putAll(scheduledStopPoints);
+        index.getPassengerStopAssignmentsByStopPointRefIndex().putAll(passengerStopAssignmentByStopPointRef);
 
         // update references
         index.getNetworkIdByGroupOfLineIdIndex().putAll(networkIdByGroupOfLineId);
@@ -145,7 +150,10 @@ class ServiceFrameParser extends NetexParser<Service_VersionFrameStructure> {
         for (JAXBElement<?> stopAssignment : stopAssignments.getStopAssignment()) {
             if (stopAssignment.getValue() instanceof PassengerStopAssignment) {
                 var assignment = (PassengerStopAssignment) stopAssignment.getValue();
+
                 String stopPointRef = assignment.getScheduledStopPointRef().getValue().getRef();
+
+                passengerStopAssignmentByStopPointRef.put(stopPointRef, assignment);
 
                 if (assignment.getQuayRef() != null) {
                     String quayRef = assignment.getQuayRef().getRef();
