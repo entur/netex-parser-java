@@ -23,6 +23,7 @@ import org.rutebanken.netex.model.Parking;
 import org.rutebanken.netex.model.PassengerStopAssignment;
 import org.rutebanken.netex.model.Quay;
 import org.rutebanken.netex.model.Route;
+import org.rutebanken.netex.model.RoutePoint;
 import org.rutebanken.netex.model.ScheduledStopPoint;
 import org.rutebanken.netex.model.ServiceJourney;
 import org.rutebanken.netex.model.ServiceLink;
@@ -230,6 +231,12 @@ public interface NetexEntitiesIndex {
      */
     NetexEntityIndex<ScheduledStopPoint> getScheduledStopPointIndex();
 
+    /**
+     * Get an enitity index of RoutePoint
+     * @return
+     */
+    NetexEntityIndex<RoutePoint> getRoutePointIndex();
+
 
     /**
      * Get an enitity index of FareZone
@@ -248,4 +255,6 @@ public interface NetexEntitiesIndex {
      * @return
      */
     String getTimeZone();
+
+
 }
