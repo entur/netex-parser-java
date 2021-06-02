@@ -25,6 +25,7 @@ import org.rutebanken.netex.model.OperatingDay;
 import org.rutebanken.netex.model.OperatingPeriod;
 import org.rutebanken.netex.model.Operator;
 import org.rutebanken.netex.model.Parking;
+import org.rutebanken.netex.model.PassengerStopAssignment;
 import org.rutebanken.netex.model.Quay;
 import org.rutebanken.netex.model.Route;
 import org.rutebanken.netex.model.ScheduledStopPoint;
@@ -47,6 +48,7 @@ public class NetexEntitiesIndexImpl implements NetexEntitiesIndex {
     public final NetexEntityIndex<DatedServiceJourney> datedServiceJourneys;
     public final NetexEntityIndex<DayType> dayTypeById;
     public final Multimap<String, DayTypeAssignment> dayTypeAssignmentByDayTypeId;
+    public final Multimap<String, PassengerStopAssignment> passengerStopAssignmentByStopPointRef;
     public final NetexEntityIndex<DestinationDisplay> destinationDisplayById;
     public final NetexEntityIndex<FlexibleStopPlace> flexibleStopPlaceById;
     public final NetexEntityIndex<GroupOfLines> groupOfLinesById;
@@ -95,6 +97,7 @@ public class NetexEntitiesIndexImpl implements NetexEntitiesIndex {
         this.authoritiesById = new NetexEntityMapByIdImpl<>();
         this.dayTypeById = new NetexEntityMapByIdImpl<>();
         this.dayTypeAssignmentByDayTypeId = Multimaps.synchronizedListMultimap(ArrayListMultimap.create());
+        this.passengerStopAssignmentByStopPointRef = Multimaps.synchronizedListMultimap(ArrayListMultimap.create());
         this.datedServiceJourneys = new NetexEntityMapByIdImpl<>();
         this.destinationDisplayById = new NetexEntityMapByIdImpl<>();
         this.flexibleStopPlaceById = new NetexEntityMapByIdImpl<>();
@@ -151,14 +154,14 @@ public class NetexEntitiesIndexImpl implements NetexEntitiesIndex {
         return dayTypeById;
     }
 
-    /**
-     * @deprecated This should be replaced with a collection of DayTypeAssignment. The
-     *             mapper is responsible for indexing its data, except for entities by id.
-     * @return
-     */
-    @Deprecated
+    @Override
     public Multimap<String, DayTypeAssignment> getDayTypeAssignmentsByDayTypeIdIndex() {
         return dayTypeAssignmentByDayTypeId;
+    }
+
+    @Override
+    public Multimap<String, PassengerStopAssignment> getPassengerStopAssignmentsByStopPointRefIndex() {
+        return passengerStopAssignmentByStopPointRef;
     }
 
     @Override
