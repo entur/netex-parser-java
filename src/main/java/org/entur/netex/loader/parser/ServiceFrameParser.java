@@ -69,6 +69,10 @@ class ServiceFrameParser extends NetexParser<Service_VersionFrameStructure> {
 
     private final Collection<ScheduledStopPoint> scheduledStopPoints = new ArrayList<>();
 
+    private final Collection<RoutePoint> routePoints = new ArrayList<>();
+
+    private final Multimap<String, PassengerStopAssignment> passengerStopAssignmentByStopPointRef = ArrayListMultimap.create();
+
     private final NoticeParser noticeParser = new NoticeParser();
 
     ServiceFrameParser(NetexEntityIndex<FlexibleStopPlace> flexibleStopPlaceById) {
