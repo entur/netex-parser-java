@@ -28,6 +28,7 @@ import org.rutebanken.netex.model.Parking;
 import org.rutebanken.netex.model.PassengerStopAssignment;
 import org.rutebanken.netex.model.Quay;
 import org.rutebanken.netex.model.Route;
+import org.rutebanken.netex.model.RoutePoint;
 import org.rutebanken.netex.model.ScheduledStopPoint;
 import org.rutebanken.netex.model.ServiceJourney;
 import org.rutebanken.netex.model.ServiceLink;
@@ -75,6 +76,7 @@ public class NetexEntitiesIndexImpl implements NetexEntitiesIndex {
     public final NetexEntityIndex<TopographicPlace> topographicPlaceById;
     public final NetexEntityIndex<Parking> parkingById;
     public final NetexEntityIndex<ScheduledStopPoint> scheduledStopPointById;
+    public final NetexEntityIndex<RoutePoint> routePointById;
     public final NetexEntityIndex<FareZone> fareZoneById;
 
 
@@ -126,6 +128,7 @@ public class NetexEntitiesIndexImpl implements NetexEntitiesIndex {
         this.topographicPlaceById = new NetexEntityMapByIdImpl<>();
         this.parkingById = new NetexEntityMapByIdImpl<>();
         this.scheduledStopPointById = new NetexEntityMapByIdImpl<>();
+        this.routePointById = new NetexEntityMapByIdImpl<>();
         this.fareZoneById = new NetexEntityMapByIdImpl<>();
     }
 
@@ -287,6 +290,11 @@ public class NetexEntitiesIndexImpl implements NetexEntitiesIndex {
     @Override
     public NetexEntityIndex<ScheduledStopPoint> getScheduledStopPointIndex() {
         return scheduledStopPointById;
+    }
+
+    @Override
+    public NetexEntityIndex<RoutePoint> getRoutePointIndex() {
+        return routePointById;
     }
 
     @Override

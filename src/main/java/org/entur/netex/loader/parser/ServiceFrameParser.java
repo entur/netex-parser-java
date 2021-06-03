@@ -19,6 +19,8 @@ import org.rutebanken.netex.model.Network;
 import org.rutebanken.netex.model.NetworksInFrame_RelStructure;
 import org.rutebanken.netex.model.PassengerStopAssignment;
 import org.rutebanken.netex.model.Route;
+import org.rutebanken.netex.model.RoutePoint;
+import org.rutebanken.netex.model.RoutePointsInFrame_RelStructure;
 import org.rutebanken.netex.model.RoutesInFrame_RelStructure;
 import org.rutebanken.netex.model.ScheduledStopPoint;
 import org.rutebanken.netex.model.ScheduledStopPointsInFrame_RelStructure;
@@ -67,6 +69,8 @@ class ServiceFrameParser extends NetexParser<Service_VersionFrameStructure> {
 
     private final Collection<ScheduledStopPoint> scheduledStopPoints = new ArrayList<>();
 
+    private final Collection<RoutePoint> routePoints = new ArrayList<>();
+
     private final Multimap<String, PassengerStopAssignment> passengerStopAssignmentByStopPointRef = ArrayListMultimap.create();
 
     private final NoticeParser noticeParser = new NoticeParser();
@@ -88,6 +92,7 @@ class ServiceFrameParser extends NetexParser<Service_VersionFrameStructure> {
         parseDestinationDisplays(frame.getDestinationDisplays());
         parseServiceLinks(frame.getServiceLinks());
         parseScheduledStopPoints(frame.getScheduledStopPoints());
+        parseRoutePoints(frame.getRoutePoints());
 
         // Keep list sorted alphabetically
         informOnElementIntentionallySkipped(LOG, frame.getAdditionalNetworks());
@@ -138,6 +143,7 @@ class ServiceFrameParser extends NetexParser<Service_VersionFrameStructure> {
         index.getRouteIndex().putAll(routes);
         index.getServiceLinkIndex().putAll(serviceLinks);
         index.getScheduledStopPointIndex().putAll(scheduledStopPoints);
+        index.getRoutePointIndex().putAll(routePoints);
         index.getPassengerStopAssignmentsByStopPointRefIndex().putAll(passengerStopAssignmentByStopPointRef);
 
         // update references
@@ -271,5 +277,11 @@ class ServiceFrameParser extends NetexParser<Service_VersionFrameStructure> {
         if (scheduledStopPoints == null) return;
 
         this.scheduledStopPoints.addAll(scheduledStopPoints.getScheduledStopPoint());
+    }
+
+    private void parseRoutePoints(RoutePointsInFrame_RelStructure routePoints) {
+        if (routePoints == null) return;
+
+        this.routePoints.addAll(routePoints.getRoutePoint());
     }
 }

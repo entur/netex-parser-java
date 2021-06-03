@@ -69,6 +69,14 @@ public class TestStopPlacesExport {
     }
 
     @Test
+    public void testGetPassengerStopAssignment() {
+        var scheduledStopPoint = index.getScheduledStopPointIndex().get("NSR:ScheduledStopPoint:S5");
+        var passengerStopAssignments = index.getPassengerStopAssignmentsByStopPointRefIndex().get(scheduledStopPoint.getId());
+
+        Assertions.assertEquals(1, passengerStopAssignments.size());
+    }
+
+    @Test
     public void testGetFareZone() {
         var fareZone = index.getFareZoneIndex().get("AKT:FareZone:27");
         Assertions.assertEquals("Kviteseid", fareZone.getName().getValue());
