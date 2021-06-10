@@ -56,20 +56,26 @@ public class NetexDocumentParser {
 
     private void parseCommonFrame(Common_VersionFrameStructure value) {
         if(value instanceof ResourceFrame) {
+            netexIndex.getResourceFrames().add((ResourceFrame) value);
             parse((ResourceFrame) value, new ResourceFrameParser());
         } else if(value instanceof ServiceCalendarFrame) {
+            netexIndex.getServiceCalendarFrames().add((ServiceCalendarFrame) value);
             parse((ServiceCalendarFrame) value, new ServiceCalendarFrameParser());
         } else if(value instanceof TimetableFrame) {
+            netexIndex.getTimetableFrames().add((TimetableFrame) value);
             parse((TimetableFrame) value, new TimeTableFrameParser());
         } else if(value instanceof ServiceFrame) {
+            netexIndex.getServiceFrames().add((ServiceFrame) value);
             parse((ServiceFrame) value, new ServiceFrameParser(
                 netexIndex.getFlexibleStopPlaceIndex()
             ));
         }  else if (value instanceof SiteFrame) {
+            netexIndex.getSiteFrames().add((SiteFrame) value);
             parse((SiteFrame) value, new SiteFrameParser());
         } else if (value instanceof FareFrame) {
             parse((FareFrame) value, new FareFrameParser());
         } else if (value instanceof CompositeFrame) {
+            netexIndex.getCompositeFrames().add((CompositeFrame) value);
             // We recursively parse composite frames and content until there
             // is no more nested frames - this is accepting documents witch
             // are not withing the specification, but we leave this for the
