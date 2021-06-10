@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-public class TestLineExport {
+class TestLineExport {
     private static NetexEntitiesIndex index;
 
     @BeforeAll
@@ -19,7 +19,7 @@ public class TestLineExport {
     }
 
     @Test
-    public void testGetServiceJourneyInterchange() {
+    void testGetServiceJourneyInterchange() {
         var routePoint = index.getServiceJourneyInterchangeIndex().get("ATB:ServiceJourneyInterchange:548");
         Assertions.assertNotNull(routePoint);
     }

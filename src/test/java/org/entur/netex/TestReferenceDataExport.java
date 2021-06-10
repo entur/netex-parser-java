@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-public class TestReferenceDataExport {
+class TestReferenceDataExport {
     private static NetexEntitiesIndex index;
 
     @BeforeAll
@@ -19,7 +19,7 @@ public class TestReferenceDataExport {
     }
 
     @Test
-    public void testGetRoutePoint() {
+    void testGetRoutePoint() {
         var routePoint = index.getRoutePointIndex().get("AVI:RoutePoint:76586");
         Assertions.assertNotNull(routePoint);
     }
