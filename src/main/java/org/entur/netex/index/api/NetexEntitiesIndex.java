@@ -40,7 +40,6 @@ import org.rutebanken.netex.model.TopographicPlace;
 
 import java.util.Collection;
 import java.util.Map;
-import java.util.Set;
 
 /**
  * Entrypoint to the NeTEx entities index
