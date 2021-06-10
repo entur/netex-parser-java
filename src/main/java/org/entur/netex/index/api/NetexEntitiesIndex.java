@@ -26,6 +26,7 @@ import org.rutebanken.netex.model.Route;
 import org.rutebanken.netex.model.RoutePoint;
 import org.rutebanken.netex.model.ScheduledStopPoint;
 import org.rutebanken.netex.model.ServiceJourney;
+import org.rutebanken.netex.model.ServiceJourneyInterchange;
 import org.rutebanken.netex.model.ServiceLink;
 import org.rutebanken.netex.model.StopPlace;
 import org.rutebanken.netex.model.TariffZone;
@@ -57,7 +58,7 @@ public interface NetexEntitiesIndex {
     Map<String, String> getNetworkIdByGroupOfLineIdIndex();
 
     /**
-     * Get an enitity index of Authority
+     * Get an entity index of Authority
      * @return
      */
     NetexEntityIndex<Authority> getAuthorityIndex();
@@ -82,73 +83,73 @@ public interface NetexEntitiesIndex {
     Multimap<String, PassengerStopAssignment> getPassengerStopAssignmentsByStopPointRefIndex();
 
     /**
-     * Get an enitity index of DatedServiceJourney
+     * Get an entity index of DatedServiceJourney
      * @return
      */
     NetexEntityIndex<DatedServiceJourney> getDatedServiceJourneyIndex();
 
     /**
-     * Get an enitity index of DestinationDisplay
+     * Get an entity index of DestinationDisplay
      * @return
      */
     NetexEntityIndex<DestinationDisplay> getDestinationDisplayIndex();
 
     /**
-     * Get an enitity index of FlexibleStopPlace
+     * Get an entity index of FlexibleStopPlace
      * @return
      */
     NetexEntityIndex<FlexibleStopPlace> getFlexibleStopPlaceIndex();
 
     /**
-     * Get an enitity index of GroupOfStopPlaces
+     * Get an entity index of GroupOfStopPlaces
      * @return
      */
     NetexEntityIndex<GroupOfStopPlaces> getGroupOfStopPlacesIndex();
 
     /**
-     * Get an enitity index of JourneyPattern
+     * Get an entity index of JourneyPattern
      * @return
      */
     NetexEntityIndex<JourneyPattern> getJourneyPatternIndex();
 
     /**
-     * Get an enitity index of FlexibleLine
+     * Get an entity index of FlexibleLine
      * @return
      */
     NetexEntityIndex<FlexibleLine> getFlexibleLineIndex();
 
     /**
-     * Get an enitity index of Line
+     * Get an entity index of Line
      * @return
      */
     NetexEntityIndex<Line> getLineIndex();
 
     /**
-     * Get an enitity index of Notice
+     * Get an entity index of Notice
      * @return
      */
     NetexEntityIndex<Notice> getNoticeIndex();
 
     /**
-     * Get an enitity index of NoticeAssignment
+     * Get an entity index of NoticeAssignment
      * @return
      */
     NetexEntityIndex<NoticeAssignment> getNoticeAssignmentIndex();
 
     /**
-     * Get an enitity index of OperatingDay
+     * Get an entity index of OperatingDay
      * @return
      */
     NetexEntityIndex<OperatingDay> getOperatingDayIndex();
 
     /**
-     * Get an enitity index of OperatingPeriod
+     * Get an entity index of OperatingPeriod
      * @return
      */
     NetexEntityIndex<OperatingPeriod> getOperatingPeriodIndex();
 
     /**
-     * Get an enitity index of Operator
+     * Get an entity index of Operator
      * @return
      */
     NetexEntityIndex<Operator> getOperatorIndex();
@@ -184,19 +185,31 @@ public interface NetexEntitiesIndex {
     Map<String, String> getFlexibleStopPlaceIdByStopPointRefIndex();
 
     /**
-     * Get an enitity index of Route
+     * Get an entity index of Route
      * @return
      */
     NetexEntityIndex<Route> getRouteIndex();
 
     /**
-     * Get an enitity index of ServiceJourney
+     * Get an entity index of ServiceJourney
      * @return
      */
     NetexEntityIndex<ServiceJourney> getServiceJourneyIndex();
 
     /**
-     * Get an enitity index of ServiceLink
+     * Get an entity index of ServiceJourneyInterchange
+     * @return
+     */
+    NetexEntityIndex<ServiceJourneyInterchange> getServiceJourneyInterchangeIndex();
+
+    /**
+     * Get a map of ServiceJourneyInterchange by feeder or consumer ServiceJourney
+     * @return
+     */
+    Multimap<String, ServiceJourneyInterchange> getServiceJourneyInterchangeByServiceJourneyRefIndex();
+
+    /**
+     * Get an entity index of ServiceLink
      * @return
      */
     NetexEntityIndex<ServiceLink> getServiceLinkIndex();
@@ -208,38 +221,38 @@ public interface NetexEntitiesIndex {
     VersionedNetexEntityIndex<StopPlace> getStopPlaceIndex();
 
     /**
-     * Get an enitity index of TariffZone
+     * Get an entity index of TariffZone
      * @return
      */
     NetexEntityIndex<TariffZone> getTariffZoneIndex();
 
     /**
-     * Get an enitity index of TopographicPlace
+     * Get an entity index of TopographicPlace
      * @return
      */
     NetexEntityIndex<TopographicPlace> getTopographicPlaceIndex();
 
     /**
-     * Get an enitity index of Parking
+     * Get an entity index of Parking
      * @return
      */
     NetexEntityIndex<Parking> getParkingIndex();
 
     /**
-     * Get an enitity index of ScheduledStopPoint
+     * Get an entity index of ScheduledStopPoint
      * @return
      */
     NetexEntityIndex<ScheduledStopPoint> getScheduledStopPointIndex();
 
     /**
-     * Get an enitity index of RoutePoint
+     * Get an entity index of RoutePoint
      * @return
      */
     NetexEntityIndex<RoutePoint> getRoutePointIndex();
 
 
     /**
-     * Get an enitity index of FareZone
+     * Get an entity index of FareZone
      * @return
      */
     NetexEntityIndex<FareZone> getFareZoneIndex();

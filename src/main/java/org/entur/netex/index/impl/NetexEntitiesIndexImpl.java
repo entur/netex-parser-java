@@ -31,6 +31,7 @@ import org.rutebanken.netex.model.Route;
 import org.rutebanken.netex.model.RoutePoint;
 import org.rutebanken.netex.model.ScheduledStopPoint;
 import org.rutebanken.netex.model.ServiceJourney;
+import org.rutebanken.netex.model.ServiceJourneyInterchange;
 import org.rutebanken.netex.model.ServiceLink;
 import org.rutebanken.netex.model.StopPlace;
 import org.rutebanken.netex.model.TariffZone;
@@ -70,6 +71,8 @@ public class NetexEntitiesIndexImpl implements NetexEntitiesIndex {
     public final Map<String, String> stopPlaceIdByQuayId;
     public final NetexEntityIndex<Route> routeById;
     public final NetexEntityIndex<ServiceJourney> serviceJourneyById;
+    public final NetexEntityIndex<ServiceJourneyInterchange> serviceJourneyInterchangeById;
+    public final Multimap<String, ServiceJourneyInterchange> serviceJourneyInterchangeByServiceJourneyRef;
     public final NetexEntityIndex<ServiceLink> serviceLinkById;
     public final VersionedNetexEntityIndex<StopPlace> stopPlaceById;
     public final NetexEntityIndex<TariffZone> tariffZonesById;
@@ -122,6 +125,8 @@ public class NetexEntitiesIndexImpl implements NetexEntitiesIndex {
         this.stopPlaceIdByQuayId = new ConcurrentHashMap<>();
         this.routeById = new NetexEntityMapByIdImpl<>();
         this.serviceJourneyById = new NetexEntityMapByIdImpl<>();
+        this.serviceJourneyInterchangeById= new NetexEntityMapByIdImpl<>();
+        this.serviceJourneyInterchangeByServiceJourneyRef = Multimaps.synchronizedListMultimap(ArrayListMultimap.create());
         this.serviceLinkById = new NetexEntityMapByIdImpl<>();
         this.stopPlaceById = new VersionedNetexEntityIndexImpl<>();
         this.tariffZonesById = new NetexEntityMapByIdImpl<>();
@@ -260,6 +265,16 @@ public class NetexEntitiesIndexImpl implements NetexEntitiesIndex {
     @Override
     public NetexEntityIndex<ServiceJourney> getServiceJourneyIndex() {
         return serviceJourneyById;
+    }
+
+    @Override
+    public NetexEntityIndex<ServiceJourneyInterchange> getServiceJourneyInterchangeIndex() {
+        return serviceJourneyInterchangeById;
+    }
+
+    @Override
+    public Multimap<String, ServiceJourneyInterchange> getServiceJourneyInterchangeByServiceJourneyRefIndex() {
+        return serviceJourneyInterchangeByServiceJourneyRef;
     }
 
     @Override
