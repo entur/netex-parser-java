@@ -56,6 +56,7 @@ public class NetexEntitiesIndexImpl implements NetexEntitiesIndex {
     // Indexes to entities
     public final NetexEntityIndex<Authority> authoritiesById;
     public final NetexEntityIndex<DatedServiceJourney> datedServiceJourneys;
+    public final Multimap<String, DatedServiceJourney> datedServiceJourneyByServiceJourneyRefIndex;
     public final NetexEntityIndex<DayType> dayTypeById;
     public final Multimap<String, DayTypeAssignment> dayTypeAssignmentByDayTypeId;
     public final Multimap<String, PassengerStopAssignment> passengerStopAssignmentByStopPointRef;
@@ -113,6 +114,7 @@ public class NetexEntitiesIndexImpl implements NetexEntitiesIndex {
         this.dayTypeAssignmentByDayTypeId = Multimaps.synchronizedListMultimap(ArrayListMultimap.create());
         this.passengerStopAssignmentByStopPointRef = Multimaps.synchronizedListMultimap(ArrayListMultimap.create());
         this.datedServiceJourneys = new NetexEntityMapByIdImpl<>();
+        this.datedServiceJourneyByServiceJourneyRefIndex = Multimaps.synchronizedListMultimap(ArrayListMultimap.create());
         this.destinationDisplayById = new NetexEntityMapByIdImpl<>();
         this.flexibleStopPlaceById = new NetexEntityMapByIdImpl<>();
         this.groupOfLinesById = new NetexEntityMapByIdImpl<>();
@@ -190,6 +192,11 @@ public class NetexEntitiesIndexImpl implements NetexEntitiesIndex {
     @Override
     public NetexEntityIndex<DatedServiceJourney> getDatedServiceJourneyIndex() {
         return datedServiceJourneys;
+    }
+
+    @Override
+    public Multimap<String, DatedServiceJourney> getDatedServiceJourneyByServiceJourneyRefIndex() {
+        return datedServiceJourneyByServiceJourneyRefIndex;
     }
 
     @Override

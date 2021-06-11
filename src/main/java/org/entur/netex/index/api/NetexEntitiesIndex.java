@@ -96,6 +96,13 @@ public interface NetexEntitiesIndex {
     NetexEntityIndex<DatedServiceJourney> getDatedServiceJourneyIndex();
 
     /**
+     * Get a Multimap of DatedServiceJourney by ServiceJourney id
+     * @return
+     */
+    Multimap<String, DatedServiceJourney> getDatedServiceJourneyByServiceJourneyRefIndex();
+
+
+    /**
      * Get an entity index of DestinationDisplay
      * @return
      */
