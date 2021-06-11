@@ -10,6 +10,7 @@ import org.rutebanken.netex.model.Journey_VersionStructure;
 import org.rutebanken.netex.model.JourneysInFrame_RelStructure;
 import org.rutebanken.netex.model.ServiceJourney;
 import org.rutebanken.netex.model.ServiceJourneyInterchange;
+import org.rutebanken.netex.model.ServiceJourneyRefStructure;
 import org.rutebanken.netex.model.Timetable_VersionFrameStructure;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,7 +23,10 @@ class TimeTableFrameParser extends NetexParser<Timetable_VersionFrameStructure> 
     private static final Logger LOG = LoggerFactory.getLogger(TimeTableFrameParser.class);
 
     private final List<ServiceJourney> serviceJourneys = new ArrayList<>();
+
     private final List<DatedServiceJourney> datedServiceJourneys = new ArrayList<>();
+    private final Multimap<String, DatedServiceJourney> datedServiceJourneyByServiceJourneyId = ArrayListMultimap.create();
+
     private final List<ServiceJourneyInterchange> serviceJourneyInterchanges = new ArrayList<>();
     private final Multimap<String, ServiceJourneyInterchange> serviceJourneyInterchangesByServiceJourneyId = ArrayListMultimap.create();
 
@@ -72,28 +76,36 @@ class TimeTableFrameParser extends NetexParser<Timetable_VersionFrameStructure> 
     @Override
     void setResultOnIndex(NetexEntitiesIndex netexIndex) {
         netexIndex.getServiceJourneyIndex().putAll(serviceJourneys);
+
         netexIndex.getDatedServiceJourneyIndex().putAll(datedServiceJourneys);
+        netexIndex.getDatedServiceJourneyByServiceJourneyRefIndex().putAll(datedServiceJourneyByServiceJourneyId);
+
         netexIndex.getServiceJourneyInterchangeIndex().putAll(serviceJourneyInterchanges);
         netexIndex.getServiceJourneyInterchangeByServiceJourneyRefIndex().putAll(serviceJourneyInterchangesByServiceJourneyId);
+
         noticeParser.setResultOnIndex(netexIndex);
     }
 
     private void parseJourneys(JourneysInFrame_RelStructure element) {
         for (Journey_VersionStructure it : element.getVehicleJourneyOrDatedVehicleJourneyOrNormalDatedVehicleJourney()) {
             if (it instanceof ServiceJourney) {
-                serviceJourneys.add((ServiceJourney)it);
-            }
-            else if(it instanceof DatedServiceJourney) {
-                datedServiceJourneys.add((DatedServiceJourney) it);
-            }
-            else {
+                serviceJourneys.add((ServiceJourney) it);
+            } else if (it instanceof DatedServiceJourney) {
+                DatedServiceJourney datedServiceJourney = (DatedServiceJourney) it;
+                datedServiceJourneys.add(datedServiceJourney);
+                datedServiceJourney.getJourneyRef()
+                        .stream()
+                        .filter(journeyRef -> journeyRef.getValue() instanceof ServiceJourneyRefStructure)
+                        .map(journeyRef -> journeyRef.getValue().getRef())
+                        .forEach(serviceJourneyId -> datedServiceJourneyByServiceJourneyId.put(serviceJourneyId, datedServiceJourney));
+            } else {
                 informOnElementIntentionallySkipped(LOG, it);
             }
         }
     }
 
     private void parseInterchanges(JourneyInterchangesInFrame_RelStructure journeyInterchangesElement) {
-        if(journeyInterchangesElement == null) {
+        if (journeyInterchangesElement == null) {
             return;
         }
         for (Interchange_VersionStructure it : journeyInterchangesElement.getServiceJourneyPatternInterchangeOrServiceJourneyInterchange()) {

@@ -20,8 +20,15 @@ class TestLineExport {
 
     @Test
     void testGetServiceJourneyInterchange() {
-        var routePoint = index.getServiceJourneyInterchangeIndex().get("ATB:ServiceJourneyInterchange:548");
-        Assertions.assertNotNull(routePoint);
+        var serviceJourneyInterchange = index.getServiceJourneyInterchangeIndex().get("GOA:ServiceJourneyInterchange:6");
+        Assertions.assertNotNull(serviceJourneyInterchange);
+    }
+
+    @Test
+    void testGetDatedServiceJourneysByServiceJourneyRef() {
+        var datedServiceJourneys = index.getDatedServiceJourneyByServiceJourneyRefIndex().get("GOA:ServiceJourney:B701-B5_200");
+        Assertions.assertNotNull(datedServiceJourneys);
+        Assertions.assertFalse(datedServiceJourneys.isEmpty());
     }
 
 }
