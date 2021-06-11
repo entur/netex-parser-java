@@ -264,18 +264,6 @@ public interface NetexEntitiesIndex {
      */
     NetexEntityIndex<FareZone> getFareZoneIndex();
 
-    /**
-     * Set timezone of publication delivery
-     * @param timezone
-     */
-    void setTimeZone(String timezone);
-
-    /**
-     * Get timezone of publication delivery
-     * @return
-     */
-    String getTimeZone();
-
     Collection<CompositeFrame> getCompositeFrames();
     Collection<ResourceFrame> getResourceFrames();
     Collection<SiteFrame> getSiteFrames();

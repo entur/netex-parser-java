@@ -12,7 +12,6 @@ import org.rutebanken.netex.model.ServiceCalendarFrame;
 import org.rutebanken.netex.model.ServiceFrame;
 import org.rutebanken.netex.model.SiteFrame;
 import org.rutebanken.netex.model.TimetableFrame;
-import org.rutebanken.netex.model.VersionFrameDefaultsStructure;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -95,13 +94,6 @@ public class NetexDocumentParser {
         // Declare some ugly types to prevent obstructing the reading later...
         Collection<JAXBElement<? extends Common_VersionFrameStructure>> frames;
 
-        // TODO OTP2 #2781 - Frame defaults can be set on any frame according to the Norwegian
-        //                 - profile. This only set it on the composite frame, and further
-        //                 - overriding it at a sub-level will not be acknowledged, or even
-        //                 - given any kind of warning. This should be fixed as part of Issue
-        //                 - https://github.com/opentripplanner/OpenTripPlanner/issues/2781
-        parseFrameDefaultsLikeTimeZone(frame.getFrameDefaults());
-
         frames = frame.getFrames().getCommonFrame();
 
         for (JAXBElement<? extends Common_VersionFrameStructure> it : frames) {
@@ -109,16 +101,7 @@ public class NetexDocumentParser {
         }
     }
 
-    private void parseFrameDefaultsLikeTimeZone(VersionFrameDefaultsStructure frameDefaults) {
-        String timeZone = "GMT";
 
-        if (frameDefaults != null && frameDefaults.getDefaultLocale() != null
-                && frameDefaults.getDefaultLocale().getTimeZone() != null) {
-            timeZone = frameDefaults.getDefaultLocale().getTimeZone();
-        }
-
-        netexIndex.setTimeZone(timeZone);
-    }
 
     private <T> void parse(T node, NetexParser<T> parser) {
         parser.parse(node);

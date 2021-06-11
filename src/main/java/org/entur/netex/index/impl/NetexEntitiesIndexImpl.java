@@ -104,13 +104,6 @@ public class NetexEntitiesIndexImpl implements NetexEntitiesIndex {
     public final Collection<ServiceCalendarFrame> serviceCalendarFrames;
     public final Collection<TimetableFrame> timetableFrames;
 
-
-    private String timeZone;
-
-    public void setTimeZone(String timeZone) {
-        this.timeZone = timeZone;
-    }
-
     /**
      * Create a root node.
      */
@@ -337,11 +330,6 @@ public class NetexEntitiesIndexImpl implements NetexEntitiesIndex {
     @Override
     public NetexEntityIndex<FareZone> getFareZoneIndex() {
         return fareZoneById;
-    }
-
-    @Override
-    public String getTimeZone() {
-        return timeZone;
     }
 
     @Override
