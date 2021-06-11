@@ -7,6 +7,7 @@ import org.entur.netex.index.api.NetexEntityIndex;
 import org.entur.netex.index.api.NetexEntitiesIndex;
 import org.entur.netex.index.api.VersionedNetexEntityIndex;
 import org.rutebanken.netex.model.Authority;
+import org.rutebanken.netex.model.CompositeFrame;
 import org.rutebanken.netex.model.DatedServiceJourney;
 import org.rutebanken.netex.model.DayType;
 import org.rutebanken.netex.model.DayTypeAssignment;
@@ -27,16 +28,23 @@ import org.rutebanken.netex.model.Operator;
 import org.rutebanken.netex.model.Parking;
 import org.rutebanken.netex.model.PassengerStopAssignment;
 import org.rutebanken.netex.model.Quay;
+import org.rutebanken.netex.model.ResourceFrame;
 import org.rutebanken.netex.model.Route;
 import org.rutebanken.netex.model.RoutePoint;
 import org.rutebanken.netex.model.ScheduledStopPoint;
+import org.rutebanken.netex.model.ServiceCalendarFrame;
+import org.rutebanken.netex.model.ServiceFrame;
 import org.rutebanken.netex.model.ServiceJourney;
 import org.rutebanken.netex.model.ServiceJourneyInterchange;
 import org.rutebanken.netex.model.ServiceLink;
+import org.rutebanken.netex.model.SiteFrame;
 import org.rutebanken.netex.model.StopPlace;
 import org.rutebanken.netex.model.TariffZone;
+import org.rutebanken.netex.model.TimetableFrame;
 import org.rutebanken.netex.model.TopographicPlace;
 
+import java.util.Collection;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -82,18 +90,19 @@ public class NetexEntitiesIndexImpl implements NetexEntitiesIndex {
     public final NetexEntityIndex<RoutePoint> routePointById;
     public final NetexEntityIndex<FareZone> fareZoneById;
 
-
     // Relations between entities - The Netex XML sometimes rely on the the
     // nested structure of the XML document, rater than explicit references.
     // Since we throw away the document we need to keep track of these.
 
     public final Map<String, String> networkIdByGroupOfLineId;
 
-    private String timeZone;
-
-    public void setTimeZone(String timeZone) {
-        this.timeZone = timeZone;
-    }
+    // NeTEx Frames
+    public final Collection<CompositeFrame> compositeFrames;
+    public final Collection<ResourceFrame> resourceFrames;
+    public final Collection<SiteFrame> siteFrames;
+    public final Collection<ServiceFrame> serviceFrames;
+    public final Collection<ServiceCalendarFrame> serviceCalendarFrames;
+    public final Collection<TimetableFrame> timetableFrames;
 
     /**
      * Create a root node.
@@ -135,6 +144,12 @@ public class NetexEntitiesIndexImpl implements NetexEntitiesIndex {
         this.scheduledStopPointById = new NetexEntityMapByIdImpl<>();
         this.routePointById = new NetexEntityMapByIdImpl<>();
         this.fareZoneById = new NetexEntityMapByIdImpl<>();
+        this.compositeFrames = new HashSet<>();
+        this.siteFrames = new HashSet<>();
+        this.resourceFrames = new HashSet<>();
+        this.serviceFrames = new HashSet<>();
+        this.serviceCalendarFrames = new HashSet<>();
+        this.timetableFrames = new HashSet<>();
     }
 
     @Override
@@ -318,7 +333,32 @@ public class NetexEntitiesIndexImpl implements NetexEntitiesIndex {
     }
 
     @Override
-    public String getTimeZone() {
-        return timeZone;
+    public Collection<CompositeFrame> getCompositeFrames() {
+        return compositeFrames;
+    }
+
+    @Override
+    public Collection<ResourceFrame> getResourceFrames() {
+        return resourceFrames;
+    }
+
+    @Override
+    public Collection<SiteFrame> getSiteFrames() {
+        return siteFrames;
+    }
+
+    @Override
+    public Collection<ServiceFrame> getServiceFrames() {
+        return serviceFrames;
+    }
+
+    @Override
+    public Collection<ServiceCalendarFrame> getServiceCalendarFrames() {
+        return serviceCalendarFrames;
+    }
+
+    @Override
+    public Collection<TimetableFrame> getTimetableFrames() {
+        return timetableFrames;
     }
 }

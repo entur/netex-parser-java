@@ -12,7 +12,6 @@ import org.rutebanken.netex.model.ServiceCalendarFrame;
 import org.rutebanken.netex.model.ServiceFrame;
 import org.rutebanken.netex.model.SiteFrame;
 import org.rutebanken.netex.model.TimetableFrame;
-import org.rutebanken.netex.model.VersionFrameDefaultsStructure;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -56,20 +55,26 @@ public class NetexDocumentParser {
 
     private void parseCommonFrame(Common_VersionFrameStructure value) {
         if(value instanceof ResourceFrame) {
+            netexIndex.getResourceFrames().add((ResourceFrame) value);
             parse((ResourceFrame) value, new ResourceFrameParser());
         } else if(value instanceof ServiceCalendarFrame) {
+            netexIndex.getServiceCalendarFrames().add((ServiceCalendarFrame) value);
             parse((ServiceCalendarFrame) value, new ServiceCalendarFrameParser());
         } else if(value instanceof TimetableFrame) {
+            netexIndex.getTimetableFrames().add((TimetableFrame) value);
             parse((TimetableFrame) value, new TimeTableFrameParser());
         } else if(value instanceof ServiceFrame) {
+            netexIndex.getServiceFrames().add((ServiceFrame) value);
             parse((ServiceFrame) value, new ServiceFrameParser(
                 netexIndex.getFlexibleStopPlaceIndex()
             ));
         }  else if (value instanceof SiteFrame) {
+            netexIndex.getSiteFrames().add((SiteFrame) value);
             parse((SiteFrame) value, new SiteFrameParser());
         } else if (value instanceof FareFrame) {
             parse((FareFrame) value, new FareFrameParser());
         } else if (value instanceof CompositeFrame) {
+            netexIndex.getCompositeFrames().add((CompositeFrame) value);
             // We recursively parse composite frames and content until there
             // is no more nested frames - this is accepting documents witch
             // are not withing the specification, but we leave this for the
@@ -89,13 +94,6 @@ public class NetexDocumentParser {
         // Declare some ugly types to prevent obstructing the reading later...
         Collection<JAXBElement<? extends Common_VersionFrameStructure>> frames;
 
-        // TODO OTP2 #2781 - Frame defaults can be set on any frame according to the Norwegian
-        //                 - profile. This only set it on the composite frame, and further
-        //                 - overriding it at a sub-level will not be acknowledged, or even
-        //                 - given any kind of warning. This should be fixed as part of Issue
-        //                 - https://github.com/opentripplanner/OpenTripPlanner/issues/2781
-        parseFrameDefaultsLikeTimeZone(frame.getFrameDefaults());
-
         frames = frame.getFrames().getCommonFrame();
 
         for (JAXBElement<? extends Common_VersionFrameStructure> it : frames) {
@@ -103,16 +101,7 @@ public class NetexDocumentParser {
         }
     }
 
-    private void parseFrameDefaultsLikeTimeZone(VersionFrameDefaultsStructure frameDefaults) {
-        String timeZone = "GMT";
 
-        if (frameDefaults != null && frameDefaults.getDefaultLocale() != null
-                && frameDefaults.getDefaultLocale().getTimeZone() != null) {
-            timeZone = frameDefaults.getDefaultLocale().getTimeZone();
-        }
-
-        netexIndex.setTimeZone(timeZone);
-    }
 
     private <T> void parse(T node, NetexParser<T> parser) {
         parser.parse(node);

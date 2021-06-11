@@ -2,6 +2,7 @@ package org.entur.netex.index.api;
 
 import com.google.common.collect.Multimap;
 import org.rutebanken.netex.model.Authority;
+import org.rutebanken.netex.model.CompositeFrame;
 import org.rutebanken.netex.model.DatedServiceJourney;
 import org.rutebanken.netex.model.DayType;
 import org.rutebanken.netex.model.DayTypeAssignment;
@@ -22,16 +23,22 @@ import org.rutebanken.netex.model.Operator;
 import org.rutebanken.netex.model.Parking;
 import org.rutebanken.netex.model.PassengerStopAssignment;
 import org.rutebanken.netex.model.Quay;
+import org.rutebanken.netex.model.ResourceFrame;
 import org.rutebanken.netex.model.Route;
 import org.rutebanken.netex.model.RoutePoint;
 import org.rutebanken.netex.model.ScheduledStopPoint;
+import org.rutebanken.netex.model.ServiceCalendarFrame;
+import org.rutebanken.netex.model.ServiceFrame;
 import org.rutebanken.netex.model.ServiceJourney;
 import org.rutebanken.netex.model.ServiceJourneyInterchange;
 import org.rutebanken.netex.model.ServiceLink;
+import org.rutebanken.netex.model.SiteFrame;
 import org.rutebanken.netex.model.StopPlace;
 import org.rutebanken.netex.model.TariffZone;
+import org.rutebanken.netex.model.TimetableFrame;
 import org.rutebanken.netex.model.TopographicPlace;
 
+import java.util.Collection;
 import java.util.Map;
 
 /**
@@ -257,17 +264,12 @@ public interface NetexEntitiesIndex {
      */
     NetexEntityIndex<FareZone> getFareZoneIndex();
 
-    /**
-     * Set timezone of publication delivery
-     * @param timezone
-     */
-    void setTimeZone(String timezone);
-
-    /**
-     * Get timezone of publication delivery
-     * @return
-     */
-    String getTimeZone();
+    Collection<CompositeFrame> getCompositeFrames();
+    Collection<ResourceFrame> getResourceFrames();
+    Collection<SiteFrame> getSiteFrames();
+    Collection<ServiceFrame> getServiceFrames();
+    Collection<ServiceCalendarFrame> getServiceCalendarFrames();
+    Collection<TimetableFrame> getTimetableFrames();
 
 
 }
