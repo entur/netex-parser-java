@@ -2,10 +2,12 @@ package org.entur.netex.loader.parser;
 
 import org.entur.netex.index.api.NetexEntitiesIndex;
 import org.rutebanken.netex.model.Authority;
+import org.rutebanken.netex.model.Branding;
 import org.rutebanken.netex.model.Operator;
 import org.rutebanken.netex.model.Organisation_VersionStructure;
 import org.rutebanken.netex.model.OrganisationsInFrame_RelStructure;
 import org.rutebanken.netex.model.ResourceFrame_VersionFrameStructure;
+import org.rutebanken.netex.model.TypesOfValueInFrame_RelStructure;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -18,10 +20,12 @@ class ResourceFrameParser extends NetexParser<ResourceFrame_VersionFrameStructur
 
     private final Collection<Authority> authorities = new ArrayList<>();
     private final Collection<Operator> operators = new ArrayList<>();
+    private Collection<Branding> brandings = new ArrayList<>();
 
     @Override
     void parse(ResourceFrame_VersionFrameStructure frame) {
         parseOrganization(frame.getOrganisations());
+        parseBranding(frame.getTypesOfValue());
 
         // Keep list sorted alphabetically
         informOnElementIntentionallySkipped(LOG, frame.getBlacklists());
@@ -44,9 +48,11 @@ class ResourceFrameParser extends NetexParser<ResourceFrame_VersionFrameStructur
         verifyCommonUnusedPropertiesIsNotSet(LOG, frame);
     }
 
-    @Override void setResultOnIndex(NetexEntitiesIndex netexIndex) {
+    @Override
+    void setResultOnIndex(NetexEntitiesIndex netexIndex) {
         netexIndex.getAuthorityIndex().putAll(authorities);
         netexIndex.getOperatorIndex().putAll(operators);
+        netexIndex.getBrandingIndex().putAll(brandings);
     }
 
 
@@ -62,9 +68,19 @@ class ResourceFrameParser extends NetexParser<ResourceFrame_VersionFrameStructur
         if (element instanceof Authority) {
             authorities.add((Authority) element);
         } else if (element instanceof Operator) {
-                operators.add((Operator) element);
+            operators.add((Operator) element);
         } else {
             informOnElementIntentionallySkipped(LOG, element);
+        }
+    }
+
+    private void parseBranding(TypesOfValueInFrame_RelStructure typesOfValue) {
+        if (typesOfValue != null) {
+            for (JAXBElement<?> e : typesOfValue.getValueSetOrTypeOfValue()) {
+                if (e.getValue() instanceof Branding) {
+                    brandings.add((Branding) e.getValue());
+                }
+            }
         }
     }
 }

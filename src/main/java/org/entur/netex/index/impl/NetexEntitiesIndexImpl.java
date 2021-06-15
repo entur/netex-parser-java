@@ -7,6 +7,7 @@ import org.entur.netex.index.api.NetexEntityIndex;
 import org.entur.netex.index.api.NetexEntitiesIndex;
 import org.entur.netex.index.api.VersionedNetexEntityIndex;
 import org.rutebanken.netex.model.Authority;
+import org.rutebanken.netex.model.Branding;
 import org.rutebanken.netex.model.CompositeFrame;
 import org.rutebanken.netex.model.DatedServiceJourney;
 import org.rutebanken.netex.model.DayType;
@@ -73,6 +74,7 @@ public class NetexEntitiesIndexImpl implements NetexEntitiesIndex {
     public final NetexEntityIndex<OperatingDay> operatingDayById;
     public final NetexEntityIndex<OperatingPeriod> operatingPeriodById;
     public final NetexEntityIndex<Operator> operatorsById;
+    public final NetexEntityIndex<Branding> brandingsById;
     public final VersionedNetexEntityIndex<Quay> quayById;
     public final Map<String, String> flexibleStopPlaceByStopPointRef;
     public final Map<String, String> quayIdByStopPointRef;
@@ -129,6 +131,7 @@ public class NetexEntitiesIndexImpl implements NetexEntitiesIndex {
         this.operatingDayById = new NetexEntityMapByIdImpl<>();
         this.operatingPeriodById = new NetexEntityMapByIdImpl<>();
         this.operatorsById = new NetexEntityMapByIdImpl<>();
+        this.brandingsById = new NetexEntityMapByIdImpl<>();
         this.quayById = new VersionedNetexEntityIndexImpl<>();
         this.flexibleStopPlaceByStopPointRef = new ConcurrentHashMap<>();
         this.quayIdByStopPointRef = new ConcurrentHashMap<>();
@@ -252,6 +255,11 @@ public class NetexEntitiesIndexImpl implements NetexEntitiesIndex {
     @Override
     public NetexEntityIndex<Operator> getOperatorIndex() {
         return operatorsById;
+    }
+
+    @Override
+    public NetexEntityIndex<Branding> getBrandingIndex() {
+        return brandingsById;
     }
 
     @Override
