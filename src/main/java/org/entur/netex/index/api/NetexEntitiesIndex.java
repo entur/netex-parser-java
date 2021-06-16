@@ -2,6 +2,7 @@ package org.entur.netex.index.api;
 
 import com.google.common.collect.Multimap;
 import org.rutebanken.netex.model.Authority;
+import org.rutebanken.netex.model.Branding;
 import org.rutebanken.netex.model.CompositeFrame;
 import org.rutebanken.netex.model.DatedServiceJourney;
 import org.rutebanken.netex.model.DayType;
@@ -167,6 +168,12 @@ public interface NetexEntitiesIndex {
      * @return
      */
     NetexEntityIndex<Operator> getOperatorIndex();
+
+    /**
+     * Get an entity index of Branding
+     * @return
+     */
+    NetexEntityIndex<Branding> getBrandingIndex();
 
     /**
      * Get a versioned entity index of Quay
