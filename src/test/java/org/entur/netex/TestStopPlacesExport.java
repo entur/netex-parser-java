@@ -81,4 +81,10 @@ public class TestStopPlacesExport {
         var fareZone = index.getFareZoneIndex().get("AKT:FareZone:27");
         Assertions.assertEquals("Kviteseid", fareZone.getName().getValue());
     }
+
+    @Test
+    public void testGetParkingsByParentSiteRef() {
+        var parkings = index.getParkingsByParentSiteRefIndex().get("NSR:StopPlace:337");
+        Assertions.assertFalse(parkings.isEmpty());
+    }
 }

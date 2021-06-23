@@ -1,5 +1,7 @@
 package org.entur.netex.loader.parser;
 
+import com.google.common.collect.ArrayListMultimap;
+import com.google.common.collect.Multimap;
 import org.entur.netex.index.api.NetexEntitiesIndex;
 import org.rutebanken.netex.model.FlexibleStopPlace;
 import org.rutebanken.netex.model.GroupOfStopPlaces;
@@ -39,6 +41,8 @@ class SiteFrameParser extends NetexParser<Site_VersionFrameStructure> {
     private final Collection<Quay> quays = new ArrayList<>();
 
     private final Map<String, String> stopPlaceIdByQuayId = new HashMap<>();
+
+    private final Multimap<String, Parking> parkingsByStopPlaceId = ArrayListMultimap.create();
 
     @Override
     public void parse(Site_VersionFrameStructure frame) {
@@ -94,6 +98,7 @@ class SiteFrameParser extends NetexParser<Site_VersionFrameStructure> {
         netexIndex.getParkingIndex().putAll(parkings);
         netexIndex.getQuayIndex().putAll(quays);
         netexIndex.getStopPlaceIdByQuayIdIndex().putAll(stopPlaceIdByQuayId);
+        netexIndex.getParkingsByParentSiteRefIndex().putAll(parkingsByStopPlaceId);
     }
 
     private void parseFlexibleStopPlaces(Collection<FlexibleStopPlace> flexibleStopPlacesList ) {
@@ -126,7 +131,10 @@ class SiteFrameParser extends NetexParser<Site_VersionFrameStructure> {
     }
 
     private void parseParkings(Collection<Parking> parkingList) {
-        parkings.addAll(parkingList);
+        for (Parking parking : parkingList) {
+            parkings.add(parking);
+            parkingsByStopPlaceId.put(parking.getParentSiteRef().getRef(), parking);
+        }
     }
 
     private void parseQuays(Quays_RelStructure quayRefOrQuay, String stopPlaceId) {
