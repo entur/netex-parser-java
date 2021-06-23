@@ -271,6 +271,11 @@ public interface NetexEntitiesIndex {
      */
     NetexEntityIndex<RoutePoint> getRoutePointIndex();
 
+    /**
+     * Get a Multimap of parkings by ParentSite ref
+     * @return
+     */
+    Multimap<String, Parking> getParkingsByParentSiteRefIndex();
 
     /**
      * Get an entity index of FareZone

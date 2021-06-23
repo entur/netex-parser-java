@@ -92,6 +92,7 @@ public class NetexEntitiesIndexImpl implements NetexEntitiesIndex {
     public final NetexEntityIndex<ScheduledStopPoint> scheduledStopPointById;
     public final NetexEntityIndex<RoutePoint> routePointById;
     public final NetexEntityIndex<FareZone> fareZoneById;
+    public final Multimap<String, Parking> parkingsByParentSiteRef;
 
     // Relations between entities - The Netex XML sometimes rely on the the
     // nested structure of the XML document, rater than explicit references.
@@ -155,6 +156,7 @@ public class NetexEntitiesIndexImpl implements NetexEntitiesIndex {
         this.serviceFrames = new HashSet<>();
         this.serviceCalendarFrames = new HashSet<>();
         this.timetableFrames = new HashSet<>();
+        this.parkingsByParentSiteRef = Multimaps.synchronizedListMultimap(ArrayListMultimap.create());
     }
 
     @Override
@@ -375,5 +377,10 @@ public class NetexEntitiesIndexImpl implements NetexEntitiesIndex {
     @Override
     public Collection<TimetableFrame> getTimetableFrames() {
         return timetableFrames;
+    }
+
+    @Override
+    public Multimap<String, Parking> getParkingsByParentSiteRefIndex() {
+        return parkingsByParentSiteRef;
     }
 }
