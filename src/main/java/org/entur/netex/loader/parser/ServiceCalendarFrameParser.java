@@ -45,7 +45,6 @@ class ServiceCalendarFrameParser extends NetexParser<ServiceCalendarFrame_Versio
 
         informOnElementIntentionallySkipped(LOG, frame.getTimebands());
         informOnElementIntentionallySkipped(LOG, frame.getGroupOfTimebands());
-        informOnElementIntentionallySkipped(LOG, frame.getOperatingDays());
 
         verifyCommonUnusedPropertiesIsNotSet(LOG, frame);
     }

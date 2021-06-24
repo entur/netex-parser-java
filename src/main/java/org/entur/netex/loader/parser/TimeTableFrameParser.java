@@ -59,8 +59,6 @@ class TimeTableFrameParser extends NetexParser<Timetable_VersionFrameStructure> 
         informOnElementIntentionallySkipped(LOG, frame.getJourneyAccountings());
         informOnElementIntentionallySkipped(LOG, frame.getJourneyMeetings());
         informOnElementIntentionallySkipped(LOG, frame.getJourneyPartCouples());
-        informOnElementIntentionallySkipped(LOG, frame.getNotices());
-        informOnElementIntentionallySkipped(LOG, frame.getNoticeAssignments());
         informOnElementIntentionallySkipped(LOG, frame.getServiceCalendarFrameRef());
         informOnElementIntentionallySkipped(LOG, frame.getServiceFacilitySets());
         informOnElementIntentionallySkipped(LOG, frame.getTimeDemandTypes());

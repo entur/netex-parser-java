@@ -110,7 +110,6 @@ class ServiceFrameParser extends NetexParser<Service_VersionFrameStructure> {
         informOnElementIntentionallySkipped(LOG, frame.getLogicalDisplays());
         informOnElementIntentionallySkipped(LOG, frame.getPassengerInformationEquipments());
         informOnElementIntentionallySkipped(LOG, frame.getRouteLinks());
-        informOnElementIntentionallySkipped(LOG, frame.getRoutePoints());
         informOnElementIntentionallySkipped(LOG, frame.getRoutingConstraintZones());
         informOnElementIntentionallySkipped(LOG, frame.getServiceExclusions());
         informOnElementIntentionallySkipped(LOG, frame.getServicePatterns());

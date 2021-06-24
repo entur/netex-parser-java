@@ -25,7 +25,7 @@ class ResourceFrameParser extends NetexParser<ResourceFrame_VersionFrameStructur
     @Override
     void parse(ResourceFrame_VersionFrameStructure frame) {
         parseOrganization(frame.getOrganisations());
-        parseBranding(frame.getTypesOfValue());
+        parseTypeOfValues(frame.getTypesOfValue());
 
         // Keep list sorted alphabetically
         informOnElementIntentionallySkipped(LOG, frame.getBlacklists());
@@ -37,7 +37,6 @@ class ResourceFrameParser extends NetexParser<ResourceFrame_VersionFrameStructur
         informOnElementIntentionallySkipped(LOG, frame.getOperationalContexts());
         informOnElementIntentionallySkipped(LOG, frame.getResponsibilitySets());
         informOnElementIntentionallySkipped(LOG, frame.getSchematicMaps());
-        informOnElementIntentionallySkipped(LOG, frame.getTypesOfValue());
         informOnElementIntentionallySkipped(LOG, frame.getVehicles());
         informOnElementIntentionallySkipped(LOG, frame.getVehicleEquipmentProfiles());
         informOnElementIntentionallySkipped(LOG, frame.getVehicleModels());
@@ -74,11 +73,13 @@ class ResourceFrameParser extends NetexParser<ResourceFrame_VersionFrameStructur
         }
     }
 
-    private void parseBranding(TypesOfValueInFrame_RelStructure typesOfValue) {
+    private void parseTypeOfValues(TypesOfValueInFrame_RelStructure typesOfValue) {
         if (typesOfValue != null) {
             for (JAXBElement<?> e : typesOfValue.getValueSetOrTypeOfValue()) {
                 if (e.getValue() instanceof Branding) {
                     brandings.add((Branding) e.getValue());
+                } else {
+                    informOnElementIntentionallySkipped(LOG, e);
                 }
             }
         }
