@@ -95,7 +95,6 @@ class ServiceFrameParser extends NetexParser<Service_VersionFrameStructure> {
         parseRoutePoints(frame.getRoutePoints());
 
         // Keep list sorted alphabetically
-        informOnElementIntentionallySkipped(LOG, frame.getAdditionalNetworks());
         informOnElementIntentionallySkipped(LOG, frame.getCommonSections());
         informOnElementIntentionallySkipped(LOG, frame.getConnections());
         informOnElementIntentionallySkipped(LOG, frame.getDirections());
