@@ -53,7 +53,7 @@
         <maven-javadoc-plugin.version>3.2.0</maven-javadoc-plugin.version>
         <maven-source-plugin.version>3.2.1</maven-source-plugin.version>
         <sonar-maven-plugin.version>3.7.0.1746</sonar-maven-plugin.version>
-        <gitflow-maven-plugin.version>1.14.0</gitflow-maven-plugin.version>
+        <gitflow-maven-plugin.version>1.16.0</gitflow-maven-plugin.version>
 
         <jacoco-maven-plugin.version>0.8.7</jacoco-maven-plugin.version>
         <!-- empty argLine property, the value is set up by Jacoco during unit tests execution -->
