@@ -6,7 +6,7 @@
 
     <groupId>org.entur</groupId>
     <artifactId>netex-parser-java</artifactId>
-    <version>1.0.12-SNAPSHOT</version>
+    <version>1.0.13-SNAPSHOT</version>
 
     <name>netex-java-parser</name>
     <description>Library for parsing NeTEx files and looking up entities in an index.</description>
@@ -60,7 +60,7 @@
         <argLine />
 
         <!-- Unit test frameworks versions -->
-        <assertj.core.version>3.19.0</assertj.core.version>
+        <assertj.core.version>3.20.2</assertj.core.version>
         <junit.version>5.7.1</junit.version>
         <slf4j.version>1.7.31</slf4j.version>
     </properties>
