@@ -63,26 +63,40 @@ jobs:
           at: ~/project
       - run: *sonar-scan
 
-  deploy-artifactory:
+  build:
     docker:
-      - image: eu.gcr.io/entur-system-1287/circleci-toolbox-image-java11
+      - image: eu.gcr.io/entur-system-1287/circleci-toolbox-image
         auth:
           username: _json_key
           password: $DOCKER_PASSWORD
     environment:
       MAVEN_OPTS: -Xmx3G
     steps:
-      - run: git config --global user.email "circleci@entur.no"
-      - run: git config --global user.name "circleci"
       - checkout
       - restore_cache:
           key: dep-cache-{{ checksum "pom.xml" }}
-      - run: mvn com.offbytwo.maven.plugins:maven-dependency-plugin:3.1.1.MDEP568:go-offline -DexcludeGroupIds=org.entur -s /tools/m2/settings.xml
+      - run: mvn org.apache.maven.plugins:maven-dependency-plugin:3.1.0:go-offline -s /tools/m2/settings.xml
       - save_cache:
           paths:
             - ~/.m2
           key: dep-cache-{{ checksum "pom.xml" }}
-      - run: mvn gitflow:release -B -s /tools/m2/settings.xml -DargLine='-s /tools/m2/settings.xml' -DpostReleaseGoals=deploy -DskipTestProject=true
+      # Cannot use -o because of snapshot dependencies.
+      - run: mvn package -s /tools/m2/settings.xml -DskipTests
+  deploy:
+    docker:
+      - image: eu.gcr.io/entur-system-1287/circleci-toolbox-image
+        auth:
+          username: _json_key
+          password: $DOCKER_PASSWORD
+    environment:
+      DEBIAN_FRONTEND: "noninteractive"
+    steps:
+      - checkout
+      - restore_cache:
+          key: dep-cache-{{ checksum "pom.xml" }}
+      - run:
+          name: Maven deploy
+          command: mvn deploy -s /tools/m2/settings.xml -DskipTests
 
 workflows:
   version: 2
@@ -94,11 +108,14 @@ workflows:
           context: org-carbon
           requires:
             - test
-      - deploy-artifactory:
+      - build:
           context: org-carbon
           requires:
-            - test
             - sonar
+      - deploy:
+          context: org-carbon
+          requires:
+            - build
           filters:
             branches:
               only: master
