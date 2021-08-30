@@ -21,10 +21,9 @@ public class NetexXmlParser {
      * Parse an input stream and return the root document type for the given xml file (stream).
      */
     public PublicationDeliveryStructure parseXmlDoc(InputStream stream) throws JAXBException {
-        JAXBElement<PublicationDeliveryStructure> root;
 
-        //noinspection unchecked
-        root = (JAXBElement<PublicationDeliveryStructure>) unmarshaller.unmarshal(stream);
+        @SuppressWarnings("unchecked")
+        JAXBElement<PublicationDeliveryStructure> root = (JAXBElement<PublicationDeliveryStructure>) unmarshaller.unmarshal(stream);
 
         return root.getValue();
     }

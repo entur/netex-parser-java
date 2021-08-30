@@ -28,7 +28,7 @@ public class NetexParser {
      * @return A queryable index of NeTEx entities
      */
     public NetexEntitiesIndex parse(String pathToZip) throws IOException {
-        var index = new NetexEntitiesIndexImpl();
+        NetexEntitiesIndex index = new NetexEntitiesIndexImpl();
         return parse(pathToZip, index);
     }
 
@@ -61,7 +61,7 @@ public class NetexParser {
      * @return A queryable index of NeTEx entities
      */
     public NetexEntitiesIndex parse(InputStream inputStream) {
-        var index = new NetexEntitiesIndexImpl();
+        NetexEntitiesIndex index = new NetexEntitiesIndexImpl();
         load(index, inputStream);
         return index;
     }

@@ -4,9 +4,12 @@ import org.entur.netex.index.api.NetexEntitiesIndex;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.rutebanken.netex.model.StopPlace;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.util.Collection;
+import java.util.Map;
 
 public class TestMultipleVersionsStopPlaces {
     private static NetexEntitiesIndex index;
@@ -14,8 +17,8 @@ public class TestMultipleVersionsStopPlaces {
     @BeforeAll
     static void init() {
         try {
-            var parser = new NetexParser();
-            var file = new File("src/test/resources/MultipleVersionsStopPlaces.xml");
+            NetexParser parser = new NetexParser();
+            File file = new File("src/test/resources/MultipleVersionsStopPlaces.xml");
             index = parser.parse(new FileInputStream(file));
         } catch (Exception e) {
             Assertions.fail(e.getMessage(), e);
@@ -24,13 +27,13 @@ public class TestMultipleVersionsStopPlaces {
 
     @Test
     void testGetAllVersionsOfStopPlace() {
-        var stopPlaces = index.getStopPlaceIndex().getAllVersions("NSR:StopPlace:5543");
+        Collection<StopPlace> stopPlaces = index.getStopPlaceIndex().getAllVersions("NSR:StopPlace:5543");
         Assertions.assertEquals(8, stopPlaces.size());
     }
 
     @Test
     void testGetAllVersionsOfAllStopPlaces() {
-        var stopPlaces = index.getStopPlaceIndex().getAllVersions();
+        Map<String, Collection<StopPlace>> stopPlaces = index.getStopPlaceIndex().getAllVersions();
         Assertions.assertEquals(8, stopPlaces.get("NSR:StopPlace:5543").size());
     }
 }
