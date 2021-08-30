@@ -37,9 +37,9 @@
         </developer>
     </developers>
     <scm>
-        <connection>scm:git:ssh://git@github.com/entur/netex-java-parser.git</connection>
-        <developerConnection>scm:git:ssh://git@github.com/entur/netex-java-parser.git</developerConnection>
-        <url>https://github.com/entur/netex-java-parser/tree/master</url>
+        <connection>scm:git:ssh://git@github.com/entur/netex-parser-java.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com/entur/netex-parser-java.git</developerConnection>
+        <url>https://github.com/entur/netex-parser-java/tree/master</url>
         <tag>HEAD</tag>
     </scm>
     <distributionManagement>
