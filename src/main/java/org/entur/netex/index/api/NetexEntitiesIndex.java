@@ -13,6 +13,7 @@ import org.rutebanken.netex.model.FlexibleLine;
 import org.rutebanken.netex.model.FlexibleStopPlace;
 import org.rutebanken.netex.model.GroupOfLines;
 import org.rutebanken.netex.model.GroupOfStopPlaces;
+import org.rutebanken.netex.model.GroupOfTariffZones;
 import org.rutebanken.netex.model.JourneyPattern;
 import org.rutebanken.netex.model.Line;
 import org.rutebanken.netex.model.Network;
@@ -282,6 +283,8 @@ public interface NetexEntitiesIndex {
      * @return
      */
     NetexEntityIndex<FareZone> getFareZoneIndex();
+
+    NetexEntityIndex<GroupOfTariffZones> getGroupOfTariffZonesIndex();
 
     Collection<CompositeFrame> getCompositeFrames();
     Collection<ResourceFrame> getResourceFrames();

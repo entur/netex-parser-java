@@ -11,7 +11,7 @@ import java.io.FileInputStream;
 import java.util.Collection;
 import java.util.Map;
 
-public class TestMultipleVersionsStopPlaces {
+class TestMultipleVersionsStopPlaces {
     private static NetexEntitiesIndex index;
 
     @BeforeAll

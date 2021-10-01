@@ -18,6 +18,7 @@ import org.rutebanken.netex.model.FlexibleLine;
 import org.rutebanken.netex.model.FlexibleStopPlace;
 import org.rutebanken.netex.model.GroupOfLines;
 import org.rutebanken.netex.model.GroupOfStopPlaces;
+import org.rutebanken.netex.model.GroupOfTariffZones;
 import org.rutebanken.netex.model.JourneyPattern;
 import org.rutebanken.netex.model.Line;
 import org.rutebanken.netex.model.Network;
@@ -92,6 +93,7 @@ public class NetexEntitiesIndexImpl implements NetexEntitiesIndex {
     public final NetexEntityIndex<ScheduledStopPoint> scheduledStopPointById;
     public final NetexEntityIndex<RoutePoint> routePointById;
     public final NetexEntityIndex<FareZone> fareZoneById;
+    public final NetexEntityIndex<GroupOfTariffZones> groupOfTariffZonesById;
     public final Multimap<String, Parking> parkingsByParentSiteRef;
 
     // Relations between entities - The Netex XML sometimes rely on the the
@@ -150,6 +152,7 @@ public class NetexEntitiesIndexImpl implements NetexEntitiesIndex {
         this.scheduledStopPointById = new NetexEntityMapByIdImpl<>();
         this.routePointById = new NetexEntityMapByIdImpl<>();
         this.fareZoneById = new NetexEntityMapByIdImpl<>();
+        this.groupOfTariffZonesById = new NetexEntityMapByIdImpl<>();
         this.compositeFrames = new HashSet<>();
         this.siteFrames = new HashSet<>();
         this.resourceFrames = new HashSet<>();
@@ -347,6 +350,11 @@ public class NetexEntitiesIndexImpl implements NetexEntitiesIndex {
     @Override
     public NetexEntityIndex<FareZone> getFareZoneIndex() {
         return fareZoneById;
+    }
+
+    @Override
+    public NetexEntityIndex<GroupOfTariffZones> getGroupOfTariffZonesIndex() {
+        return groupOfTariffZonesById;
     }
 
     @Override
