@@ -5,6 +5,7 @@ import com.google.common.collect.Multimap;
 import org.entur.netex.index.api.NetexEntitiesIndex;
 import org.rutebanken.netex.model.FlexibleStopPlace;
 import org.rutebanken.netex.model.GroupOfStopPlaces;
+import org.rutebanken.netex.model.GroupOfTariffZones;
 import org.rutebanken.netex.model.Parking;
 import org.rutebanken.netex.model.Quay;
 import org.rutebanken.netex.model.Quays_RelStructure;
@@ -33,6 +34,8 @@ class SiteFrameParser extends NetexParser<Site_VersionFrameStructure> {
     private final Collection<StopPlace> stopPlaces = new ArrayList<>();
 
     private final Collection<TariffZone> tariffZones = new ArrayList<>();
+
+    private final Collection<GroupOfTariffZones> groupsOfTariffZones = new ArrayList<>();
 
     private final Collection<TopographicPlace> topographicPlaces = new ArrayList<>();
 
@@ -70,6 +73,10 @@ class SiteFrameParser extends NetexParser<Site_VersionFrameStructure> {
             parseParkings(frame.getParkings().getParking());
         }
 
+        if (frame.getGroupsOfTariffZones() != null) {
+            parseGroupsOfTariffZones(frame.getGroupsOfTariffZones().getGroupOfTariffZones());
+        }
+
         // Keep list sorted alphabetically
         informOnElementIntentionallySkipped(LOG, frame.getAccesses());
         informOnElementIntentionallySkipped(LOG, frame.getAddresses());
@@ -99,6 +106,7 @@ class SiteFrameParser extends NetexParser<Site_VersionFrameStructure> {
         netexIndex.getQuayIndex().putAll(quays);
         netexIndex.getStopPlaceIdByQuayIdIndex().putAll(stopPlaceIdByQuayId);
         netexIndex.getParkingsByParentSiteRefIndex().putAll(parkingsByStopPlaceId);
+        netexIndex.getGroupOfTariffZonesIndex().putAll(groupsOfTariffZones);
     }
 
     private void parseFlexibleStopPlaces(Collection<FlexibleStopPlace> flexibleStopPlacesList ) {
@@ -154,5 +162,9 @@ class SiteFrameParser extends NetexParser<Site_VersionFrameStructure> {
                                 keyValueStructure ->
                                         keyValueStructure.getKey().equals("IS_PARENT_STOP_PLACE")
                                 && keyValueStructure.getValue().equals("true"));
+    }
+
+    private void parseGroupsOfTariffZones(List<GroupOfTariffZones> groupOfTariffZones) {
+        groupsOfTariffZones.addAll(groupOfTariffZones);
     }
 }
