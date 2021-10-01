@@ -16,7 +16,7 @@ import org.rutebanken.netex.model.TopographicPlace;
 
 import java.util.Collection;
 
-public class TestStopPlacesExport {
+class TestStopPlacesExport {
     private static NetexEntitiesIndex index;
 
     @BeforeAll

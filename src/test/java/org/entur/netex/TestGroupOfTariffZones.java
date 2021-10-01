@@ -10,7 +10,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.util.Collection;
 
-public class TestGroupOfTariffZones {
+class TestGroupOfTariffZones {
     private static NetexEntitiesIndex index;
 
     @BeforeAll
