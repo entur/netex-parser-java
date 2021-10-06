@@ -43,6 +43,10 @@ public class NetexVersionHelper {
         return list.stream().max(comparingVersion()).orElse(null);
     }
 
+    public static <T extends EntityInVersionStructure> T versionOfElementIn(Collection<T> list, String version) {
+        return list.stream().filter(e -> e.getVersion().equals(version)).findFirst().orElse(null);
+    }
+
     /**
      * Return a comparator to compare {@link EntityInVersionStructure} elements by <b>version</b>.
      */

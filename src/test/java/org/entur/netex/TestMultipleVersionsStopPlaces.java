@@ -39,7 +39,7 @@ class TestMultipleVersionsStopPlaces {
 
     @Test
     void testGetStopPlaceWithVersion() {
-        StopPlace stopPlace = index.getStopPlaceIndex().getVersion("NSR:StopPlace:5543", 1);
+        StopPlace stopPlace = index.getStopPlaceIndex().getVersion("NSR:StopPlace:5543", "1");
         Assertions.assertEquals(1, Integer.parseInt(stopPlace.getVersion()));
     }
 }

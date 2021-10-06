@@ -10,6 +10,7 @@ import java.util.Collection;
 import java.util.Map;
 
 import static org.entur.netex.support.NetexVersionHelper.latestVersionedElementIn;
+import static org.entur.netex.support.NetexVersionHelper.versionOfElementIn;
 
 public class VersionedNetexEntityIndexImpl<V extends EntityInVersionStructure> implements VersionedNetexEntityIndex<V> {
     private final Multimap<String,V> map  = Multimaps.synchronizedListMultimap(ArrayListMultimap.create());
@@ -20,9 +21,8 @@ public class VersionedNetexEntityIndexImpl<V extends EntityInVersionStructure> i
     }
 
     @Override
-    public V getVersion(String id, int version) {
-        Collection<V> entities = map.get(id);
-        return entities.stream().filter(e -> Integer.parseInt(e.getVersion()) == version).findFirst().orElse(null);
+    public V getVersion(String id, String version) {
+        return versionOfElementIn(map.get(id), version);
     }
 
     @Override
