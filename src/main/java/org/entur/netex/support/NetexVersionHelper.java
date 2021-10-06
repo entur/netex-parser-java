@@ -33,7 +33,7 @@ public class NetexVersionHelper {
      */
     public static <T extends EntityInVersionStructure> T latestVersionedElementIn(Collection<T> list) {
         if (list.size() == 1) {
-            return list.stream().findFirst().get();
+            return list.iterator().next();
         }
         return list.stream().max(comparingVersion()).orElse(null);
     }
