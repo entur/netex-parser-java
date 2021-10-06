@@ -20,6 +20,12 @@ public class VersionedNetexEntityIndexImpl<V extends EntityInVersionStructure> i
     }
 
     @Override
+    public V getVersion(String id, int version) {
+        Collection<V> entities = map.get(id);
+        return entities.stream().filter(e -> Integer.parseInt(e.getVersion()) == version).findFirst().orElse(null);
+    }
+
+    @Override
     public Collection<V> getAllVersions(String id) {
         return map.get(id);
     }
