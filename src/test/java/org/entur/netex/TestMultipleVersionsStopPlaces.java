@@ -36,4 +36,22 @@ class TestMultipleVersionsStopPlaces {
         Map<String, Collection<StopPlace>> stopPlaces = index.getStopPlaceIndex().getAllVersions();
         Assertions.assertEquals(8, stopPlaces.get("NSR:StopPlace:5543").size());
     }
+
+    @Test
+    void testGetStopPlaceWithVersion() {
+        StopPlace stopPlace = index.getStopPlaceIndex().getVersion("NSR:StopPlace:5543", "1");
+        Assertions.assertEquals(1, Integer.parseInt(stopPlace.getVersion()));
+    }
+
+    @Test
+    void testGetLatestVersionOfVersionedStopPlace() {
+        StopPlace stopPlace = index.getStopPlaceIndex().getLatestVersion("NSR:StopPlace:5543");
+        Assertions.assertEquals(8, Integer.parseInt(stopPlace.getVersion()));
+    }
+
+    @Test
+    void testGetUnversionedStopPlace() {
+        StopPlace stopPlace = index.getStopPlaceIndex().getLatestVersion("NSR:StopPlace:9999");
+        Assertions.assertEquals("any", stopPlace.getVersion());
+    }
 }

@@ -23,16 +23,8 @@ public class NetexVersionHelper {
      * According to the <b>Norwegian Netex profile</b> the version number must be a
      * positive increasing integer. A bigger value indicate a later version.
      */
-    public static int versionOf(EntityInVersionStructure e) {
+    private static int versionOf(EntityInVersionStructure e) {
         return Integer.parseInt(e.getVersion());
-    }
-
-    /**
-     * Return the latest (maximum) version number for the given {@code list} of elements.
-     * If no elements exist in the collection {@code -1} is returned.
-     */
-    public static int latestVersionIn(Collection<? extends EntityInVersionStructure> list) {
-        return list.stream().mapToInt(NetexVersionHelper::versionOf).max().orElse(-1);
     }
 
     /**
@@ -40,13 +32,20 @@ public class NetexVersionHelper {
      * If no elements exist in the collection {@code null} is returned.
      */
     public static <T extends EntityInVersionStructure> T latestVersionedElementIn(Collection<T> list) {
+        if (list.size() == 1) {
+            return list.iterator().next();
+        }
         return list.stream().max(comparingVersion()).orElse(null);
+    }
+
+    public static <T extends EntityInVersionStructure> T versionOfElementIn(Collection<T> list, String version) {
+        return list.stream().filter(e -> e.getVersion().equals(version)).findFirst().orElse(null);
     }
 
     /**
      * Return a comparator to compare {@link EntityInVersionStructure} elements by <b>version</b>.
      */
-    public static <T extends EntityInVersionStructure> Comparator<T> comparingVersion() {
+    private static <T extends EntityInVersionStructure> Comparator<T> comparingVersion() {
         return comparingInt(NetexVersionHelper::versionOf);
     }
 }

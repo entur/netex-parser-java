@@ -13,9 +13,18 @@ public interface VersionedNetexEntityIndex<V extends EntityStructure> {
 
     /**
      * Return the element with the latest version with the given {@code id}. Returns
-     * {@code null} if not element is found.
+     * {@code null} if no element is found.
      */
     V getLatestVersion(String id);
+
+    /**
+     * Return the element with the given {@code id} and {@code version}. Returns
+     * {@code null} if no element is found
+     * @param id
+     * @param version
+     * @return
+     */
+    V getVersion(String id, String version);
 
     /**
      * Lookup all versions of element with the given {@code id}.
