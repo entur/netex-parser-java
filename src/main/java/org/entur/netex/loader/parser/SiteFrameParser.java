@@ -3,6 +3,7 @@ package org.entur.netex.loader.parser;
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Multimap;
 import org.entur.netex.index.api.NetexEntitiesIndex;
+import org.entur.netex.support.NetexVersionHelper;
 import org.rutebanken.netex.model.FlexibleStopPlace;
 import org.rutebanken.netex.model.GroupOfStopPlaces;
 import org.rutebanken.netex.model.GroupOfTariffZones;
@@ -23,6 +24,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 class SiteFrameParser extends NetexParser<Site_VersionFrameStructure> {
     private static final Logger LOG = LoggerFactory.getLogger(NetexParser.class);
@@ -49,7 +51,7 @@ class SiteFrameParser extends NetexParser<Site_VersionFrameStructure> {
 
     @Override
     public void parse(Site_VersionFrameStructure frame) {
-        if(frame.getStopPlaces() != null) {
+        if (frame.getStopPlaces() != null) {
             parseStopPlaces(frame.getStopPlaces().getStopPlace());
         }
 
@@ -65,7 +67,7 @@ class SiteFrameParser extends NetexParser<Site_VersionFrameStructure> {
             parseTariffZones(frame.getTariffZones().getTariffZone());
         }
 
-        if  (frame.getTopographicPlaces() != null) {
+        if (frame.getTopographicPlaces() != null) {
             parseTopographicPlaces(frame.getTopographicPlaces().getTopographicPlace());
         }
 
@@ -109,26 +111,26 @@ class SiteFrameParser extends NetexParser<Site_VersionFrameStructure> {
         netexIndex.getGroupOfTariffZonesIndex().putAll(groupsOfTariffZones);
     }
 
-    private void parseFlexibleStopPlaces(Collection<FlexibleStopPlace> flexibleStopPlacesList ) {
+    private void parseFlexibleStopPlaces(Collection<FlexibleStopPlace> flexibleStopPlacesList) {
         flexibleStopPlaces.addAll(flexibleStopPlacesList);
     }
 
-    private void parseGroupsOfStopPlaces(Collection<GroupOfStopPlaces> groupsOfStopPlacesList ) {
+    private void parseGroupsOfStopPlaces(Collection<GroupOfStopPlaces> groupsOfStopPlacesList) {
         groupsOfStopPlaces.addAll(groupsOfStopPlacesList);
     }
 
     private void parseStopPlaces(Collection<StopPlace> stopPlaceList) {
         for (StopPlace stopPlace : stopPlaceList) {
-                stopPlaces.add(stopPlace);
-                if (!isMultiModalStopPlace(stopPlace)) {
-                    parseQuays(stopPlace.getQuays(), stopPlace.getId());
-                }
+            stopPlaces.add(stopPlace);
+            if (!isMultiModalStopPlace(stopPlace)) {
+                parseQuays(stopPlace.getQuays(), stopPlace.getId());
+            }
         }
     }
 
     private void parseTariffZones(List<JAXBElement<? extends Zone_VersionStructure>> tariffZoneList) {
         for (JAXBElement<? extends Zone_VersionStructure> tariffZone : tariffZoneList) {
-            if(tariffZone.getValue() instanceof TariffZone) {
+            if (tariffZone.getValue() instanceof TariffZone) {
                 tariffZones.add((TariffZone) tariffZone.getValue());
             }
         }
@@ -145,22 +147,40 @@ class SiteFrameParser extends NetexParser<Site_VersionFrameStructure> {
         }
     }
 
+
+    /**
+     * Parse Quays and update the Map (quay id --> stop place id).
+     * Special case: when a Quay is moved from one StopPlace to another, Quay versions are referenced under different StopPlaces.
+     * In this case, this is the latest version of the Quay across all StopPlaces that is indexed in the map (quay id --> stop place id).
+     *
+     * @param quayRefOrQuay
+     * @param stopPlaceId
+     */
     private void parseQuays(Quays_RelStructure quayRefOrQuay, String stopPlaceId) {
-        if(quayRefOrQuay == null) return;
+        if (quayRefOrQuay == null) return;
 
         for (Object quayObject : quayRefOrQuay.getQuayRefOrQuay()) {
             if (quayObject instanceof Quay) {
                 quays.add((Quay) quayObject);
-                stopPlaceIdByQuayId.put(((Quay) quayObject).getId(), stopPlaceId);
+                String quayId = ((Quay) quayObject).getId();
+                if (!stopPlaceIdByQuayId.containsKey(quayId)) {
+                    stopPlaceIdByQuayId.put(quayId, stopPlaceId);
+                } else if (!stopPlaceIdByQuayId.get(quayId).equals(stopPlaceId)) {
+                    // the Quay has been moved to another StopPlace. The latest version of the Quay is used for updating the Map (quay id --> stop place id)
+                    Quay latestVersion = NetexVersionHelper.latestVersionedElementIn(quays.stream().filter(quay -> quay.getId().equals(quayId)).collect(Collectors.toSet()));
+                    if (quayObject.equals(latestVersion)) {
+                        stopPlaceIdByQuayId.put(quayId, stopPlaceId);
+                    }
+                }
             }
         }
     }
 
     private boolean isMultiModalStopPlace(StopPlace stopPlace) {
         return stopPlace.getKeyList() != null
-                        && stopPlace.getKeyList().getKeyValue().stream().anyMatch(
-                                keyValueStructure ->
-                                        keyValueStructure.getKey().equals("IS_PARENT_STOP_PLACE")
+                && stopPlace.getKeyList().getKeyValue().stream().anyMatch(
+                keyValueStructure ->
+                        keyValueStructure.getKey().equals("IS_PARENT_STOP_PLACE")
                                 && keyValueStructure.getValue().equals("true"));
     }
 
