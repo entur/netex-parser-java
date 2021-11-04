@@ -167,7 +167,6 @@ class SiteFrameParser extends NetexParser<Site_VersionFrameStructure> {
                     stopPlaceIdByQuayId.put(quayId, stopPlaceId);
                 } else if (!stopPlaceIdByQuayId.get(quayId).equals(stopPlaceId)) {
                     // the Quay has been moved to another StopPlace. The latest version of the Quay is used for updating the Map (quay id --> stop place id)
-                    LOG.debug("Quay {} has been moved to another StopPlace {}", quayId, stopPlaceId);
                     Quay latestVersion = NetexVersionHelper.latestVersionedElementIn(quays.get(quayId));
                     if (quayObject.equals(latestVersion)) {
                         stopPlaceIdByQuayId.put(quayId, stopPlaceId);
