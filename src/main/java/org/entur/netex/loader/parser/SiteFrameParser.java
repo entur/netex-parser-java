@@ -24,7 +24,6 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 class SiteFrameParser extends NetexParser<Site_VersionFrameStructure> {
     private static final Logger LOG = LoggerFactory.getLogger(NetexParser.class);
@@ -43,7 +42,7 @@ class SiteFrameParser extends NetexParser<Site_VersionFrameStructure> {
 
     private final Collection<Parking> parkings = new ArrayList<>();
 
-    private final Collection<Quay> quays = new ArrayList<>();
+    private final Multimap<String, Quay> quays = ArrayListMultimap.create();
 
     private final Map<String, String> stopPlaceIdByQuayId = new HashMap<>();
 
@@ -105,7 +104,7 @@ class SiteFrameParser extends NetexParser<Site_VersionFrameStructure> {
         netexIndex.getTariffZoneIndex().putAll(tariffZones);
         netexIndex.getTopographicPlaceIndex().putAll(topographicPlaces);
         netexIndex.getParkingIndex().putAll(parkings);
-        netexIndex.getQuayIndex().putAll(quays);
+        netexIndex.getQuayIndex().putAll(quays.values());
         netexIndex.getStopPlaceIdByQuayIdIndex().putAll(stopPlaceIdByQuayId);
         netexIndex.getParkingsByParentSiteRefIndex().putAll(parkingsByStopPlaceId);
         netexIndex.getGroupOfTariffZonesIndex().putAll(groupsOfTariffZones);
@@ -161,13 +160,15 @@ class SiteFrameParser extends NetexParser<Site_VersionFrameStructure> {
 
         for (Object quayObject : quayRefOrQuay.getQuayRefOrQuay()) {
             if (quayObject instanceof Quay) {
-                quays.add((Quay) quayObject);
-                String quayId = ((Quay) quayObject).getId();
+                Quay quay = (Quay) quayObject;
+                String quayId = quay.getId();
+                quays.put(quayId, quay);
                 if (!stopPlaceIdByQuayId.containsKey(quayId)) {
                     stopPlaceIdByQuayId.put(quayId, stopPlaceId);
                 } else if (!stopPlaceIdByQuayId.get(quayId).equals(stopPlaceId)) {
                     // the Quay has been moved to another StopPlace. The latest version of the Quay is used for updating the Map (quay id --> stop place id)
-                    Quay latestVersion = NetexVersionHelper.latestVersionedElementIn(quays.stream().filter(quay -> quay.getId().equals(quayId)).collect(Collectors.toSet()));
+                    LOG.debug("Quay {} has been moved to another StopPlace {}", quayId, stopPlaceId);
+                    Quay latestVersion = NetexVersionHelper.latestVersionedElementIn(quays.get(quayId));
                     if (quayObject.equals(latestVersion)) {
                         stopPlaceIdByQuayId.put(quayId, stopPlaceId);
                     }
