@@ -49,16 +49,16 @@ public class VersionedNetexEntityIndexImpl<V extends EntityInVersionStructure> i
     @Override
     public void putAll(Collection<V> entities) {
         entities.forEach(this::put);
+        populateLatestMap();
     }
 
     private void put(V v) {
         map.put(v.getId(), v);
-        latestMap.put(v.getId(), v);
     }
 
     private void populateLatestMap() {
-        latestMap = map.keySet().stream()
+        latestMap.putAll(map.keySet().stream()
                 .map(id -> latestVersionedElementIn(map.get(id)))
-                .collect(Collectors.toMap(EntityStructure::getId, e -> e));
+                .collect(Collectors.toMap(EntityStructure::getId, e -> e)));
     }
 }
