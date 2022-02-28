@@ -9,6 +9,7 @@ import org.rutebanken.netex.model.EntityStructure;
 
 import java.util.Collection;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collectors;
 
 import static org.entur.netex.support.NetexVersionHelper.latestVersionedElementIn;
@@ -16,14 +17,10 @@ import static org.entur.netex.support.NetexVersionHelper.versionOfElementIn;
 
 public class VersionedNetexEntityIndexImpl<V extends EntityInVersionStructure> implements VersionedNetexEntityIndex<V> {
     private final Multimap<String,V> map  = Multimaps.synchronizedListMultimap(ArrayListMultimap.create());
-
-    private Map<String,V> latestMap;
+    private Map<String,V> latestMap = new ConcurrentHashMap<>();
 
     @Override
     public V getLatestVersion(String id) {
-        if (latestMap == null) {
-            populateLatestMap();
-        }
         return latestMap.get(id);
     }
 
@@ -34,9 +31,6 @@ public class VersionedNetexEntityIndexImpl<V extends EntityInVersionStructure> i
 
     @Override
     public Collection<V> getLatestVersions() {
-        if (latestMap == null) {
-            populateLatestMap();
-        }
         return latestMap.values();
     }
 
@@ -59,6 +53,7 @@ public class VersionedNetexEntityIndexImpl<V extends EntityInVersionStructure> i
 
     private void put(V v) {
         map.put(v.getId(), v);
+        latestMap.put(v.getId(), v);
     }
 
     private void populateLatestMap() {
