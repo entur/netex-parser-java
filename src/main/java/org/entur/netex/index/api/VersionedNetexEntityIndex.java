@@ -26,6 +26,13 @@ public interface VersionedNetexEntityIndex<V extends EntityStructure> {
      */
     V getVersion(String id, String version);
 
+
+    /**
+     * Return the latest version of all entities
+     * @return
+     */
+    Collection<V> getLatestVersions();
+
     /**
      * Lookup all versions of element with the given {@code id}.
      *
