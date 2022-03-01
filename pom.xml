@@ -4,7 +4,7 @@
 
     <groupId>org.entur</groupId>
     <artifactId>netex-parser-java</artifactId>
-    <version>1.0.19-SNAPSHOT</version>
+    <version>1.0.19</version>
 
     <name>netex-java-parser</name>
     <description>Library for parsing NeTEx files and looking up entities in an index.</description>
@@ -38,7 +38,7 @@
         <connection>scm:git:ssh://git@github.com/entur/netex-parser-java.git</connection>
         <developerConnection>scm:git:ssh://git@github.com/entur/netex-parser-java.git</developerConnection>
         <url>https://github.com/entur/netex-parser-java/tree/master</url>
-        <tag>HEAD</tag>
+        <tag>netex-parser-java-1.0.19</tag>
     </scm>
     <distributionManagement>
         <snapshotRepository>
