@@ -74,6 +74,7 @@ class ServiceCalendarFrameParser extends NetexParser<ServiceCalendarFrame_Versio
     }
 
     private void parseDayTypes(DayTypes_RelStructure dayTypes) {
+        if(dayTypes == null) return;
         for (JAXBElement<?> dt : dayTypes.getDayTypeRefOrDayType_()) {
             parseDayType(dt);
         }
