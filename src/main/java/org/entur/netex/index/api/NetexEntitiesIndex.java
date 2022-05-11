@@ -15,6 +15,7 @@ import org.rutebanken.netex.model.GroupOfLines;
 import org.rutebanken.netex.model.GroupOfStopPlaces;
 import org.rutebanken.netex.model.GroupOfTariffZones;
 import org.rutebanken.netex.model.JourneyPattern;
+import org.rutebanken.netex.model.ServiceJourneyPattern;
 import org.rutebanken.netex.model.Line;
 import org.rutebanken.netex.model.Network;
 import org.rutebanken.netex.model.Notice;
@@ -127,6 +128,12 @@ public interface NetexEntitiesIndex {
      * @return
      */
     NetexEntityIndex<JourneyPattern> getJourneyPatternIndex();
+
+    /**
+     * Get an entity index of ServiceJourneyPattern
+     * @return
+     */
+    NetexEntityIndex<ServiceJourneyPattern> getServiceJourneyPatternIndex();
 
     /**
      * Get an entity index of FlexibleLine
