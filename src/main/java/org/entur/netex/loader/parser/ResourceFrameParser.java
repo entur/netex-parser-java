@@ -1,5 +1,6 @@
 package org.entur.netex.loader.parser;
 
+import org.apache.commons.lang3.StringUtils;
 import org.entur.netex.index.api.NetexEntitiesIndex;
 import org.rutebanken.netex.model.Authority;
 import org.rutebanken.netex.model.Branding;
@@ -8,12 +9,16 @@ import org.rutebanken.netex.model.Organisation_VersionStructure;
 import org.rutebanken.netex.model.OrganisationsInFrame_RelStructure;
 import org.rutebanken.netex.model.ResourceFrame_VersionFrameStructure;
 import org.rutebanken.netex.model.TypesOfValueInFrame_RelStructure;
+import org.rutebanken.netex.model.TypeOfProductCategory;
+import org.rutebanken.netex.model.TypeOfValue_VersionStructure;
+import org.rutebanken.netex.model.ValueSet;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.xml.bind.JAXBElement;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 class ResourceFrameParser extends NetexParser<ResourceFrame_VersionFrameStructure> {
     private static final Logger LOG = LoggerFactory.getLogger(ResourceFrameParser.class);
@@ -21,6 +26,7 @@ class ResourceFrameParser extends NetexParser<ResourceFrame_VersionFrameStructur
     private final Collection<Authority> authorities = new ArrayList<>();
     private final Collection<Operator> operators = new ArrayList<>();
     private Collection<Branding> brandings = new ArrayList<>();
+    private Collection<TypeOfProductCategory> typeOfProductCategories = new ArrayList<>();
 
     @Override
     void parse(ResourceFrame_VersionFrameStructure frame) {
@@ -52,6 +58,7 @@ class ResourceFrameParser extends NetexParser<ResourceFrame_VersionFrameStructur
         netexIndex.getAuthorityIndex().putAll(authorities);
         netexIndex.getOperatorIndex().putAll(operators);
         netexIndex.getBrandingIndex().putAll(brandings);
+        netexIndex.getTypeOfProductCategoryIndex().putAll(typeOfProductCategories);
     }
 
 
@@ -78,6 +85,18 @@ class ResourceFrameParser extends NetexParser<ResourceFrame_VersionFrameStructur
             for (JAXBElement<?> e : typesOfValue.getValueSetOrTypeOfValue()) {
                 if (e.getValue() instanceof Branding) {
                     brandings.add((Branding) e.getValue());
+                } if (e.getValue() instanceof ValueSet) {
+                    ValueSet valueSet = (ValueSet) e.getValue();
+                    if (StringUtils.equalsIgnoreCase(valueSet.getClassOfValues(), TypeOfProductCategory.class.getSimpleName())){
+                        valueSet.getValues().getTypeOfValue().forEach(el -> {
+                            TypeOfValue_VersionStructure value = el.getValue();
+                            if (value instanceof TypeOfProductCategory){
+                                typeOfProductCategories.add((TypeOfProductCategory) value);
+                            } else {
+                                informOnElementIntentionallySkipped(LOG, value);
+                            }
+                        });
+                    }
                 } else {
                     informOnElementIntentionallySkipped(LOG, e);
                 }
