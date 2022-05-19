@@ -87,7 +87,7 @@ class ResourceFrameParser extends NetexParser<ResourceFrame_VersionFrameStructur
                     brandings.add((Branding) e.getValue());
                 } if (e.getValue() instanceof ValueSet) {
                     ValueSet valueSet = (ValueSet) e.getValue();
-                    if (StringUtils.equalsIgnoreCase(valueSet.getClassOfValues(), TypeOfProductCategory.class.getSimpleName())){
+                    if (StringUtils.equalsIgnoreCase(valueSet.getNameOfClass(), TypeOfProductCategory.class.getSimpleName())){
                         valueSet.getValues().getTypeOfValue().forEach(el -> {
                             TypeOfValue_VersionStructure value = el.getValue();
                             if (value instanceof TypeOfProductCategory){
