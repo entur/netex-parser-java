@@ -39,6 +39,7 @@ import org.rutebanken.netex.model.StopPlace;
 import org.rutebanken.netex.model.TariffZone;
 import org.rutebanken.netex.model.TimetableFrame;
 import org.rutebanken.netex.model.TopographicPlace;
+import org.rutebanken.netex.model.TypeOfProductCategory;
 
 import java.util.Collection;
 import java.util.Map;
@@ -285,6 +286,12 @@ public interface NetexEntitiesIndex {
     NetexEntityIndex<FareZone> getFareZoneIndex();
 
     NetexEntityIndex<GroupOfTariffZones> getGroupOfTariffZonesIndex();
+
+    /**
+     * Get an entity index of TypeOfProductCategory
+     * @return
+     */
+    NetexEntityIndex<TypeOfProductCategory> getTypeOfProductCategoryIndex();
 
     Collection<CompositeFrame> getCompositeFrames();
     Collection<ResourceFrame> getResourceFrames();

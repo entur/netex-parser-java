@@ -44,6 +44,7 @@ import org.rutebanken.netex.model.StopPlace;
 import org.rutebanken.netex.model.TariffZone;
 import org.rutebanken.netex.model.TimetableFrame;
 import org.rutebanken.netex.model.TopographicPlace;
+import org.rutebanken.netex.model.TypeOfProductCategory;
 
 import java.util.Collection;
 import java.util.HashSet;
@@ -95,6 +96,8 @@ public class NetexEntitiesIndexImpl implements NetexEntitiesIndex {
     public final NetexEntityIndex<FareZone> fareZoneById;
     public final NetexEntityIndex<GroupOfTariffZones> groupOfTariffZonesById;
     public final Multimap<String, Parking> parkingsByParentSiteRef;
+    public final NetexEntityIndex<TypeOfProductCategory> typeOfProductCategoryById;
+
 
     // Relations between entities - The Netex XML sometimes rely on the the
     // nested structure of the XML document, rater than explicit references.
@@ -160,6 +163,7 @@ public class NetexEntitiesIndexImpl implements NetexEntitiesIndex {
         this.serviceCalendarFrames = new HashSet<>();
         this.timetableFrames = new HashSet<>();
         this.parkingsByParentSiteRef = Multimaps.synchronizedListMultimap(ArrayListMultimap.create());
+        this.typeOfProductCategoryById = new NetexEntityMapByIdImpl<>();
     }
 
     @Override
@@ -361,6 +365,9 @@ public class NetexEntitiesIndexImpl implements NetexEntitiesIndex {
     public Collection<CompositeFrame> getCompositeFrames() {
         return compositeFrames;
     }
+
+    @Override
+    public NetexEntityIndex<TypeOfProductCategory> getTypeOfProductCategoryIndex() { return typeOfProductCategoryById; }
 
     @Override
     public Collection<ResourceFrame> getResourceFrames() {
