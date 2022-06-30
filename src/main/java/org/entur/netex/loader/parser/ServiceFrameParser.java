@@ -12,6 +12,7 @@ import org.rutebanken.netex.model.FlexibleStopPlace;
 import org.rutebanken.netex.model.GroupOfLines;
 import org.rutebanken.netex.model.GroupsOfLinesInFrame_RelStructure;
 import org.rutebanken.netex.model.JourneyPattern;
+import org.rutebanken.netex.model.ServiceJourneyPattern;
 import org.rutebanken.netex.model.JourneyPatternsInFrame_RelStructure;
 import org.rutebanken.netex.model.Line;
 import org.rutebanken.netex.model.LinesInFrame_RelStructure;
@@ -56,6 +57,8 @@ class ServiceFrameParser extends NetexParser<Service_VersionFrameStructure> {
     private final Map<String, String> networkIdByGroupOfLineId = new HashMap<>();
 
     private final Collection<JourneyPattern> journeyPatterns = new ArrayList<>();
+
+    private final Collection<ServiceJourneyPattern> serviceJourneyPatterns = new ArrayList<>();
 
     private final Collection<DestinationDisplay> destinationDisplays = new ArrayList<>();
 
@@ -131,6 +134,7 @@ class ServiceFrameParser extends NetexParser<Service_VersionFrameStructure> {
         index.getDestinationDisplayIndex().putAll(destinationDisplays);
         index.getGroupOfLinesIndex().putAll(groupOfLines);
         index.getJourneyPatternIndex().putAll(journeyPatterns);
+        index.getServiceJourneyPatternIndex().putAll(serviceJourneyPatterns);
         index.getFlexibleLineIndex().putAll(flexibleLines);
         index.getLineIndex().putAll(lines);
         index.getNetworkIndex().putAll(networks);
@@ -252,8 +256,9 @@ class ServiceFrameParser extends NetexParser<Service_VersionFrameStructure> {
         for (JAXBElement<?> pattern : journeyPatterns.getJourneyPattern_OrJourneyPatternView()) {
             if (pattern.getValue() instanceof JourneyPattern) {
                 this.journeyPatterns.add((JourneyPattern) pattern.getValue());
-            }
-            else {
+            } else if (pattern.getValue() instanceof ServiceJourneyPattern){
+                this.serviceJourneyPatterns.add((ServiceJourneyPattern)pattern.getValue());
+            } else {
                 informOnElementIntentionallySkipped(LOG, pattern.getValue());
             }
         }
