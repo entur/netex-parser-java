@@ -26,7 +26,7 @@ class TestGroupOfTariffZones {
 
     @Test
     void testGetAllGroupsOfTariffZones() {
-        Collection<GroupOfTariffZones> groups = index.getGroupOfTariffZonesIndex().getAll();
+        Collection<GroupOfTariffZones> groups = index.getGroupOfTariffZonesIndex().getLatestVersions();
         Assertions.assertFalse(groups.isEmpty());
     }
 }

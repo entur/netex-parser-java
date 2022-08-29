@@ -87,13 +87,13 @@ public class NetexEntitiesIndexImpl implements NetexEntitiesIndex {
     public final Multimap<String, ServiceJourneyInterchange> serviceJourneyInterchangeByServiceJourneyRef;
     public final NetexEntityIndex<ServiceLink> serviceLinkById;
     public final VersionedNetexEntityIndex<StopPlace> stopPlaceById;
-    public final NetexEntityIndex<TariffZone> tariffZonesById;
-    public final NetexEntityIndex<TopographicPlace> topographicPlaceById;
-    public final NetexEntityIndex<Parking> parkingById;
-    public final NetexEntityIndex<ScheduledStopPoint> scheduledStopPointById;
+    public final VersionedNetexEntityIndex<TariffZone> tariffZonesById;
+    public final VersionedNetexEntityIndex<TopographicPlace> topographicPlaceById;
+    public final VersionedNetexEntityIndex<Parking> parkingById;
+    public final VersionedNetexEntityIndex<ScheduledStopPoint> scheduledStopPointById;
     public final NetexEntityIndex<RoutePoint> routePointById;
-    public final NetexEntityIndex<FareZone> fareZoneById;
-    public final NetexEntityIndex<GroupOfTariffZones> groupOfTariffZonesById;
+    public final VersionedNetexEntityIndex<FareZone> fareZoneById;
+    public final VersionedNetexEntityIndex<GroupOfTariffZones> groupOfTariffZonesById;
     public final Multimap<String, Parking> parkingsByParentSiteRef;
 
     // Relations between entities - The Netex XML sometimes rely on the the
@@ -146,13 +146,13 @@ public class NetexEntitiesIndexImpl implements NetexEntitiesIndex {
         this.serviceJourneyInterchangeByServiceJourneyRef = Multimaps.synchronizedListMultimap(ArrayListMultimap.create());
         this.serviceLinkById = new NetexEntityMapByIdImpl<>();
         this.stopPlaceById = new VersionedNetexEntityIndexImpl<>();
-        this.tariffZonesById = new NetexEntityMapByIdImpl<>();
-        this.topographicPlaceById = new NetexEntityMapByIdImpl<>();
-        this.parkingById = new NetexEntityMapByIdImpl<>();
-        this.scheduledStopPointById = new NetexEntityMapByIdImpl<>();
+        this.tariffZonesById = new VersionedNetexEntityIndexImpl<>();
+        this.topographicPlaceById = new VersionedNetexEntityIndexImpl<>();
+        this.parkingById = new VersionedNetexEntityIndexImpl<>();
+        this.scheduledStopPointById = new VersionedNetexEntityIndexImpl<>();
         this.routePointById = new NetexEntityMapByIdImpl<>();
-        this.fareZoneById = new NetexEntityMapByIdImpl<>();
-        this.groupOfTariffZonesById = new NetexEntityMapByIdImpl<>();
+        this.fareZoneById = new VersionedNetexEntityIndexImpl<>();
+        this.groupOfTariffZonesById = new VersionedNetexEntityIndexImpl<>();
         this.compositeFrames = new HashSet<>();
         this.siteFrames = new HashSet<>();
         this.resourceFrames = new HashSet<>();
@@ -323,22 +323,22 @@ public class NetexEntitiesIndexImpl implements NetexEntitiesIndex {
     }
 
     @Override
-    public NetexEntityIndex<TariffZone> getTariffZoneIndex() {
+    public VersionedNetexEntityIndex<TariffZone> getTariffZoneIndex() {
         return tariffZonesById;
     }
 
     @Override
-    public NetexEntityIndex<TopographicPlace> getTopographicPlaceIndex() {
+    public VersionedNetexEntityIndex<TopographicPlace> getTopographicPlaceIndex() {
         return topographicPlaceById;
     }
 
     @Override
-    public NetexEntityIndex<Parking> getParkingIndex() {
+    public VersionedNetexEntityIndex<Parking> getParkingIndex() {
         return parkingById;
     }
 
     @Override
-    public NetexEntityIndex<ScheduledStopPoint> getScheduledStopPointIndex() {
+    public VersionedNetexEntityIndex<ScheduledStopPoint> getScheduledStopPointIndex() {
         return scheduledStopPointById;
     }
 
@@ -348,12 +348,12 @@ public class NetexEntitiesIndexImpl implements NetexEntitiesIndex {
     }
 
     @Override
-    public NetexEntityIndex<FareZone> getFareZoneIndex() {
+    public VersionedNetexEntityIndex<FareZone> getFareZoneIndex() {
         return fareZoneById;
     }
 
     @Override
-    public NetexEntityIndex<GroupOfTariffZones> getGroupOfTariffZonesIndex() {
+    public VersionedNetexEntityIndex<GroupOfTariffZones> getGroupOfTariffZonesIndex() {
         return groupOfTariffZonesById;
     }
 
