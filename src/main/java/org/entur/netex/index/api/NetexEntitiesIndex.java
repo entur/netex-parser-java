@@ -252,19 +252,19 @@ public interface NetexEntitiesIndex {
      * Get an entity index of TopographicPlace
      * @return
      */
-    NetexEntityIndex<TopographicPlace> getTopographicPlaceIndex();
+    VersionedNetexEntityIndex<TopographicPlace> getTopographicPlaceIndex();
 
     /**
      * Get an entity index of Parking
      * @return
      */
-    NetexEntityIndex<Parking> getParkingIndex();
+    VersionedNetexEntityIndex<Parking> getParkingIndex();
 
     /**
      * Get an entity index of ScheduledStopPoint
      * @return
      */
-    NetexEntityIndex<ScheduledStopPoint> getScheduledStopPointIndex();
+    VersionedNetexEntityIndex<ScheduledStopPoint> getScheduledStopPointIndex();
 
     /**
      * Get an entity index of RoutePoint
@@ -284,7 +284,7 @@ public interface NetexEntitiesIndex {
      */
     VersionedNetexEntityIndex<FareZone> getFareZoneIndex();
 
-    NetexEntityIndex<GroupOfTariffZones> getGroupOfTariffZonesIndex();
+    VersionedNetexEntityIndex<GroupOfTariffZones> getGroupOfTariffZonesIndex();
 
     Collection<CompositeFrame> getCompositeFrames();
     Collection<ResourceFrame> getResourceFrames();

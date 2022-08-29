@@ -62,26 +62,26 @@ class TestStopPlacesExport {
 
     @Test
     void testGetTopographicPlace() {
-        TopographicPlace topographicPlace = index.getTopographicPlaceIndex().get("KVE:TopographicPlace:50");
+        TopographicPlace topographicPlace = index.getTopographicPlaceIndex().getLatestVersion("KVE:TopographicPlace:50");
         Assertions.assertEquals("Trøndelag", topographicPlace.getDescriptor().getName().getValue());
         Assertions.assertEquals("no", topographicPlace.getCountryRef().getRef().value());
     }
 
     @Test
     void testGetParking() {
-        Parking parking = index.getParkingIndex().get("NSR:Parking:1");
+        Parking parking = index.getParkingIndex().getLatestVersion("NSR:Parking:1");
         Assertions.assertEquals("Drammen", parking.getName().getValue());
     }
 
     @Test
     void testGetScheduledStopPoint() {
-        ScheduledStopPoint scheduledStopPoint = index.getScheduledStopPointIndex().get("NSR:ScheduledStopPoint:S5");
+        ScheduledStopPoint scheduledStopPoint = index.getScheduledStopPointIndex().getLatestVersion("NSR:ScheduledStopPoint:S5");
         Assertions.assertEquals("Gudå", scheduledStopPoint.getName().getValue());
     }
 
     @Test
     void testGetPassengerStopAssignment() {
-        ScheduledStopPoint scheduledStopPoint = index.getScheduledStopPointIndex().get("NSR:ScheduledStopPoint:S5");
+        ScheduledStopPoint scheduledStopPoint = index.getScheduledStopPointIndex().getLatestVersion("NSR:ScheduledStopPoint:S5");
         Collection<PassengerStopAssignment> passengerStopAssignments = index.getPassengerStopAssignmentsByStopPointRefIndex().get(scheduledStopPoint.getId());
 
         Assertions.assertEquals(1, passengerStopAssignments.size());
