@@ -246,7 +246,7 @@ public interface NetexEntitiesIndex {
      * Get an entity index of TariffZone
      * @return
      */
-    NetexEntityIndex<TariffZone> getTariffZoneIndex();
+    VersionedNetexEntityIndex<TariffZone> getTariffZoneIndex();
 
     /**
      * Get an entity index of TopographicPlace
@@ -282,7 +282,7 @@ public interface NetexEntitiesIndex {
      * Get an entity index of FareZone
      * @return
      */
-    NetexEntityIndex<FareZone> getFareZoneIndex();
+    VersionedNetexEntityIndex<FareZone> getFareZoneIndex();
 
     NetexEntityIndex<GroupOfTariffZones> getGroupOfTariffZonesIndex();
 

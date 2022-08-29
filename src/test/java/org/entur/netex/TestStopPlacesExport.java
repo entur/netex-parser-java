@@ -56,7 +56,7 @@ class TestStopPlacesExport {
 
     @Test
     void testGetTariffZone() {
-        TariffZone tariffZone = index.getTariffZoneIndex().get("MOR:TariffZone:108");
+        TariffZone tariffZone = index.getTariffZoneIndex().getLatestVersion("MOR:TariffZone:108");
         Assertions.assertEquals("Standal", tariffZone.getName().getValue());
     }
 
@@ -89,7 +89,7 @@ class TestStopPlacesExport {
 
     @Test
     void testGetFareZone() {
-        FareZone fareZone = index.getFareZoneIndex().get("AKT:FareZone:27");
+        FareZone fareZone = index.getFareZoneIndex().getLatestVersion("AKT:FareZone:27");
         Assertions.assertEquals("Kviteseid", fareZone.getName().getValue());
     }
 
