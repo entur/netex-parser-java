@@ -40,6 +40,7 @@ import org.rutebanken.netex.model.TariffZone;
 import org.rutebanken.netex.model.TimetableFrame;
 import org.rutebanken.netex.model.TopographicPlace;
 
+import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.Map;
 
@@ -293,5 +294,6 @@ public interface NetexEntitiesIndex {
     Collection<ServiceCalendarFrame> getServiceCalendarFrames();
     Collection<TimetableFrame> getTimetableFrames();
 
-
+    LocalDateTime getPublicationTimestamp();
+    void setPublicationTimestamp(LocalDateTime publicationTimestamp);
 }

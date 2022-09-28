@@ -14,6 +14,7 @@ import org.rutebanken.netex.model.StopPlace;
 import org.rutebanken.netex.model.TariffZone;
 import org.rutebanken.netex.model.TopographicPlace;
 
+import java.time.LocalDateTime;
 import java.util.Collection;
 
 class TestStopPlacesExport {
@@ -27,6 +28,11 @@ class TestStopPlacesExport {
         } catch (Exception e) {
             Assertions.fail(e.getMessage(), e);
         }
+    }
+
+    @Test
+    void testPublicationTimestamp() {
+        Assertions.assertEquals(LocalDateTime.parse("2021-05-04T03:24:52.46"), index.getPublicationTimestamp());
     }
 
     @Test

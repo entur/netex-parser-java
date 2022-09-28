@@ -45,6 +45,7 @@ import org.rutebanken.netex.model.TariffZone;
 import org.rutebanken.netex.model.TimetableFrame;
 import org.rutebanken.netex.model.TopographicPlace;
 
+import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Map;
@@ -109,6 +110,8 @@ public class NetexEntitiesIndexImpl implements NetexEntitiesIndex {
     public final Collection<ServiceFrame> serviceFrames;
     public final Collection<ServiceCalendarFrame> serviceCalendarFrames;
     public final Collection<TimetableFrame> timetableFrames;
+
+    private LocalDateTime publicationTimestamp;
 
     /**
      * Create a root node.
@@ -385,6 +388,16 @@ public class NetexEntitiesIndexImpl implements NetexEntitiesIndex {
     @Override
     public Collection<TimetableFrame> getTimetableFrames() {
         return timetableFrames;
+    }
+
+    @Override
+    public LocalDateTime getPublicationTimestamp() {
+        return publicationTimestamp;
+    }
+
+    @Override
+    public void setPublicationTimestamp(LocalDateTime publicationTimestamp) {
+        this.publicationTimestamp = publicationTimestamp;
     }
 
     @Override
