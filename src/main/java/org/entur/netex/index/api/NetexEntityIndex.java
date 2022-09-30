@@ -25,8 +25,20 @@ public interface NetexEntityIndex<V extends EntityStructure> {
     Collection<V> getAll();
 
     /**
+     * Put an entity into the collection
+     * @param entity
+     */
+    void put(String id, V entity);
+
+    /**
      * Put all entities into the collection
      * @param entities
      */
     void putAll(Collection<V> entities);
+
+    /**
+     * Remove an entity from the index given its id
+     * @param id
+     */
+    void remove(String id);
 }

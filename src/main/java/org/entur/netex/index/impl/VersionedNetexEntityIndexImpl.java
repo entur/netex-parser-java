@@ -47,8 +47,20 @@ public class VersionedNetexEntityIndexImpl<V extends EntityInVersionStructure> i
     }
 
     @Override
+    public void put(String id, Collection<V> entities) {
+        map.replaceValues(id, entities);
+        populateLatestMap();
+    }
+
+    @Override
     public void putAll(Collection<V> entities) {
         entities.forEach(this::put);
+        populateLatestMap();
+    }
+
+    @Override
+    public void remove(String id) {
+        map.removeAll(id);
         populateLatestMap();
     }
 

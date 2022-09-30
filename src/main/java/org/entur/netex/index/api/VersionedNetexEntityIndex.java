@@ -47,8 +47,23 @@ public interface VersionedNetexEntityIndex<V extends EntityStructure> {
     Map<String, Collection<V>> getAllVersions();
 
     /**
+     * Put all versions of an entity into the index.
+     * If the entity already exists in the index, all versions
+     * will be replaced.
+     *
+     * @param id
+     * @param entities
+     */
+    void put(String id, Collection<V> entities);
+
+    /**
      * Put all entities into the collection
      * @param entities
      */
     void putAll(Collection<V> entities);
+
+    /**
+     * Remove all versions of an entity from the index given its id
+     */
+    void remove(String id);
 }

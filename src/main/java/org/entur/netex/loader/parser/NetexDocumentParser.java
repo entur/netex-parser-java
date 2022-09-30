@@ -44,6 +44,7 @@ public class NetexDocumentParser {
 
     /** Top level parse method - parses the document. */
     private void parse(PublicationDeliveryStructure doc) {
+        netexIndex.setPublicationTimestamp(doc.getPublicationTimestamp());
         parseFrameList(doc.getDataObjects().getCompositeFrameOrCommonFrame());
     }
 

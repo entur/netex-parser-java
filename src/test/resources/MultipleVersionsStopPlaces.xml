@@ -289,7 +289,7 @@
                         </Quay>
                     </quays>
                 </StopPlace>
-                <StopPlace created="2017-06-19T19:18:57.495" changed="2019-12-18T09:59:13.806" version="any" id="NSR:StopPlace:9999">
+                <StopPlace created="2017-06-19T19:18:57.495" changed="2019-12-18T09:59:13.806" version="1" id="NSR:StopPlace:9999">
                     <ValidBetween>
                         <FromDate>2019-12-18T09:59:11</FromDate>
                         <ToDate>2019-12-18T09:59:45.999</ToDate>

@@ -21,8 +21,18 @@ public class NetexEntityMapByIdImpl<V extends EntityStructure> implements NetexE
     }
 
     @Override
+    public void put(String id, V entity) {
+        map.put(id, entity);
+    }
+
+    @Override
     public void putAll(Collection<V> entities) {
         entities.forEach(this::add);
+    }
+
+    @Override
+    public void remove(String id) {
+        map.remove(id);
     }
 
     public void add(V entity) {
