@@ -69,6 +69,7 @@ public class VersionedNetexEntityIndexImpl<V extends EntityInVersionStructure> i
     }
 
     private void populateLatestMap() {
+        latestMap.clear();
         latestMap.putAll(map.keySet().stream()
                 .map(id -> latestVersionedElementIn(map.get(id)))
                 .collect(Collectors.toMap(EntityStructure::getId, e -> e)));
