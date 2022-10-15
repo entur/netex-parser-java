@@ -58,6 +58,8 @@ public interface VersionedNetexEntityIndex<V extends EntityStructure> {
 
     /**
      * Put all entities into the collection
+     * If an entity already exists in the index, all versions
+     * will be replaced.
      * @param entities
      */
     void putAll(Collection<V> entities);

@@ -54,7 +54,9 @@ public class VersionedNetexEntityIndexImpl<V extends EntityInVersionStructure> i
 
     @Override
     public void putAll(Collection<V> entities) {
-        entities.forEach(this::put);
+        entities.stream()
+                .collect(Collectors.groupingBy(V::getId))
+                .forEach(map::replaceValues);
         populateLatestMap();
     }
 
@@ -62,10 +64,6 @@ public class VersionedNetexEntityIndexImpl<V extends EntityInVersionStructure> i
     public void remove(String id) {
         map.removeAll(id);
         populateLatestMap();
-    }
-
-    private void put(V v) {
-        map.put(v.getId(), v);
     }
 
     private void populateLatestMap() {

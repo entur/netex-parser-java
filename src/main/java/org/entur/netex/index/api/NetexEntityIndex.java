@@ -26,12 +26,16 @@ public interface NetexEntityIndex<V extends EntityStructure> {
 
     /**
      * Put an entity into the collection
+     * If the entity already exists in the index, all versions
+     * will be replaced.
      * @param entity
      */
     void put(String id, V entity);
 
     /**
      * Put all entities into the collection
+     * If an entity already exists in the index, all versions
+     * will be replaced.
      * @param entities
      */
     void putAll(Collection<V> entities);
