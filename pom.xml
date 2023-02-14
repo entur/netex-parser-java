@@ -71,6 +71,7 @@
         <maven-site-plugin.version>3.12.1</maven-site-plugin.version>
         <maven-resources-plugin.version>3.3.0</maven-resources-plugin.version>
         <maven-deploy-plugin.version>2.8.2</maven-deploy-plugin.version>
+        <dependency-check-maven.version>8.0.2</dependency-check-maven.version>
 
         <jacoco-maven-plugin.version>0.8.8</jacoco-maven-plugin.version>
         <!-- empty argLine property, the value is set up by Jacoco during unit tests execution -->
@@ -273,6 +274,17 @@
                         </configuration>
                     </execution>
                 </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.owasp</groupId>
+                <artifactId>dependency-check-maven</artifactId>
+                <version>${dependency-check-maven.version}</version>
+                <configuration>
+                    <failBuildOnCVSS>9</failBuildOnCVSS>
+                    <failOnError>false</failOnError>
+                    <assemblyAnalyzerEnabled>false</assemblyAnalyzerEnabled>
+                    <ossindexAnalyzerEnabled>false</ossindexAnalyzerEnabled>
+                </configuration>
             </plugin>
         </plugins>
     </build>
