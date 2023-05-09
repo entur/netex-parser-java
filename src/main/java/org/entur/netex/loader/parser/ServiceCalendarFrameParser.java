@@ -28,7 +28,7 @@ class ServiceCalendarFrameParser extends NetexParser<ServiceCalendarFrame_Versio
     private static final Logger LOG = LoggerFactory.getLogger(ServiceCalendarFrameParser.class);
 
     private final Collection<DayType> dayTypes = new ArrayList<>();
-    private final Collection<OperatingPeriod> operatingPeriods = new ArrayList<>();
+    private final Collection<OperatingPeriod_VersionStructure> operatingPeriods = new ArrayList<>();
     private final Collection<OperatingDay> operatingDays = new ArrayList<>();
     private final Multimap<String, DayTypeAssignment> dayTypeAssignmentByDayTypeId = ArrayListMultimap.create();
 
@@ -89,9 +89,7 @@ class ServiceCalendarFrameParser extends NetexParser<ServiceCalendarFrame_Versio
     private void parseOperatingPeriods(OperatingPeriodsInFrame_RelStructure element) {
         if(element == null) { return; }
 
-        for (OperatingPeriod_VersionStructure p : element.getOperatingPeriodOrUicOperatingPeriod()) {
-            operatingPeriods.add((OperatingPeriod) p);
-        }
+        operatingPeriods.addAll(element.getOperatingPeriodOrUicOperatingPeriod());
     }
 
     private void parseOperatingDays(OperatingDaysInFrame_RelStructure element) {
