@@ -17,7 +17,7 @@ import static org.entur.netex.support.NetexVersionHelper.versionOfElementIn;
 
 public class VersionedNetexEntityIndexImpl<V extends EntityInVersionStructure> implements VersionedNetexEntityIndex<V> {
     private final Multimap<String,V> map  = Multimaps.synchronizedListMultimap(ArrayListMultimap.create());
-    private Map<String,V> latestMap = new ConcurrentHashMap<>();
+    private final Map<String,V> latestMap = new ConcurrentHashMap<>();
 
     @Override
     public V getLatestVersion(String id) {
@@ -49,7 +49,7 @@ public class VersionedNetexEntityIndexImpl<V extends EntityInVersionStructure> i
     @Override
     public void put(String id, Collection<V> entities) {
         map.replaceValues(id, entities);
-        populateLatestMap();
+        latestMap.put(id, latestVersionedElementIn(entities));
     }
 
     @Override
@@ -63,13 +63,15 @@ public class VersionedNetexEntityIndexImpl<V extends EntityInVersionStructure> i
     @Override
     public void remove(String id) {
         map.removeAll(id);
-        populateLatestMap();
+        latestMap.remove(id);
     }
 
     private void populateLatestMap() {
-        latestMap.clear();
-        latestMap.putAll(map.keySet().stream()
-                .map(id -> latestVersionedElementIn(map.get(id)))
-                .collect(Collectors.toMap(EntityStructure::getId, e -> e)));
+        synchronized (latestMap) {
+            latestMap.clear();
+            latestMap.putAll(map.keySet().stream()
+                    .map(id -> latestVersionedElementIn(map.get(id)))
+                    .collect(Collectors.toMap(EntityStructure::getId, e -> e)));
+        }
     }
 }
