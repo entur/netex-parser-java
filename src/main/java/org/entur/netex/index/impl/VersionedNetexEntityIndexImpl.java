@@ -56,8 +56,7 @@ public class VersionedNetexEntityIndexImpl<V extends EntityInVersionStructure> i
     public void putAll(Collection<V> entities) {
         entities.stream()
                 .collect(Collectors.groupingBy(V::getId))
-                .forEach(map::replaceValues);
-        populateLatestMap();
+                .forEach(this::replaceValues);
     }
 
     @Override
@@ -66,12 +65,8 @@ public class VersionedNetexEntityIndexImpl<V extends EntityInVersionStructure> i
         latestMap.remove(id);
     }
 
-    private void populateLatestMap() {
-        synchronized (latestMap) {
-            latestMap.clear();
-            latestMap.putAll(map.keySet().stream()
-                    .map(id -> latestVersionedElementIn(map.get(id)))
-                    .collect(Collectors.toMap(EntityStructure::getId, e -> e)));
-        }
+    private void replaceValues(String id, Collection<V> newValues) {
+        map.replaceValues(id, newValues);
+        latestMap.put(id, latestVersionedElementIn(newValues));
     }
 }
