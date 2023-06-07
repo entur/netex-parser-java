@@ -5,7 +5,6 @@ import com.google.common.collect.Multimap;
 import com.google.common.collect.Multimaps;
 import org.entur.netex.index.api.VersionedNetexEntityIndex;
 import org.rutebanken.netex.model.EntityInVersionStructure;
-import org.rutebanken.netex.model.EntityStructure;
 
 import java.util.Collection;
 import java.util.Map;
