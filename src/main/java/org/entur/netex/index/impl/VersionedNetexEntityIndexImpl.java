@@ -5,8 +5,10 @@ import com.google.common.collect.Multimap;
 import com.google.common.collect.Multimaps;
 import org.entur.netex.index.api.VersionedNetexEntityIndex;
 import org.rutebanken.netex.model.EntityInVersionStructure;
+import org.rutebanken.netex.model.EntityStructure;
 
 import java.util.Collection;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collectors;
@@ -53,19 +55,19 @@ public class VersionedNetexEntityIndexImpl<V extends EntityInVersionStructure> i
 
     @Override
     public void putAll(Collection<V> entities) {
-        entities.stream()
-                .collect(Collectors.groupingBy(V::getId))
-                .forEach(this::replaceValues);
+        Map<String, List<V>> entityMap = entities.stream()
+                .collect(Collectors.groupingBy(V::getId));
+
+        entityMap.forEach(map::replaceValues);
+
+        latestMap.putAll(entityMap.keySet().stream()
+                .map(id -> latestVersionedElementIn(map.get(id)))
+                .collect(Collectors.toMap(EntityStructure::getId, e -> e)));
     }
 
     @Override
     public void remove(String id) {
         map.removeAll(id);
         latestMap.remove(id);
-    }
-
-    private void replaceValues(String id, Collection<V> newValues) {
-        map.replaceValues(id, newValues);
-        latestMap.put(id, latestVersionedElementIn(newValues));
     }
 }
