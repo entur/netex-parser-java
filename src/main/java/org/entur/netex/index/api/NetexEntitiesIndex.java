@@ -275,6 +275,10 @@ public interface NetexEntitiesIndex {
      */
     NetexEntityIndex<RoutePoint> getRoutePointIndex();
 
+    /**
+     * Get an entity index of Block
+     * @return
+     */
     NetexEntityIndex<Block> getBlockIndex();
 
     /**
@@ -296,9 +300,7 @@ public interface NetexEntitiesIndex {
     Collection<SiteFrame> getSiteFrames();
     Collection<ServiceFrame> getServiceFrames();
     Collection<ServiceCalendarFrame> getServiceCalendarFrames();
-
     Collection<VehicleScheduleFrame> getVehicleScheduleFrames();
-
     Collection<TimetableFrame> getTimetableFrames();
 
     LocalDateTime getPublicationTimestamp();
