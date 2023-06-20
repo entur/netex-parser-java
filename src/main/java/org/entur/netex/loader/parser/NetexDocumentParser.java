@@ -1,5 +1,10 @@
 package org.entur.netex.loader.parser;
 
+import java.util.Collection;
+import java.util.List;
+
+import javax.xml.bind.JAXBElement;
+
 import org.entur.netex.index.api.NetexEntitiesIndex;
 import org.rutebanken.netex.model.Common_VersionFrameStructure;
 import org.rutebanken.netex.model.CompositeFrame;
@@ -12,6 +17,7 @@ import org.rutebanken.netex.model.ServiceCalendarFrame;
 import org.rutebanken.netex.model.ServiceFrame;
 import org.rutebanken.netex.model.SiteFrame;
 import org.rutebanken.netex.model.TimetableFrame;
+import org.rutebanken.netex.model.VehicleScheduleFrame;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -61,7 +67,10 @@ public class NetexDocumentParser {
         } else if(value instanceof ServiceCalendarFrame) {
             netexIndex.getServiceCalendarFrames().add((ServiceCalendarFrame) value);
             parse((ServiceCalendarFrame) value, new ServiceCalendarFrameParser());
-        } else if(value instanceof TimetableFrame) {
+        } else if (value instanceof VehicleScheduleFrame) {
+            netexIndex.getVehicleScheduleFrames().add((VehicleScheduleFrame) value);
+            parse((VehicleScheduleFrame) value, new VehicleScheduleFrameParser());
+        } else if (value instanceof TimetableFrame) {
             netexIndex.getTimetableFrames().add((TimetableFrame) value);
             parse((TimetableFrame) value, new TimeTableFrameParser());
         } else if(value instanceof ServiceFrame) {
