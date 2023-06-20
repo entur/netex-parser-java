@@ -71,7 +71,7 @@ public class NetexDocumentParser {
         } else if(value instanceof ServiceFrame) {
             netexIndex.getServiceFrames().add((ServiceFrame) value);
             parse((ServiceFrame) value, new ServiceFrameParser(
-                    netexIndex.getFlexibleStopPlaceIndex()
+            netexIndex.getFlexibleStopPlaceIndex()
             ));
         }  else if (value instanceof SiteFrame) {
             netexIndex.getSiteFrames().add((SiteFrame) value);

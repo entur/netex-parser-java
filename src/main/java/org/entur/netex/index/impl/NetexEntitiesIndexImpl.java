@@ -96,7 +96,6 @@ public class NetexEntitiesIndexImpl implements NetexEntitiesIndex {
     public final VersionedNetexEntityIndex<ScheduledStopPoint> scheduledStopPointById;
     public final NetexEntityIndex<RoutePoint> routePointById;
     public final NetexEntityIndex<Block> blockById;
-
     public final VersionedNetexEntityIndex<FareZone> fareZoneById;
     public final VersionedNetexEntityIndex<GroupOfTariffZones> groupOfTariffZonesById;
     public final Multimap<String, Parking> parkingsByParentSiteRef;
