@@ -1,12 +1,15 @@
 package org.entur.netex.index.impl;
 
-import com.google.common.collect.ArrayListMultimap;
-import com.google.common.collect.Multimap;
-import com.google.common.collect.Multimaps;
-import org.entur.netex.index.api.NetexEntityIndex;
+import java.time.LocalDateTime;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 import org.entur.netex.index.api.NetexEntitiesIndex;
+import org.entur.netex.index.api.NetexEntityIndex;
 import org.entur.netex.index.api.VersionedNetexEntityIndex;
 import org.rutebanken.netex.model.Authority;
+import org.rutebanken.netex.model.Block;
 import org.rutebanken.netex.model.Branding;
 import org.rutebanken.netex.model.CompositeFrame;
 import org.rutebanken.netex.model.DatedServiceJourney;
@@ -44,12 +47,11 @@ import org.rutebanken.netex.model.StopPlace;
 import org.rutebanken.netex.model.TariffZone;
 import org.rutebanken.netex.model.TimetableFrame;
 import org.rutebanken.netex.model.TopographicPlace;
+import org.rutebanken.netex.model.VehicleScheduleFrame;
 
-import java.time.LocalDateTime;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
+import com.google.common.collect.ArrayListMultimap;
+import com.google.common.collect.Multimap;
+import com.google.common.collect.Multimaps;
 
 /**
  *
@@ -93,6 +95,8 @@ public class NetexEntitiesIndexImpl implements NetexEntitiesIndex {
     public final VersionedNetexEntityIndex<Parking> parkingById;
     public final VersionedNetexEntityIndex<ScheduledStopPoint> scheduledStopPointById;
     public final NetexEntityIndex<RoutePoint> routePointById;
+    public final NetexEntityIndex<Block> blockById;
+
     public final VersionedNetexEntityIndex<FareZone> fareZoneById;
     public final VersionedNetexEntityIndex<GroupOfTariffZones> groupOfTariffZonesById;
     public final Multimap<String, Parking> parkingsByParentSiteRef;
@@ -109,6 +113,7 @@ public class NetexEntitiesIndexImpl implements NetexEntitiesIndex {
     public final Collection<SiteFrame> siteFrames;
     public final Collection<ServiceFrame> serviceFrames;
     public final Collection<ServiceCalendarFrame> serviceCalendarFrames;
+    public final Collection<VehicleScheduleFrame> vehicleScheduleFrames;
     public final Collection<TimetableFrame> timetableFrames;
 
     private LocalDateTime publicationTimestamp;
@@ -145,7 +150,7 @@ public class NetexEntitiesIndexImpl implements NetexEntitiesIndex {
         this.stopPlaceIdByQuayId = new ConcurrentHashMap<>();
         this.routeById = new NetexEntityMapByIdImpl<>();
         this.serviceJourneyById = new NetexEntityMapByIdImpl<>();
-        this.serviceJourneyInterchangeById= new NetexEntityMapByIdImpl<>();
+        this.serviceJourneyInterchangeById = new NetexEntityMapByIdImpl<>();
         this.serviceJourneyInterchangeByServiceJourneyRef = Multimaps.synchronizedListMultimap(ArrayListMultimap.create());
         this.serviceLinkById = new NetexEntityMapByIdImpl<>();
         this.stopPlaceById = new VersionedNetexEntityIndexImpl<>();
@@ -154,6 +159,7 @@ public class NetexEntitiesIndexImpl implements NetexEntitiesIndex {
         this.parkingById = new VersionedNetexEntityIndexImpl<>();
         this.scheduledStopPointById = new VersionedNetexEntityIndexImpl<>();
         this.routePointById = new NetexEntityMapByIdImpl<>();
+        this.blockById = new NetexEntityMapByIdImpl<>();
         this.fareZoneById = new VersionedNetexEntityIndexImpl<>();
         this.groupOfTariffZonesById = new VersionedNetexEntityIndexImpl<>();
         this.compositeFrames = new HashSet<>();
@@ -161,6 +167,7 @@ public class NetexEntitiesIndexImpl implements NetexEntitiesIndex {
         this.resourceFrames = new HashSet<>();
         this.serviceFrames = new HashSet<>();
         this.serviceCalendarFrames = new HashSet<>();
+        this.vehicleScheduleFrames = new HashSet<>();
         this.timetableFrames = new HashSet<>();
         this.parkingsByParentSiteRef = Multimaps.synchronizedListMultimap(ArrayListMultimap.create());
     }
@@ -351,6 +358,11 @@ public class NetexEntitiesIndexImpl implements NetexEntitiesIndex {
     }
 
     @Override
+    public NetexEntityIndex<Block> getBlockIndex() {
+        return blockById;
+    }
+
+    @Override
     public VersionedNetexEntityIndex<FareZone> getFareZoneIndex() {
         return fareZoneById;
     }
@@ -383,6 +395,11 @@ public class NetexEntitiesIndexImpl implements NetexEntitiesIndex {
     @Override
     public Collection<ServiceCalendarFrame> getServiceCalendarFrames() {
         return serviceCalendarFrames;
+    }
+
+    @Override
+    public Collection<VehicleScheduleFrame> getVehicleScheduleFrames() {
+        return vehicleScheduleFrames;
     }
 
     @Override
