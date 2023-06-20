@@ -80,7 +80,7 @@
         <!-- Unit test frameworks versions -->
         <assertj.core.version>3.24.2</assertj.core.version>
         <junit.version>5.9.3</junit.version>
-        <slf4j.version>1.7.36</slf4j.version>
+        <slf4j.version>2.0.7</slf4j.version>
 
         <!-- GPG configuration for jar signing-->
         <gpg.executable>gpg</gpg.executable>
