@@ -14,7 +14,7 @@ import org.rutebanken.netex.model.DayTypeRefStructure;
 import org.rutebanken.netex.model.JourneyRefs_RelStructure;
 import org.rutebanken.netex.model.VehicleScheduleFrame;
 
-public class VehicleScheduleFrameTest {
+class VehicleScheduleFrameTest {
     private static NetexEntitiesIndex index;
 
     @BeforeAll
@@ -28,31 +28,13 @@ public class VehicleScheduleFrameTest {
     }
 
     @Test
-    void testAllGetBlock() {
+    void testBlocks() {
         Collection<Block> blocks = index.getBlockIndex().getAll();
-
-        List<Block> mappedBlocks = new ArrayList<>();
-        for (Block block : blocks) {
-            List<String> dayTypes = new ArrayList<>();
-            if (block.getDayTypes() != null && block.getDayTypes().getDayTypeRef() != null) {
-                for (JAXBElement<? extends DayTypeRefStructure> dayTypeRef : block.getDayTypes().getDayTypeRef()) {
-                    dayTypes.add(dayTypeRef.getValue().getValue());
-                }
-            }
-
-            List<String> journeys = new ArrayList<>();
-            if (block.getJourneys() != null && block.getJourneys().getJourneyRefOrJourneyDesignatorOrServiceDesignator() != null) {
-                for (JAXBElement<?> journeyElement : block.getJourneys().getJourneyRefOrJourneyDesignatorOrServiceDesignator()) {
-                    journeys.add(journeyElement.getValue().toString());
-                }
-            }
-            String privateCode = block.getPrivateCode() != null ? block.getPrivateCode().getValue() : "";
-        }
         Assertions.assertEquals(2, blocks.size());
     }
 
     @Test
-    void testAllJourneys() {
+    void testJourneys() {
         Collection<Block> blocks = index.getBlockIndex().getAll();
         int journeysSize = 0;
 
@@ -69,7 +51,7 @@ public class VehicleScheduleFrameTest {
     }
 
     @Test
-    void testAllDayTypes() {
+    void testDayTypes() {
         Collection<Block> blocks = index.getBlockIndex().getAll();
         int dayTypesSize = 0;
 
