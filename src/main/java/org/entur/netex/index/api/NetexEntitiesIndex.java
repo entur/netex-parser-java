@@ -1,7 +1,10 @@
 package org.entur.netex.index.api;
 
-import com.google.common.collect.Multimap;
+import java.time.LocalDateTime;
+import java.util.Collection;
+import java.util.Map;
 import org.rutebanken.netex.model.Authority;
+import org.rutebanken.netex.model.Block;
 import org.rutebanken.netex.model.Branding;
 import org.rutebanken.netex.model.CompositeFrame;
 import org.rutebanken.netex.model.DatedServiceJourney;
@@ -39,10 +42,9 @@ import org.rutebanken.netex.model.StopPlace;
 import org.rutebanken.netex.model.TariffZone;
 import org.rutebanken.netex.model.TimetableFrame;
 import org.rutebanken.netex.model.TopographicPlace;
+import org.rutebanken.netex.model.VehicleScheduleFrame;
 
-import java.time.LocalDateTime;
-import java.util.Collection;
-import java.util.Map;
+import com.google.common.collect.Multimap;
 
 /**
  * Entrypoint to the NeTEx entities index
@@ -274,6 +276,12 @@ public interface NetexEntitiesIndex {
     NetexEntityIndex<RoutePoint> getRoutePointIndex();
 
     /**
+     * Get an entity index of Block
+     * @return
+     */
+    NetexEntityIndex<Block> getBlockIndex();
+
+    /**
      * Get a Multimap of parkings by ParentSite ref
      * @return
      */
@@ -292,6 +300,7 @@ public interface NetexEntitiesIndex {
     Collection<SiteFrame> getSiteFrames();
     Collection<ServiceFrame> getServiceFrames();
     Collection<ServiceCalendarFrame> getServiceCalendarFrames();
+    Collection<VehicleScheduleFrame> getVehicleScheduleFrames();
     Collection<TimetableFrame> getTimetableFrames();
 
     LocalDateTime getPublicationTimestamp();

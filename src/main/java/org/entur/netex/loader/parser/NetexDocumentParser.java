@@ -12,6 +12,7 @@ import org.rutebanken.netex.model.ServiceCalendarFrame;
 import org.rutebanken.netex.model.ServiceFrame;
 import org.rutebanken.netex.model.SiteFrame;
 import org.rutebanken.netex.model.TimetableFrame;
+import org.rutebanken.netex.model.VehicleScheduleFrame;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -61,13 +62,16 @@ public class NetexDocumentParser {
         } else if(value instanceof ServiceCalendarFrame) {
             netexIndex.getServiceCalendarFrames().add((ServiceCalendarFrame) value);
             parse((ServiceCalendarFrame) value, new ServiceCalendarFrameParser());
-        } else if(value instanceof TimetableFrame) {
+        } else if (value instanceof VehicleScheduleFrame) {
+            netexIndex.getVehicleScheduleFrames().add((VehicleScheduleFrame) value);
+            parse((VehicleScheduleFrame) value, new VehicleScheduleFrameParser());
+        } else if (value instanceof TimetableFrame) {
             netexIndex.getTimetableFrames().add((TimetableFrame) value);
             parse((TimetableFrame) value, new TimeTableFrameParser());
         } else if(value instanceof ServiceFrame) {
             netexIndex.getServiceFrames().add((ServiceFrame) value);
             parse((ServiceFrame) value, new ServiceFrameParser(
-                netexIndex.getFlexibleStopPlaceIndex()
+            netexIndex.getFlexibleStopPlaceIndex()
             ));
         }  else if (value instanceof SiteFrame) {
             netexIndex.getSiteFrames().add((SiteFrame) value);
@@ -83,7 +87,7 @@ public class NetexDocumentParser {
             parseCompositeFrame((CompositeFrame) value);
         } else if (
                 value instanceof GeneralFrame ||
-                value instanceof InfrastructureFrame
+                        value instanceof InfrastructureFrame
         ) {
             NetexParser.informOnElementIntentionallySkipped(LOG, value);
         } else {
