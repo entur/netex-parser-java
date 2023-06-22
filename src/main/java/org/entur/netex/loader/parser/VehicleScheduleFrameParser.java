@@ -21,10 +21,12 @@ class VehicleScheduleFrameParser extends NetexParser<VehicleSchedule_VersionFram
     void parse(VehicleSchedule_VersionFrameStructure frame) {
         parseBlocks(frame.getBlocks());
     }
+
     @Override
     void setResultOnIndex(NetexEntitiesIndex netexIndex) {
         netexIndex.getBlockIndex().putAll(blocks);
     }
+
     private void parseBlock(Block_VersionStructure element) {
         if (element instanceof Block) {
             blocks.add((Block) element);
@@ -32,6 +34,7 @@ class VehicleScheduleFrameParser extends NetexParser<VehicleSchedule_VersionFram
             informOnElementIntentionallySkipped(LOG, element);
         }
     }
+
     private void parseBlocks(BlocksInFrame_RelStructure elements) {
         for (DataManagedObjectStructure e : elements.getBlockOrCompoundBlockOrTrainBlock()) {
             parseBlock((Block_VersionStructure) e);
