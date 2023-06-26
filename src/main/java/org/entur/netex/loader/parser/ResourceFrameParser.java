@@ -20,7 +20,7 @@ class ResourceFrameParser extends NetexParser<ResourceFrame_VersionFrameStructur
 
     private final Collection<Authority> authorities = new ArrayList<>();
     private final Collection<Operator> operators = new ArrayList<>();
-    private Collection<Branding> brandings = new ArrayList<>();
+    private final Collection<Branding> brandings = new ArrayList<>();
 
     @Override
     void parse(ResourceFrame_VersionFrameStructure frame) {

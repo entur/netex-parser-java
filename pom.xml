@@ -11,7 +11,7 @@
     <url>https://github.com/entur/netex-java-parser</url>
     <organization>
         <name>Entur AS</name>
-        <url>http://www.entur.org/</url>
+        <url>https://www.entur.org/</url>
     </organization>
     <licenses>
         <license>
@@ -25,13 +25,13 @@
             <name>Tom Erik Støwer</name>
             <email>tom.erik.stower@entur.org</email>
             <organization>Entur</organization>
-            <organizationUrl>http://www.entur.org</organizationUrl>
+            <organizationUrl>https://www.entur.org</organizationUrl>
         </developer>
         <developer>
             <name>Vincent Paturet</name>
             <email>vincent.paturet@entur.org</email>
             <organization>Entur</organization>
-            <organizationUrl>http://www.entur.org</organizationUrl>
+            <organizationUrl>https://www.entur.org</organizationUrl>
         </developer>
     </developers>
     <scm>

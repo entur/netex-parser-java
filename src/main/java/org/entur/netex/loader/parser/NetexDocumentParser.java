@@ -23,8 +23,7 @@ import java.util.List;
 /**
  * This is the root parser for a Netex XML Document. The parser ONLY read the document and
  * populate the index with entities. The parser is only responsible for populating the
- * index, not for validating the document, nor linking of entities or mapping the OTP
- * internal data structures.
+ * index, not for validating the document, nor linking of entities.
  */
 public class NetexDocumentParser {
     private static final Logger LOG = LoggerFactory.getLogger(NetexDocumentParser.class);
@@ -83,7 +82,7 @@ public class NetexDocumentParser {
             // We recursively parse composite frames and content until there
             // is no more nested frames - this is accepting documents witch
             // are not withing the specification, but we leave this for the
-            // document schema validation - not a OTP responsibility
+            // document schema validation
             parseCompositeFrame((CompositeFrame) value);
         } else if (
                 value instanceof GeneralFrame ||

@@ -100,7 +100,7 @@ public class NetexEntitiesIndexImpl implements NetexEntitiesIndex {
     public final VersionedNetexEntityIndex<GroupOfTariffZones> groupOfTariffZonesById;
     public final Multimap<String, Parking> parkingsByParentSiteRef;
 
-    // Relations between entities - The Netex XML sometimes rely on the the
+    // Relations between entities - The Netex XML sometimes rely on the
     // nested structure of the XML document, rater than explicit references.
     // Since we throw away the document we need to keep track of these.
 
