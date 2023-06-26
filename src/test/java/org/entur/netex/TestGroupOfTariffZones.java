@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.rutebanken.netex.model.GroupOfTariffZones;
 
 import java.io.File;
-import java.io.FileInputStream;
+import java.nio.file.Files;
 import java.util.Collection;
 
 class TestGroupOfTariffZones {
@@ -18,7 +18,7 @@ class TestGroupOfTariffZones {
         try {
             NetexParser parser = new NetexParser();
             File file = new File("src/test/resources/FareZones_NOR_TzGroupTest_2.xml");
-            index = parser.parse(new FileInputStream(file));
+            index = parser.parse(Files.newInputStream(file.toPath()));
         } catch (Exception e) {
             Assertions.fail(e.getMessage(), e);
         }

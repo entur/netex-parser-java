@@ -61,7 +61,7 @@ class ServiceCalendarFrameParser extends NetexParser<ServiceCalendarFrame_Versio
         if(serviceCalendar == null) return;
 
         parseDayTypes(serviceCalendar.getDayTypes());
-        // TODO OTP2 - What about OperatingPeriods here?
+        // TODO - What about OperatingPeriods here?
         parseDayTypeAssignments(serviceCalendar.getDayTypeAssignments());
     }
 
