@@ -16,7 +16,7 @@ import org.rutebanken.netex.model.VehicleScheduleFrame;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.xml.bind.JAXBElement;
+import jakarta.xml.bind.JAXBElement;
 import java.util.Collection;
 import java.util.List;
 
