@@ -24,7 +24,7 @@ class ResourceFrameParser extends NetexParser<ResourceFrame_VersionFrameStructur
 
     @Override
     void parse(ResourceFrame_VersionFrameStructure frame) {
-        parseOrganization(frame.getOrganisations());
+        parseOrganisations(frame.getOrganisations());
         parseTypeOfValues(frame.getTypesOfValue());
 
         // Keep list sorted alphabetically
@@ -57,13 +57,15 @@ class ResourceFrameParser extends NetexParser<ResourceFrame_VersionFrameStructur
 
     /* private methods */
 
-    private void parseOrganization(OrganisationsInFrame_RelStructure elements) {
-        for (JAXBElement<?> e : elements.getOrganisation_()) {
-            parseOrganization((Organisation_VersionStructure) e.getValue());
+    private void parseOrganisations(OrganisationsInFrame_RelStructure elements) {
+        if (elements != null) {
+            for (JAXBElement<?> e : elements.getOrganisation_()) {
+                parseOrganisation((Organisation_VersionStructure) e.getValue());
+            }
         }
     }
 
-    private void parseOrganization(Organisation_VersionStructure element) {
+    private void parseOrganisation(Organisation_VersionStructure element) {
         if (element instanceof Authority) {
             authorities.add((Authority) element);
         } else if (element instanceof Operator) {
