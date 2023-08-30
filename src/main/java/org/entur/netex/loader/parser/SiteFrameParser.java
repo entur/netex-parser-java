@@ -159,8 +159,7 @@ class SiteFrameParser extends NetexParser<Site_VersionFrameStructure> {
         if (quayRefOrQuay == null) return;
 
         for (Object quayObject : quayRefOrQuay.getQuayRefOrQuay()) {
-            if (quayObject instanceof Quay) {
-                Quay quay = (Quay) quayObject;
+            if (quayObject instanceof Quay quay) {
                 String quayId = quay.getId();
                 quays.put(quayId, quay);
                 if (!stopPlaceIdByQuayId.containsKey(quayId)) {

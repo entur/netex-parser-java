@@ -50,12 +50,12 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <jdk.version>1.8</jdk.version>
+        <jdk.version>17</jdk.version>
 
         <netex-java-model.version>2.0.14</netex-java-model.version>
         <guava.version>32.0.0-jre</guava.version>
 
-        <nexus-staging-maven-plugin.version>1.6.12</nexus-staging-maven-plugin.version>
+        <nexus-staging-maven-plugin.version>1.6.13</nexus-staging-maven-plugin.version>
         <maven-exec-plugin.version>1.6.0</maven-exec-plugin.version>
         <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
         <maven-enforcer-plugin.version>3.3.0</maven-enforcer-plugin.version>
@@ -80,7 +80,7 @@
         <!-- Unit test frameworks versions -->
         <assertj.core.version>3.24.2</assertj.core.version>
         <junit.version>5.10.0</junit.version>
-        <slf4j.version>1.7.36</slf4j.version>
+        <slf4j.version>2.0.7</slf4j.version>
 
         <!-- GPG configuration for jar signing-->
         <gpg.executable>gpg</gpg.executable>
@@ -296,7 +296,7 @@
             </activation>
 
             <properties>
-                <jdk.version>11</jdk.version>
+                <jdk.version>17</jdk.version>
                 <sonar-maven-plugin.version>3.7.0.1746</sonar-maven-plugin.version>
             </properties>
 

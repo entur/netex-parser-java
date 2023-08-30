@@ -64,10 +64,10 @@ class ResourceFrameParser extends NetexParser<ResourceFrame_VersionFrameStructur
     }
 
     private void parseOrganization(Organisation_VersionStructure element) {
-        if (element instanceof Authority) {
-            authorities.add((Authority) element);
-        } else if (element instanceof Operator) {
-            operators.add((Operator) element);
+        if (element instanceof Authority authority) {
+            authorities.add(authority);
+        } else if (element instanceof Operator operator) {
+            operators.add(operator);
         } else {
             informOnElementIntentionallySkipped(LOG, element);
         }

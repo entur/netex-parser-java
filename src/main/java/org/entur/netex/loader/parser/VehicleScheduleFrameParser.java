@@ -28,8 +28,8 @@ class VehicleScheduleFrameParser extends NetexParser<VehicleSchedule_VersionFram
     }
 
     private void parseBlock(Block_VersionStructure element) {
-        if (element instanceof Block) {
-            blocks.add((Block) element);
+        if (element instanceof Block block) {
+            blocks.add(block);
         } else {
             informOnElementIntentionallySkipped(LOG, element);
         }
