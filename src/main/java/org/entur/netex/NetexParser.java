@@ -6,7 +6,7 @@ import org.entur.netex.loader.NetexXmlParser;
 import org.entur.netex.loader.parser.NetexDocumentParser;
 import org.rutebanken.netex.model.PublicationDeliveryStructure;
 
-import javax.xml.bind.JAXBException;
+import jakarta.xml.bind.JAXBException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Enumeration;

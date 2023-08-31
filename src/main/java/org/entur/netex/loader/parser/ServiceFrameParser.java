@@ -31,7 +31,7 @@ import org.rutebanken.netex.model.StopAssignmentsInFrame_RelStructure;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.xml.bind.JAXBElement;
+import jakarta.xml.bind.JAXBElement;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -197,8 +197,7 @@ class ServiceFrameParser extends NetexParser<Service_VersionFrameStructure> {
         if (routes == null) return;
 
         for (JAXBElement<?> element : routes.getRoute_()) {
-            if (element.getValue() instanceof Route) {
-                Route route = (Route) element.getValue();
+            if (element.getValue() instanceof Route route) {
                 this.routes.add(route);
             }
         }

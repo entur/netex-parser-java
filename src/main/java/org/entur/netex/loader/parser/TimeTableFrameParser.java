@@ -86,10 +86,9 @@ class TimeTableFrameParser extends NetexParser<Timetable_VersionFrameStructure> 
 
     private void parseJourneys(JourneysInFrame_RelStructure element) {
         for (Journey_VersionStructure it : element.getVehicleJourneyOrDatedVehicleJourneyOrNormalDatedVehicleJourney()) {
-            if (it instanceof ServiceJourney) {
-                serviceJourneys.add((ServiceJourney) it);
-            } else if (it instanceof DatedServiceJourney) {
-                DatedServiceJourney datedServiceJourney = (DatedServiceJourney) it;
+            if (it instanceof ServiceJourney serviceJourney) {
+                serviceJourneys.add(serviceJourney);
+            } else if (it instanceof DatedServiceJourney datedServiceJourney) {
                 datedServiceJourneys.add(datedServiceJourney);
                 datedServiceJourney.getJourneyRef()
                         .stream()
@@ -107,8 +106,7 @@ class TimeTableFrameParser extends NetexParser<Timetable_VersionFrameStructure> 
             return;
         }
         for (Interchange_VersionStructure it : journeyInterchangesElement.getServiceJourneyPatternInterchangeOrServiceJourneyInterchange()) {
-            if (it instanceof ServiceJourneyInterchange) {
-                ServiceJourneyInterchange serviceJourneyInterchange = (ServiceJourneyInterchange) it;
+            if (it instanceof ServiceJourneyInterchange serviceJourneyInterchange) {
                 serviceJourneyInterchanges.add(serviceJourneyInterchange);
 
                 String fromRef = serviceJourneyInterchange.getFromJourneyRef().getRef();

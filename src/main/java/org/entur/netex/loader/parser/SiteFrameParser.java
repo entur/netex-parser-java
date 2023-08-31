@@ -18,7 +18,7 @@ import org.rutebanken.netex.model.Zone_VersionStructure;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.xml.bind.JAXBElement;
+import jakarta.xml.bind.JAXBElement;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -159,8 +159,7 @@ class SiteFrameParser extends NetexParser<Site_VersionFrameStructure> {
         if (quayRefOrQuay == null) return;
 
         for (Object quayObject : quayRefOrQuay.getQuayRefOrQuay()) {
-            if (quayObject instanceof Quay) {
-                Quay quay = (Quay) quayObject;
+            if (quayObject instanceof Quay quay) {
                 String quayId = quay.getId();
                 quays.put(quayId, quay);
                 if (!stopPlaceIdByQuayId.containsKey(quayId)) {

@@ -16,7 +16,7 @@ import org.rutebanken.netex.model.VehicleScheduleFrame;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.xml.bind.JAXBElement;
+import jakarta.xml.bind.JAXBElement;
 import java.util.Collection;
 import java.util.List;
 
@@ -55,35 +55,35 @@ public class NetexDocumentParser {
     }
 
     private void parseCommonFrame(Common_VersionFrameStructure value) {
-        if(value instanceof ResourceFrame) {
-            netexIndex.getResourceFrames().add((ResourceFrame) value);
+        if(value instanceof ResourceFrame resourceFrame) {
+            netexIndex.getResourceFrames().add(resourceFrame);
             parse((ResourceFrame) value, new ResourceFrameParser());
-        } else if(value instanceof ServiceCalendarFrame) {
-            netexIndex.getServiceCalendarFrames().add((ServiceCalendarFrame) value);
+        } else if(value instanceof ServiceCalendarFrame serviceCalendarFrame) {
+            netexIndex.getServiceCalendarFrames().add(serviceCalendarFrame);
             parse((ServiceCalendarFrame) value, new ServiceCalendarFrameParser());
-        } else if (value instanceof VehicleScheduleFrame) {
-            netexIndex.getVehicleScheduleFrames().add((VehicleScheduleFrame) value);
+        } else if (value instanceof VehicleScheduleFrame vehicleScheduleFrame) {
+            netexIndex.getVehicleScheduleFrames().add(vehicleScheduleFrame);
             parse((VehicleScheduleFrame) value, new VehicleScheduleFrameParser());
-        } else if (value instanceof TimetableFrame) {
-            netexIndex.getTimetableFrames().add((TimetableFrame) value);
+        } else if (value instanceof TimetableFrame timetableFrame) {
+            netexIndex.getTimetableFrames().add(timetableFrame);
             parse((TimetableFrame) value, new TimeTableFrameParser());
-        } else if(value instanceof ServiceFrame) {
-            netexIndex.getServiceFrames().add((ServiceFrame) value);
+        } else if(value instanceof ServiceFrame serviceFrame) {
+            netexIndex.getServiceFrames().add(serviceFrame);
             parse((ServiceFrame) value, new ServiceFrameParser(
             netexIndex.getFlexibleStopPlaceIndex()
             ));
-        }  else if (value instanceof SiteFrame) {
-            netexIndex.getSiteFrames().add((SiteFrame) value);
+        }  else if (value instanceof SiteFrame siteFrame) {
+            netexIndex.getSiteFrames().add(siteFrame);
             parse((SiteFrame) value, new SiteFrameParser());
-        } else if (value instanceof FareFrame) {
-            parse((FareFrame) value, new FareFrameParser());
-        } else if (value instanceof CompositeFrame) {
-            netexIndex.getCompositeFrames().add((CompositeFrame) value);
+        } else if (value instanceof FareFrame fareFrame) {
+            parse(fareFrame, new FareFrameParser());
+        } else if (value instanceof CompositeFrame compositeFrame) {
+            netexIndex.getCompositeFrames().add(compositeFrame);
             // We recursively parse composite frames and content until there
             // is no more nested frames - this is accepting documents witch
             // are not withing the specification, but we leave this for the
             // document schema validation
-            parseCompositeFrame((CompositeFrame) value);
+            parseCompositeFrame(compositeFrame);
         } else if (
                 value instanceof GeneralFrame ||
                         value instanceof InfrastructureFrame

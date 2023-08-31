@@ -11,7 +11,7 @@ import org.rutebanken.netex.model.TypesOfValueInFrame_RelStructure;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.xml.bind.JAXBElement;
+import jakarta.xml.bind.JAXBElement;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -65,11 +65,13 @@ class ResourceFrameParser extends NetexParser<ResourceFrame_VersionFrameStructur
         }
     }
 
+
     private void parseOrganisation(Organisation_VersionStructure element) {
-        if (element instanceof Authority) {
-            authorities.add((Authority) element);
-        } else if (element instanceof Operator) {
-            operators.add((Operator) element);
+        if (element instanceof Authority authority) {
+            authorities.add(authority);
+        } else if (element instanceof Operator operator) {
+            operators.add(operator);
+
         } else {
             informOnElementIntentionallySkipped(LOG, element);
         }
