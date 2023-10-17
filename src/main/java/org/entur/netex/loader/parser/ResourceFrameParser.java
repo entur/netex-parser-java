@@ -24,7 +24,9 @@ class ResourceFrameParser extends NetexParser<ResourceFrame_VersionFrameStructur
 
     @Override
     void parse(ResourceFrame_VersionFrameStructure frame) {
-        parseOrganisations(frame.getOrganisations());
+        if (frame.getOrganisations() != null) {
+            parseOrganisations(frame.getOrganisations());
+        }
         parseTypeOfValues(frame.getTypesOfValue());
 
         // Keep list sorted alphabetically
