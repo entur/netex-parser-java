@@ -48,7 +48,6 @@ class TimeTableFrameParser extends NetexParser<Timetable_VersionFrameStructure> 
 
         // Keep list sorted alphabetically
         informOnElementIntentionallySkipped(LOG, frame.getBookingTimes());
-        informOnElementIntentionallySkipped(LOG, frame.getVehicleTypeRef());
         informOnElementIntentionallySkipped(LOG, frame.getCoupledJourneys());
         informOnElementIntentionallySkipped(LOG, frame.getDefaultInterchanges());
         informOnElementIntentionallySkipped(LOG, frame.getFlexibleServiceProperties());
