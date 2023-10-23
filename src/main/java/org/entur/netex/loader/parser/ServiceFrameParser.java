@@ -160,12 +160,12 @@ class ServiceFrameParser extends NetexParser<Service_VersionFrameStructure> {
                 passengerStopAssignmentByStopPointRef.put(stopPointRef, assignment);
 
                 if (assignment.getQuayRef() != null) {
-                    String quayRef = assignment.getQuayRef().getRef();
+                    String quayRef = assignment.getQuayRef().getValue().getRef();
                     quayIdByStopPointRef.put(stopPointRef, quayRef);
                 }
 
                 if (assignment.getStopPlaceRef() != null) {
-                    String stopPlaceRef = assignment.getStopPlaceRef().getRef();
+                    String stopPlaceRef = assignment.getStopPlaceRef().getValue().getRef();
                     stopPlaceIdByStopPointRef.put(stopPointRef, stopPlaceRef);
                 }
             }
