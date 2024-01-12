@@ -90,11 +90,7 @@ class TimeTableFrameParser extends NetexParser<Timetable_VersionFrameStructure> 
             } else if (it instanceof DatedServiceJourney) {
                 DatedServiceJourney datedServiceJourney = (DatedServiceJourney) it;
                 datedServiceJourneys.add(datedServiceJourney);
-                datedServiceJourney.getJourneyRef()
-                        .stream()
-                        .filter(journeyRef -> journeyRef.getValue() instanceof ServiceJourneyRefStructure)
-                        .map(journeyRef -> journeyRef.getValue().getRef())
-                        .forEach(serviceJourneyId -> datedServiceJourneyByServiceJourneyId.put(serviceJourneyId, datedServiceJourney));
+                datedServiceJourneyByServiceJourneyId.put(datedServiceJourney.getJourneyRef().getValue().getRef(), datedServiceJourney);
             } else {
                 informOnElementIntentionallySkipped(LOG, it);
             }
