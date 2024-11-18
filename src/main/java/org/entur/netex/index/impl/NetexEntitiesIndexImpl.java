@@ -15,6 +15,7 @@ import org.rutebanken.netex.model.CompositeFrame;
 import org.rutebanken.netex.model.DatedServiceJourney;
 import org.rutebanken.netex.model.DayType;
 import org.rutebanken.netex.model.DayTypeAssignment;
+import org.rutebanken.netex.model.DeadRun;
 import org.rutebanken.netex.model.DestinationDisplay;
 import org.rutebanken.netex.model.FareZone;
 import org.rutebanken.netex.model.FlexibleLine;
@@ -62,6 +63,7 @@ public class NetexEntitiesIndexImpl implements NetexEntitiesIndex {
     public final NetexEntityIndex<Authority> authoritiesById;
     public final NetexEntityIndex<DatedServiceJourney> datedServiceJourneys;
     public final Multimap<String, DatedServiceJourney> datedServiceJourneyByServiceJourneyRefIndex;
+    private final NetexEntityIndex<DeadRun> deadRuns;
     public final NetexEntityIndex<DayType> dayTypeById;
     public final Multimap<String, DayTypeAssignment> dayTypeAssignmentByDayTypeId;
     public final Multimap<String, PassengerStopAssignment> passengerStopAssignmentByStopPointRef;
@@ -127,6 +129,7 @@ public class NetexEntitiesIndexImpl implements NetexEntitiesIndex {
         this.passengerStopAssignmentByStopPointRef = Multimaps.synchronizedListMultimap(ArrayListMultimap.create());
         this.datedServiceJourneys = new NetexEntityMapByIdImpl<>();
         this.datedServiceJourneyByServiceJourneyRefIndex = Multimaps.synchronizedListMultimap(ArrayListMultimap.create());
+        this.deadRuns = new NetexEntityMapByIdImpl<>();
         this.destinationDisplayById = new NetexEntityMapByIdImpl<>();
         this.flexibleStopPlaceById = new NetexEntityMapByIdImpl<>();
         this.groupOfLinesById = new NetexEntityMapByIdImpl<>();
@@ -209,6 +212,11 @@ public class NetexEntitiesIndexImpl implements NetexEntitiesIndex {
     @Override
     public NetexEntityIndex<DatedServiceJourney> getDatedServiceJourneyIndex() {
         return datedServiceJourneys;
+    }
+
+    @Override
+    public NetexEntityIndex<DeadRun> getDeadRunIndex() {
+        return deadRuns;
     }
 
     @Override

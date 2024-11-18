@@ -10,6 +10,7 @@ import org.rutebanken.netex.model.CompositeFrame;
 import org.rutebanken.netex.model.DatedServiceJourney;
 import org.rutebanken.netex.model.DayType;
 import org.rutebanken.netex.model.DayTypeAssignment;
+import org.rutebanken.netex.model.DeadRun;
 import org.rutebanken.netex.model.DestinationDisplay;
 import org.rutebanken.netex.model.FareZone;
 import org.rutebanken.netex.model.FlexibleLine;
@@ -99,6 +100,13 @@ public interface NetexEntitiesIndex {
      * @return
      */
     NetexEntityIndex<DatedServiceJourney> getDatedServiceJourneyIndex();
+
+    /**
+     * Get an entity index of DeadRun
+     * @return
+     */
+    NetexEntityIndex<DeadRun> getDeadRunIndex();
+
 
     /**
      * Get a Multimap of DatedServiceJourney by ServiceJourney id

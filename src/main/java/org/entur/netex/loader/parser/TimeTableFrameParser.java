@@ -4,6 +4,7 @@ import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Multimap;
 import org.entur.netex.index.api.NetexEntitiesIndex;
 import org.rutebanken.netex.model.DatedServiceJourney;
+import org.rutebanken.netex.model.DeadRun;
 import org.rutebanken.netex.model.Interchange_VersionStructure;
 import org.rutebanken.netex.model.JourneyInterchangesInFrame_RelStructure;
 import org.rutebanken.netex.model.Journey_VersionStructure;
@@ -26,6 +27,8 @@ class TimeTableFrameParser extends NetexParser<Timetable_VersionFrameStructure> 
 
     private final List<DatedServiceJourney> datedServiceJourneys = new ArrayList<>();
     private final Multimap<String, DatedServiceJourney> datedServiceJourneyByServiceJourneyId = ArrayListMultimap.create();
+
+    private final List<DeadRun> deadRuns = new ArrayList<>();
 
     private final List<ServiceJourneyInterchange> serviceJourneyInterchanges = new ArrayList<>();
     private final Multimap<String, ServiceJourneyInterchange> serviceJourneyInterchangesByServiceJourneyId = ArrayListMultimap.create();
@@ -77,6 +80,8 @@ class TimeTableFrameParser extends NetexParser<Timetable_VersionFrameStructure> 
         netexIndex.getDatedServiceJourneyIndex().putAll(datedServiceJourneys);
         netexIndex.getDatedServiceJourneyByServiceJourneyRefIndex().putAll(datedServiceJourneyByServiceJourneyId);
 
+        netexIndex.getDeadRunIndex().putAll(deadRuns);
+
         netexIndex.getServiceJourneyInterchangeIndex().putAll(serviceJourneyInterchanges);
         netexIndex.getServiceJourneyInterchangeByServiceJourneyRefIndex().putAll(serviceJourneyInterchangesByServiceJourneyId);
 
@@ -94,6 +99,8 @@ class TimeTableFrameParser extends NetexParser<Timetable_VersionFrameStructure> 
                         .filter(journeyRef -> journeyRef.getValue() instanceof ServiceJourneyRefStructure)
                         .map(journeyRef -> journeyRef.getValue().getRef())
                         .forEach(serviceJourneyId -> datedServiceJourneyByServiceJourneyId.put(serviceJourneyId, datedServiceJourney));
+            } else if (it instanceof DeadRun deadRun) {
+                deadRuns.add(deadRun);
             } else {
                 informOnElementIntentionallySkipped(LOG, it);
             }
