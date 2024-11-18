@@ -8,46 +8,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import org.entur.netex.index.api.NetexEntitiesIndex;
 import org.entur.netex.index.api.NetexEntityIndex;
 import org.entur.netex.index.api.VersionedNetexEntityIndex;
-import org.rutebanken.netex.model.Authority;
-import org.rutebanken.netex.model.Block;
-import org.rutebanken.netex.model.Branding;
-import org.rutebanken.netex.model.CompositeFrame;
-import org.rutebanken.netex.model.DatedServiceJourney;
-import org.rutebanken.netex.model.DayType;
-import org.rutebanken.netex.model.DayTypeAssignment;
-import org.rutebanken.netex.model.DestinationDisplay;
-import org.rutebanken.netex.model.FareZone;
-import org.rutebanken.netex.model.FlexibleLine;
-import org.rutebanken.netex.model.FlexibleStopPlace;
-import org.rutebanken.netex.model.GroupOfLines;
-import org.rutebanken.netex.model.GroupOfStopPlaces;
-import org.rutebanken.netex.model.GroupOfTariffZones;
-import org.rutebanken.netex.model.JourneyPattern;
-import org.rutebanken.netex.model.Line;
-import org.rutebanken.netex.model.Network;
-import org.rutebanken.netex.model.Notice;
-import org.rutebanken.netex.model.NoticeAssignment;
-import org.rutebanken.netex.model.OperatingDay;
-import org.rutebanken.netex.model.OperatingPeriod;
-import org.rutebanken.netex.model.Operator;
-import org.rutebanken.netex.model.Parking;
-import org.rutebanken.netex.model.PassengerStopAssignment;
-import org.rutebanken.netex.model.Quay;
-import org.rutebanken.netex.model.ResourceFrame;
-import org.rutebanken.netex.model.Route;
-import org.rutebanken.netex.model.RoutePoint;
-import org.rutebanken.netex.model.ScheduledStopPoint;
-import org.rutebanken.netex.model.ServiceCalendarFrame;
-import org.rutebanken.netex.model.ServiceFrame;
-import org.rutebanken.netex.model.ServiceJourney;
-import org.rutebanken.netex.model.ServiceJourneyInterchange;
-import org.rutebanken.netex.model.ServiceLink;
-import org.rutebanken.netex.model.SiteFrame;
-import org.rutebanken.netex.model.StopPlace;
-import org.rutebanken.netex.model.TariffZone;
-import org.rutebanken.netex.model.TimetableFrame;
-import org.rutebanken.netex.model.TopographicPlace;
-import org.rutebanken.netex.model.VehicleScheduleFrame;
+import org.rutebanken.netex.model.*;
 
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Multimap;
@@ -62,6 +23,7 @@ public class NetexEntitiesIndexImpl implements NetexEntitiesIndex {
     public final NetexEntityIndex<Authority> authoritiesById;
     public final NetexEntityIndex<DatedServiceJourney> datedServiceJourneys;
     public final Multimap<String, DatedServiceJourney> datedServiceJourneyByServiceJourneyRefIndex;
+    private final NetexEntityIndex<DeadRun> deadRuns;
     public final NetexEntityIndex<DayType> dayTypeById;
     public final Multimap<String, DayTypeAssignment> dayTypeAssignmentByDayTypeId;
     public final Multimap<String, PassengerStopAssignment> passengerStopAssignmentByStopPointRef;
@@ -127,6 +89,7 @@ public class NetexEntitiesIndexImpl implements NetexEntitiesIndex {
         this.passengerStopAssignmentByStopPointRef = Multimaps.synchronizedListMultimap(ArrayListMultimap.create());
         this.datedServiceJourneys = new NetexEntityMapByIdImpl<>();
         this.datedServiceJourneyByServiceJourneyRefIndex = Multimaps.synchronizedListMultimap(ArrayListMultimap.create());
+        this.deadRuns = new NetexEntityMapByIdImpl<>();
         this.destinationDisplayById = new NetexEntityMapByIdImpl<>();
         this.flexibleStopPlaceById = new NetexEntityMapByIdImpl<>();
         this.groupOfLinesById = new NetexEntityMapByIdImpl<>();
@@ -209,6 +172,11 @@ public class NetexEntitiesIndexImpl implements NetexEntitiesIndex {
     @Override
     public NetexEntityIndex<DatedServiceJourney> getDatedServiceJourneyIndex() {
         return datedServiceJourneys;
+    }
+
+    @Override
+    public NetexEntityIndex<DeadRun> getDeadRunIndex() {
+        return deadRuns;
     }
 
     @Override
