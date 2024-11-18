@@ -3,7 +3,16 @@ package org.entur.netex.loader.parser;
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Multimap;
 import org.entur.netex.index.api.NetexEntitiesIndex;
-import org.rutebanken.netex.model.*;
+import org.rutebanken.netex.model.DatedServiceJourney;
+import org.rutebanken.netex.model.DeadRun;
+import org.rutebanken.netex.model.Interchange_VersionStructure;
+import org.rutebanken.netex.model.JourneyInterchangesInFrame_RelStructure;
+import org.rutebanken.netex.model.Journey_VersionStructure;
+import org.rutebanken.netex.model.JourneysInFrame_RelStructure;
+import org.rutebanken.netex.model.ServiceJourney;
+import org.rutebanken.netex.model.ServiceJourneyInterchange;
+import org.rutebanken.netex.model.ServiceJourneyRefStructure;
+import org.rutebanken.netex.model.Timetable_VersionFrameStructure;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -90,7 +99,6 @@ class TimeTableFrameParser extends NetexParser<Timetable_VersionFrameStructure> 
                         .filter(journeyRef -> journeyRef.getValue() instanceof ServiceJourneyRefStructure)
                         .map(journeyRef -> journeyRef.getValue().getRef())
                         .forEach(serviceJourneyId -> datedServiceJourneyByServiceJourneyId.put(serviceJourneyId, datedServiceJourney));
-
             } else if (it instanceof DeadRun deadRun) {
                 deadRuns.add(deadRun);
             } else {
