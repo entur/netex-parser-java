@@ -4,7 +4,7 @@
 
     <groupId>org.entur</groupId>
     <artifactId>netex-parser-java</artifactId>
-    <version>3.1.40</version>
+    <version>3.1.41-SNAPSHOT</version>
 
     <name>netex-java-parser</name>
     <description>Library for parsing NeTEx files and looking up entities in an index.</description>
