@@ -29,6 +29,7 @@ import org.rutebanken.netex.model.RoutePointsInFrame_RelStructure;
 import org.rutebanken.netex.model.RoutesInFrame_RelStructure;
 import org.rutebanken.netex.model.ScheduledStopPoint;
 import org.rutebanken.netex.model.ScheduledStopPointsInFrame_RelStructure;
+import org.rutebanken.netex.model.ServiceJourneyPattern;
 import org.rutebanken.netex.model.ServiceLink;
 import org.rutebanken.netex.model.ServiceLinksInFrame_RelStructure;
 import org.rutebanken.netex.model.Service_VersionFrameStructure;
@@ -57,6 +58,9 @@ class ServiceFrameParser extends NetexParser<Service_VersionFrameStructure> {
   private final Map<String, String> networkIdByGroupOfLineId = new HashMap<>();
 
   private final Collection<JourneyPattern> journeyPatterns = new ArrayList<>();
+
+  private final Collection<ServiceJourneyPattern> serviceJourneyPatterns =
+    new ArrayList<>();
 
   private final Collection<DestinationDisplay> destinationDisplays =
     new ArrayList<>();
@@ -147,6 +151,7 @@ class ServiceFrameParser extends NetexParser<Service_VersionFrameStructure> {
     index.getDestinationDisplayIndex().putAll(destinationDisplays);
     index.getGroupOfLinesIndex().putAll(groupOfLines);
     index.getJourneyPatternIndex().putAll(journeyPatterns);
+    index.getServiceJourneyPatternIndex().putAll(serviceJourneyPatterns);
     index.getFlexibleLineIndex().putAll(flexibleLines);
     index.getLineIndex().putAll(lines);
     index.getNetworkIndex().putAll(networks);
@@ -297,6 +302,10 @@ class ServiceFrameParser extends NetexParser<Service_VersionFrameStructure> {
     for (JAXBElement<?> pattern : journeyPatterns.getJourneyPattern_OrJourneyPatternView()) {
       if (pattern.getValue() instanceof JourneyPattern) {
         this.journeyPatterns.add((JourneyPattern) pattern.getValue());
+      } else if (pattern.getValue() instanceof ServiceJourneyPattern) {
+        this.serviceJourneyPatterns.add(
+            (ServiceJourneyPattern) pattern.getValue()
+          );
       } else {
         informOnElementIntentionallySkipped(LOG, pattern.getValue());
       }
