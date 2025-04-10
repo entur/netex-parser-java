@@ -45,6 +45,7 @@ import org.rutebanken.netex.model.ServiceCalendarFrame;
 import org.rutebanken.netex.model.ServiceFrame;
 import org.rutebanken.netex.model.ServiceJourney;
 import org.rutebanken.netex.model.ServiceJourneyInterchange;
+import org.rutebanken.netex.model.ServiceJourneyPattern;
 import org.rutebanken.netex.model.ServiceLink;
 import org.rutebanken.netex.model.SiteFrame;
 import org.rutebanken.netex.model.StopPlace;
@@ -71,6 +72,7 @@ public class NetexEntitiesIndexImpl implements NetexEntitiesIndex {
   public final NetexEntityIndex<GroupOfLines> groupOfLinesById;
   public final NetexEntityIndex<GroupOfStopPlaces> groupOfStopPlacesById;
   public final NetexEntityIndex<JourneyPattern> journeyPatternsById;
+  public final NetexEntityIndex<ServiceJourneyPattern> serviceJourneyPatternsById;
   public final NetexEntityIndex<FlexibleLine> flexibleLineByid;
   public final NetexEntityIndex<Line> lineById;
   public final NetexEntityIndex<Network> networkById;
@@ -137,6 +139,7 @@ public class NetexEntitiesIndexImpl implements NetexEntitiesIndex {
     this.groupOfLinesById = new NetexEntityMapByIdImpl<>();
     this.groupOfStopPlacesById = new NetexEntityMapByIdImpl<>();
     this.journeyPatternsById = new NetexEntityMapByIdImpl<>();
+    this.serviceJourneyPatternsById = new NetexEntityMapByIdImpl<>();
     this.flexibleLineByid = new NetexEntityMapByIdImpl<>();
     this.lineById = new NetexEntityMapByIdImpl<>();
     this.networkById = new NetexEntityMapByIdImpl<>();
@@ -246,6 +249,11 @@ public class NetexEntitiesIndexImpl implements NetexEntitiesIndex {
   @Override
   public NetexEntityIndex<JourneyPattern> getJourneyPatternIndex() {
     return journeyPatternsById;
+  }
+
+  @Override
+  public NetexEntityIndex<ServiceJourneyPattern> getServiceJourneyPatternIndex() {
+    return serviceJourneyPatternsById;
   }
 
   @Override

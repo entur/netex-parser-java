@@ -38,6 +38,7 @@ import org.rutebanken.netex.model.ServiceCalendarFrame;
 import org.rutebanken.netex.model.ServiceFrame;
 import org.rutebanken.netex.model.ServiceJourney;
 import org.rutebanken.netex.model.ServiceJourneyInterchange;
+import org.rutebanken.netex.model.ServiceJourneyPattern;
 import org.rutebanken.netex.model.ServiceLink;
 import org.rutebanken.netex.model.SiteFrame;
 import org.rutebanken.netex.model.StopPlace;
@@ -133,6 +134,12 @@ public interface NetexEntitiesIndex {
    * @return
    */
   NetexEntityIndex<JourneyPattern> getJourneyPatternIndex();
+
+  /**
+   * Get an entity index of ServiceJourneyPattern
+   * @return
+   */
+  NetexEntityIndex<ServiceJourneyPattern> getServiceJourneyPatternIndex();
 
   /**
    * Get an entity index of FlexibleLine
