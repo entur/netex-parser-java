@@ -105,6 +105,10 @@ public class NetexDocumentParser {
     // Declare some ugly types to prevent obstructing the reading later...
     Collection<JAXBElement<? extends Common_VersionFrameStructure>> frames;
 
+    if (frame.getFrames() == null) {
+      LOG.debug("Composite frame {} has no frames, skipping", frame.getId());
+      return;
+    }
     frames = frame.getFrames().getCommonFrame();
 
     for (JAXBElement<? extends Common_VersionFrameStructure> it : frames) {
