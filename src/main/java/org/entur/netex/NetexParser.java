@@ -6,6 +6,7 @@ import java.io.InputStream;
 import java.util.Enumeration;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
+import javax.xml.stream.XMLStreamReader;
 import org.entur.netex.index.api.NetexEntitiesIndex;
 import org.entur.netex.index.impl.NetexEntitiesIndexImpl;
 import org.entur.netex.loader.NetexXmlParser;
@@ -19,6 +20,22 @@ import org.rutebanken.netex.model.PublicationDeliveryStructure;
 public class NetexParser {
 
   private final NetexXmlParser xmlParser = new NetexXmlParser();
+
+  private final XmlStreamReaderFactory xmlStreamReaderFactory;
+
+  /**
+   * Create a default NetexParser. The default implementation relies on a SAX parser.
+   */
+  public NetexParser() {
+    xmlStreamReaderFactory = null;
+  }
+
+  /**
+   * Create a NeTexParser that parses a NeTEx document through an XML stream reader (StAX).
+   */
+  public NetexParser(XmlStreamReaderFactory xmlStreamReaderFactory) {
+    this.xmlStreamReaderFactory = xmlStreamReaderFactory;
+  }
 
   /**
    * Parse a NeTEx publication delivery from one or more files in
@@ -87,7 +104,15 @@ public class NetexParser {
 
   private void load(NetexEntitiesIndex index, InputStream inputStream) {
     try {
-      PublicationDeliveryStructure doc = xmlParser.parseXmlDoc(inputStream);
+      PublicationDeliveryStructure doc;
+      if (xmlStreamReaderFactory != null) {
+        XMLStreamReader xmlReader =
+          xmlStreamReaderFactory.createXmlStreamReader(inputStream);
+        doc = xmlParser.parseXmlDoc(xmlReader);
+      } else {
+        doc = xmlParser.parseXmlDoc(inputStream);
+      }
+
       NetexDocumentParser.parseAndPopulateIndex(index, doc);
     } catch (JAXBException e) {
       throw new RuntimeException(e.getMessage(), e);

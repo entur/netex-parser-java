@@ -5,6 +5,7 @@ import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.JAXBException;
 import jakarta.xml.bind.Unmarshaller;
 import java.io.InputStream;
+import javax.xml.stream.XMLStreamReader;
 import org.rutebanken.netex.model.PublicationDeliveryStructure;
 
 /** Simple wrapper to perform typesafe xml parsing and simple error handling. */
@@ -26,6 +27,20 @@ public class NetexXmlParser {
     JAXBElement<PublicationDeliveryStructure> root =
       (JAXBElement<PublicationDeliveryStructure>) unmarshaller.unmarshal(
         stream
+      );
+
+    return root.getValue();
+  }
+
+  /**
+   * Parse an input stream and return the root document type for the given xml file (stream).
+   */
+  public PublicationDeliveryStructure parseXmlDoc(XMLStreamReader reader)
+    throws JAXBException {
+    @SuppressWarnings("unchecked")
+    JAXBElement<PublicationDeliveryStructure> root =
+      (JAXBElement<PublicationDeliveryStructure>) unmarshaller.unmarshal(
+        reader
       );
 
     return root.getValue();
