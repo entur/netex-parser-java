@@ -94,6 +94,20 @@
             <artifactId>netex-java-model</artifactId>
             <version>${netex-java-model.version}</version>
         </dependency>
+        
+        <!-- JAXB API for XML annotations -->
+        <dependency>
+            <groupId>javax.xml.bind</groupId>
+            <artifactId>jaxb-api</artifactId>
+            <version>2.3.1</version>
+        </dependency>
+        
+        <!-- Jakarta XML Binding API for newer XML annotations -->
+        <dependency>
+            <groupId>jakarta.xml.bind</groupId>
+            <artifactId>jakarta.xml.bind-api</artifactId>
+            <version>3.0.1</version>
+        </dependency>
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
