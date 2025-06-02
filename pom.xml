@@ -4,7 +4,7 @@
 
     <groupId>org.entur</groupId>
     <artifactId>netex-parser-java</artifactId>
-    <version>3.1.73-SNAPSHOT</version>
+    <version>4.0.0-SNAPSHOT</version>
 
     <name>netex-java-parser</name>
     <description>Library for parsing NeTEx files and looking up entities in an index.</description>
@@ -52,7 +52,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <jdk.version>17</jdk.version>
 
-        <netex-java-model.version>2.0.15.2</netex-java-model.version>
+        <netex-java-model.version>2.0.16-SNAPSHOT</netex-java-model.version>
         <guava.version>32.1.3-jre</guava.version>
 
         <nexus-staging-maven-plugin.version>1.6.13</nexus-staging-maven-plugin.version>
