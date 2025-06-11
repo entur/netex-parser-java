@@ -24,8 +24,8 @@ class ServiceCalendarFrameParserTest {
 
   @BeforeEach
   void setUp() {
-      this.index = new NetexEntitiesIndexImpl();
-      this.parser = new ServiceCalendarFrameParser();
+    this.index = new NetexEntitiesIndexImpl();
+    this.parser = new ServiceCalendarFrameParser();
   }
 
   @Test
