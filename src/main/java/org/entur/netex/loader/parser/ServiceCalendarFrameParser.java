@@ -66,7 +66,10 @@ class ServiceCalendarFrameParser
     if (operatingPeriodsRelStructure == null) return;
 
     for (JAXBElement<?> object : operatingPeriodsRelStructure.getOperatingPeriodRefOrOperatingPeriodOrUicOperatingPeriod()) {
-      operatingPeriods.add((OperatingPeriod) object.getValue());
+      Object value = object.getValue();
+      if (value instanceof OperatingPeriod) {
+        operatingPeriods.add((OperatingPeriod) object.getValue());
+      }
     }
   }
 
