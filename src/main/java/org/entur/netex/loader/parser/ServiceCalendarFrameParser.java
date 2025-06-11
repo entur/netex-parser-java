@@ -60,29 +60,6 @@ class ServiceCalendarFrameParser
     parseDayTypeAssignments(serviceCalendar.getDayTypeAssignments());
   }
 
-  private void parseOperatingPeriods(
-    OperatingPeriods_RelStructure operatingPeriodsRelStructure
-  ) {
-    if (operatingPeriodsRelStructure == null) return;
-
-    for (JAXBElement<?> object : operatingPeriodsRelStructure.getOperatingPeriodRefOrOperatingPeriodOrUicOperatingPeriod()) {
-      Object value = object.getValue();
-      if (value instanceof OperatingPeriod) {
-        operatingPeriods.add((OperatingPeriod) object.getValue());
-      }
-    }
-  }
-
-  private void parseOperatingDays(
-    OperatingDays_RelStructure operatingDaysRelStructure
-  ) {
-    if (operatingDaysRelStructure == null) return;
-
-    for (Object object : operatingDaysRelStructure.getOperatingDayRefOrOperatingDay()) {
-      operatingDays.add((OperatingDay) object);
-    }
-  }
-
   //List<JAXBElement<? extends DataManagedObjectStructure>>
   private void parseDayTypes(DayTypesInFrame_RelStructure element) {
     if (element == null) return;
@@ -116,11 +93,34 @@ class ServiceCalendarFrameParser
     }
   }
 
+  private void parseOperatingPeriods(
+    OperatingPeriods_RelStructure operatingPeriodsRelStructure
+  ) {
+    if (operatingPeriodsRelStructure == null) return;
+
+    for (JAXBElement<?> object : operatingPeriodsRelStructure.getOperatingPeriodRefOrOperatingPeriodOrUicOperatingPeriod()) {
+      Object value = object.getValue();
+      if (value instanceof OperatingPeriod) {
+        operatingPeriods.add((OperatingPeriod) object.getValue());
+      }
+    }
+  }
+
   private void parseOperatingDays(OperatingDaysInFrame_RelStructure element) {
     if (element == null) {
       return;
     }
     operatingDays.addAll(element.getOperatingDay());
+  }
+
+  private void parseOperatingDays(
+    OperatingDays_RelStructure operatingDaysRelStructure
+  ) {
+    if (operatingDaysRelStructure == null) return;
+
+    for (Object object : operatingDaysRelStructure.getOperatingDayRefOrOperatingDay()) {
+      operatingDays.add((OperatingDay) object);
+    }
   }
 
   private void parseDayTypeAssignments(
