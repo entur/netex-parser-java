@@ -7,19 +7,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import org.entur.netex.index.api.NetexEntitiesIndex;
-import org.rutebanken.netex.model.DayType;
-import org.rutebanken.netex.model.DayTypeAssignment;
-import org.rutebanken.netex.model.DayTypeAssignmentsInFrame_RelStructure;
-import org.rutebanken.netex.model.DayTypeAssignments_RelStructure;
-import org.rutebanken.netex.model.DayTypesInFrame_RelStructure;
-import org.rutebanken.netex.model.DayTypes_RelStructure;
-import org.rutebanken.netex.model.OperatingDay;
-import org.rutebanken.netex.model.OperatingDaysInFrame_RelStructure;
-import org.rutebanken.netex.model.OperatingPeriod;
-import org.rutebanken.netex.model.OperatingPeriod_VersionStructure;
-import org.rutebanken.netex.model.OperatingPeriodsInFrame_RelStructure;
-import org.rutebanken.netex.model.ServiceCalendar;
-import org.rutebanken.netex.model.ServiceCalendarFrame_VersionFrameStructure;
+import org.rutebanken.netex.model.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -67,8 +55,19 @@ class ServiceCalendarFrameParser
     if (serviceCalendar == null) return;
 
     parseDayTypes(serviceCalendar.getDayTypes());
+    parseOperatingDays(serviceCalendar.getOperatingDays());
     // TODO - What about OperatingPeriods here?
     parseDayTypeAssignments(serviceCalendar.getDayTypeAssignments());
+  }
+
+  private void parseOperatingDays(
+    OperatingDays_RelStructure operatingDaysRelStructure
+  ) {
+    if (operatingDaysRelStructure == null) return;
+
+    for (Object object : operatingDaysRelStructure.getOperatingDayRefOrOperatingDay()) {
+      operatingDays.add((OperatingDay) object);
+    }
   }
 
   //List<JAXBElement<? extends DataManagedObjectStructure>>
