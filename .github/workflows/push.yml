@@ -3,9 +3,6 @@ on:
   push:
     branches:
       - master
-  pull_request:
-    branches:
-      - master
 env:
     JFROG_USER: ${{ secrets.ARTIFACTORY_AUTH_USER }}
     JFROG_PASS: ${{ secrets.ARTIFACTORY_AUTH_TOKEN }}
@@ -24,7 +21,7 @@ jobs:
           fetch-depth: 0
       - name: Copy maven settings
         run: |
-          wget https://raw.githubusercontent.com/entur/ror-maven-settings/master/.m2/settings.xml -O .github/workflows/settings.xml
+          wget https://raw.githubusercontent.com/entur/ror-maven-settings/master/.m2/settings_release_maven_central.xml -O .github/workflows/settings.xml
       - uses: actions/setup-java@v4
         with:
           java-version: 17.0.13
@@ -71,7 +68,7 @@ jobs:
           fetch-depth: 0
       - name: Copy maven settings
         run: |
-          wget https://raw.githubusercontent.com/entur/ror-maven-settings/master/.m2/settings.xml -O .github/workflows/settings.xml
+          wget https://raw.githubusercontent.com/entur/ror-maven-settings/master/.m2/settings_release_maven_central.xml -O .github/workflows/settings.xml
       - uses: actions/setup-java@v4
         with:
           java-version: 17.0.13
