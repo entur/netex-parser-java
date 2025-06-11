@@ -7,22 +7,14 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import org.entur.netex.index.api.NetexEntitiesIndex;
-import org.rutebanken.netex.model.DayType;
-import org.rutebanken.netex.model.DayTypeAssignment;
-import org.rutebanken.netex.model.DayTypeAssignmentsInFrame_RelStructure;
-import org.rutebanken.netex.model.DayTypeAssignments_RelStructure;
-import org.rutebanken.netex.model.DayTypesInFrame_RelStructure;
-import org.rutebanken.netex.model.DayTypes_RelStructure;
-import org.rutebanken.netex.model.OperatingDay;
-import org.rutebanken.netex.model.OperatingDaysInFrame_RelStructure;
-import org.rutebanken.netex.model.OperatingPeriod;
-import org.rutebanken.netex.model.OperatingPeriod_VersionStructure;
-import org.rutebanken.netex.model.OperatingPeriodsInFrame_RelStructure;
-import org.rutebanken.netex.model.ServiceCalendar;
-import org.rutebanken.netex.model.ServiceCalendarFrame_VersionFrameStructure;
+import org.rutebanken.netex.model.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * Note that OperatingPeriods and OperatingDays may be defined in ServiceCalendarFrame,
+ * but may also be defined in the nested ServiceCalendar.
+ * */
 class ServiceCalendarFrameParser
   extends NetexParser<ServiceCalendarFrame_VersionFrameStructure> {
 
@@ -67,7 +59,8 @@ class ServiceCalendarFrameParser
     if (serviceCalendar == null) return;
 
     parseDayTypes(serviceCalendar.getDayTypes());
-    // TODO - What about OperatingPeriods here?
+    parseOperatingDays(serviceCalendar.getOperatingDays());
+    parseOperatingPeriods(serviceCalendar.getOperatingPeriods());
     parseDayTypeAssignments(serviceCalendar.getDayTypeAssignments());
   }
 
@@ -104,11 +97,34 @@ class ServiceCalendarFrameParser
     }
   }
 
+  private void parseOperatingPeriods(
+    OperatingPeriods_RelStructure operatingPeriodsRelStructure
+  ) {
+    if (operatingPeriodsRelStructure == null) return;
+
+    for (JAXBElement<?> object : operatingPeriodsRelStructure.getOperatingPeriodRefOrOperatingPeriodOrUicOperatingPeriod()) {
+      Object value = object.getValue();
+      if (value instanceof OperatingPeriod) {
+        operatingPeriods.add((OperatingPeriod) object.getValue());
+      }
+    }
+  }
+
   private void parseOperatingDays(OperatingDaysInFrame_RelStructure element) {
     if (element == null) {
       return;
     }
     operatingDays.addAll(element.getOperatingDay());
+  }
+
+  private void parseOperatingDays(
+    OperatingDays_RelStructure operatingDaysRelStructure
+  ) {
+    if (operatingDaysRelStructure == null) return;
+
+    for (Object object : operatingDaysRelStructure.getOperatingDayRefOrOperatingDay()) {
+      operatingDays.add((OperatingDay) object);
+    }
   }
 
   private void parseDayTypeAssignments(
