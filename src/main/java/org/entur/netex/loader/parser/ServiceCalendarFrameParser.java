@@ -11,6 +11,10 @@ import org.rutebanken.netex.model.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * Note that OperatingPeriods and OperatingDays may be defined in ServiceCalendarFrame,
+ * but may also be defined in the nested ServiceCalendar.
+ * */
 class ServiceCalendarFrameParser
   extends NetexParser<ServiceCalendarFrame_VersionFrameStructure> {
 
