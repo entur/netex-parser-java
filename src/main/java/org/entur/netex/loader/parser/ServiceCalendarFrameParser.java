@@ -56,8 +56,18 @@ class ServiceCalendarFrameParser
 
     parseDayTypes(serviceCalendar.getDayTypes());
     parseOperatingDays(serviceCalendar.getOperatingDays());
-    // TODO - What about OperatingPeriods here?
+    parseOperatingPeriods(serviceCalendar.getOperatingPeriods());
     parseDayTypeAssignments(serviceCalendar.getDayTypeAssignments());
+  }
+
+  private void parseOperatingPeriods(
+    OperatingPeriods_RelStructure operatingPeriodsRelStructure
+  ) {
+    if (operatingPeriodsRelStructure == null) return;
+
+    for (JAXBElement<?> object : operatingPeriodsRelStructure.getOperatingPeriodRefOrOperatingPeriodOrUicOperatingPeriod()) {
+      operatingPeriods.add((OperatingPeriod) object.getValue());
+    }
   }
 
   private void parseOperatingDays(
