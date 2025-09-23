@@ -1,6 +1,6 @@
 package org.entur.netex.support;
 
-import static java.util.Comparator.comparingInt;
+import static java.util.Comparator.comparingLong;
 
 import java.util.Collection;
 import java.util.Comparator;
@@ -20,10 +20,10 @@ public class NetexVersionHelper {
 
   /**
    * According to the <b>Norwegian Netex profile</b> the version number must be a
-   * positive increasing integer. A bigger value indicate a later version.
+   * positive increasing number. A bigger value indicate a later version.
    */
-  private static int versionOf(EntityInVersionStructure e) {
-    return Integer.parseInt(e.getVersion());
+  private static long versionOf(EntityInVersionStructure e) {
+    return Long.parseLong(e.getVersion());
   }
 
   /**
@@ -56,6 +56,6 @@ public class NetexVersionHelper {
   private static <
     T extends EntityInVersionStructure
   > Comparator<T> comparingVersion() {
-    return comparingInt(NetexVersionHelper::versionOf);
+    return comparingLong(NetexVersionHelper::versionOf);
   }
 }
