@@ -20,7 +20,7 @@ public class NetexVersionHelper {
 
   /**
    * According to the <b>Norwegian Netex profile</b> the version number must be a
-   * positive increasing integer. A bigger value indicate a later version.
+   * positive increasing number. A bigger value indicate a later version.
    */
   private static long versionOf(EntityInVersionStructure e) {
     return Long.parseLong(e.getVersion());
