@@ -238,7 +238,7 @@ class ServiceFrameParser extends NetexParser<Service_VersionFrameStructure> {
   private void parseRoutes(RoutesInFrame_RelStructure routes) {
     if (routes == null) return;
 
-    for (JAXBElement<?> element : routes.getRoute_()) {
+    for (JAXBElement<?> element : routes.getRoute_Dummy()) {
       if (element.getValue() instanceof Route route) {
         this.routes.add(route);
       }
@@ -283,7 +283,7 @@ class ServiceFrameParser extends NetexParser<Service_VersionFrameStructure> {
   private void parseLines(LinesInFrame_RelStructure lines) {
     if (lines == null) return;
 
-    for (JAXBElement<?> element : lines.getLine_()) {
+    for (JAXBElement<?> element : lines.getLine_Dummy()) {
       if (element.getValue() instanceof Line) {
         this.lines.add((Line) element.getValue());
       } else if (element.getValue() instanceof FlexibleLine) {
@@ -299,7 +299,7 @@ class ServiceFrameParser extends NetexParser<Service_VersionFrameStructure> {
   ) {
     if (journeyPatterns == null) return;
 
-    for (JAXBElement<?> pattern : journeyPatterns.getJourneyPattern_OrJourneyPatternView()) {
+    for (JAXBElement<?> pattern : journeyPatterns.getJourneyPattern_Dummy()) {
       if (pattern.getValue() instanceof JourneyPattern) {
         this.journeyPatterns.add((JourneyPattern) pattern.getValue());
       } else if (pattern.getValue() instanceof ServiceJourneyPattern) {

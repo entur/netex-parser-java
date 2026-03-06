@@ -66,7 +66,7 @@ class ResourceFrameParser
 
   private void parseOrganisations(OrganisationsInFrame_RelStructure elements) {
     if (elements != null) {
-      for (JAXBElement<?> e : elements.getOrganisation_()) {
+      for (JAXBElement<?> e : elements.getOrganisation_Dummy()) {
         parseOrganisation((Organisation_VersionStructure) e.getValue());
       }
     }

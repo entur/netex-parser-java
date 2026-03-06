@@ -46,7 +46,7 @@ class SiteFrameParser extends NetexParser<Site_VersionFrameStructure> {
   @Override
   public void parse(Site_VersionFrameStructure frame) {
     if (frame.getStopPlaces() != null) {
-      parseStopPlaces(frame.getStopPlaces().getStopPlace_());
+      parseStopPlaces(frame.getStopPlaces().getStopPlace());
     }
 
     if (frame.getGroupsOfStopPlaces() != null) {
@@ -72,7 +72,7 @@ class SiteFrameParser extends NetexParser<Site_VersionFrameStructure> {
     }
 
     if (frame.getParkings() != null) {
-      parseParkings(frame.getParkings().getParking());
+      parseParkings(frame.getParkings().getParking_Dummy());
     }
 
     if (frame.getGroupsOfTariffZones() != null) {
@@ -134,11 +134,8 @@ class SiteFrameParser extends NetexParser<Site_VersionFrameStructure> {
     groupsOfStopPlaces.addAll(groupsOfStopPlacesList);
   }
 
-  private void parseStopPlaces(
-    List<JAXBElement<? extends Site_VersionStructure>> stopPlaceList
-  ) {
-    for (JAXBElement<? extends Site_VersionStructure> jaxbStopPlace : stopPlaceList) {
-      StopPlace stopPlace = (StopPlace) jaxbStopPlace.getValue();
+  private void parseStopPlaces(List<StopPlace> stopPlaceList) {
+    for (StopPlace stopPlace : stopPlaceList) {
       stopPlaces.add(stopPlace);
       if (!isMultiModalStopPlace(stopPlace)) {
         parseQuays(stopPlace.getQuays(), stopPlace.getId());
@@ -162,10 +159,14 @@ class SiteFrameParser extends NetexParser<Site_VersionFrameStructure> {
     topographicPlaces.addAll(topographicPlaceList);
   }
 
-  private void parseParkings(Collection<Parking> parkingList) {
-    for (Parking parking : parkingList) {
-      parkings.add(parking);
-      parkingsByStopPlaceId.put(parking.getParentSiteRef().getRef(), parking);
+  private void parseParkings(
+    List<JAXBElement<? extends Site_VersionStructure>> parkingList
+  ) {
+    for (JAXBElement<? extends Site_VersionStructure> jaxbParking : parkingList) {
+      if (jaxbParking.getValue() instanceof Parking parking) {
+        parkings.add(parking);
+        parkingsByStopPlaceId.put(parking.getParentSiteRef().getRef(), parking);
+      }
     }
   }
 
