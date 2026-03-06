@@ -117,19 +117,16 @@ class TimeTableFrameParser
         serviceJourneys.add(serviceJourney);
       } else if (it instanceof DatedServiceJourney datedServiceJourney) {
         datedServiceJourneys.add(datedServiceJourney);
-        datedServiceJourney
-          .getJourneyRef()
-          .stream()
-          .filter(journeyRef ->
-            journeyRef.getValue() instanceof ServiceJourneyRefStructure
-          )
-          .map(journeyRef -> journeyRef.getValue().getRef())
-          .forEach(serviceJourneyId ->
-            datedServiceJourneyByServiceJourneyId.put(
-              serviceJourneyId,
-              datedServiceJourney
-            )
+        var journeyRef = datedServiceJourney.getJourneyRef();
+        if (
+          journeyRef != null &&
+          journeyRef.getValue() instanceof ServiceJourneyRefStructure
+        ) {
+          datedServiceJourneyByServiceJourneyId.put(
+            journeyRef.getValue().getRef(),
+            datedServiceJourney
           );
+        }
       } else if (it instanceof DeadRun deadRun) {
         deadRuns.add(deadRun);
       } else {

@@ -3,9 +3,8 @@ on:
   push:
     branches:
       - master
+      - 5.x
 env:
-    JFROG_USER: ${{ secrets.ARTIFACTORY_AUTH_USER }}
-    JFROG_PASS: ${{ secrets.ARTIFACTORY_AUTH_TOKEN }}
     SONATYPE_GPG_KEY_BASE64: ${{ secrets.SONATYPE_GPG_KEY_BASE64 }}
     SONATYPE_USERNAME: ${{ secrets.SONATYPE_USERNAME }}
     SONATYPE_PASSWORD: ${{ secrets.SONATYPE_PASSWORD }}
@@ -64,5 +63,5 @@ jobs:
     uses: entur/gha-maven-central/.github/workflows/maven-publish.yml@v1
     secrets: inherit
     with:
-      push_to_repo: true
-      snapshot: false
+      push_to_repo: ${{ github.ref != 'refs/heads/5.x' }}
+      snapshot: ${{ github.ref == 'refs/heads/5.x' }}

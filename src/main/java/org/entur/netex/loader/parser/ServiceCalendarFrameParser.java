@@ -67,14 +67,14 @@ class ServiceCalendarFrameParser
   //List<JAXBElement<? extends DataManagedObjectStructure>>
   private void parseDayTypes(DayTypesInFrame_RelStructure element) {
     if (element == null) return;
-    for (JAXBElement<?> dt : element.getDayType_()) {
+    for (JAXBElement<?> dt : element.getDayType_Dummy()) {
       parseDayType(dt);
     }
   }
 
   private void parseDayTypes(DayTypes_RelStructure dayTypes) {
     if (dayTypes == null) return;
-    for (JAXBElement<?> dt : dayTypes.getDayTypeRefOrDayType_()) {
+    for (JAXBElement<?> dt : dayTypes.getDayTypeRefOrDayType_Dummy()) {
       parseDayType(dt);
     }
   }
