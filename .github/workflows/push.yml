@@ -5,8 +5,6 @@ on:
       - master
       - 4.x
 env:
-    JFROG_USER: ${{ secrets.ARTIFACTORY_AUTH_USER }}
-    JFROG_PASS: ${{ secrets.ARTIFACTORY_AUTH_TOKEN }}
     SONATYPE_GPG_KEY_BASE64: ${{ secrets.SONATYPE_GPG_KEY_BASE64 }}
     SONATYPE_USERNAME: ${{ secrets.SONATYPE_USERNAME }}
     SONATYPE_PASSWORD: ${{ secrets.SONATYPE_PASSWORD }}
