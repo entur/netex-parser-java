@@ -23,7 +23,7 @@ jobs:
           wget https://raw.githubusercontent.com/entur/ror-maven-settings/master/.m2/settings_release_maven_central.xml -O .github/workflows/settings.xml
       - uses: actions/setup-java@v5
         with:
-          java-version: 17.0.13
+          java-version: 21
           distribution: liberica
       - name: Cache Maven dependencies
         uses: actions/cache@v4
