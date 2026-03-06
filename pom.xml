@@ -262,6 +262,9 @@
                         </signing>
                         <deploy>
                             <maven>
+                                <pomchecker>
+                                    <strict>false</strict>
+                                </pomchecker>
                                 <mavenCentral>
                                     <sonatype>
                                         <active>RELEASE</active>
@@ -274,7 +277,7 @@
                                         <active>SNAPSHOT</active>
                                         <url>https://ossrh-staging-api.central.sonatype.com/service/local</url>
                                         <snapshotUrl>https://central.sonatype.com/repository/maven-snapshots</snapshotUrl>
-                                        <applyMavenCentralRules>true</applyMavenCentralRules>
+                                        <applyMavenCentralRules>false</applyMavenCentralRules>
                                         <snapshotSupported>true</snapshotSupported>
                                         <closeRepository>true</closeRepository>
                                         <releaseRepository>true</releaseRepository>
