@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - master
+      - 4.x
 env:
     JFROG_USER: ${{ secrets.ARTIFACTORY_AUTH_USER }}
     JFROG_PASS: ${{ secrets.ARTIFACTORY_AUTH_TOKEN }}
@@ -64,5 +65,5 @@ jobs:
     uses: entur/gha-maven-central/.github/workflows/maven-publish.yml@v1
     secrets: inherit
     with:
-      push_to_repo: true
-      snapshot: false
+      push_to_repo: ${{ github.ref != 'refs/heads/4.x' }}
+      snapshot: ${{ github.ref == 'refs/heads/4.x' }}
