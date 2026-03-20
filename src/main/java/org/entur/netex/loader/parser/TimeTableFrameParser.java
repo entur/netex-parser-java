@@ -13,7 +13,6 @@ import org.rutebanken.netex.model.Journey_VersionStructure;
 import org.rutebanken.netex.model.JourneysInFrame_RelStructure;
 import org.rutebanken.netex.model.ServiceJourney;
 import org.rutebanken.netex.model.ServiceJourneyInterchange;
-import org.rutebanken.netex.model.ServiceJourneyRefStructure;
 import org.rutebanken.netex.model.Timetable_VersionFrameStructure;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -117,19 +116,10 @@ class TimeTableFrameParser
         serviceJourneys.add(serviceJourney);
       } else if (it instanceof DatedServiceJourney datedServiceJourney) {
         datedServiceJourneys.add(datedServiceJourney);
-        datedServiceJourney
-          .getJourneyRef()
-          .stream()
-          .filter(journeyRef ->
-            journeyRef.getValue() instanceof ServiceJourneyRefStructure
-          )
-          .map(journeyRef -> journeyRef.getValue().getRef())
-          .forEach(serviceJourneyId ->
-            datedServiceJourneyByServiceJourneyId.put(
-              serviceJourneyId,
-              datedServiceJourney
-            )
-          );
+        datedServiceJourneyByServiceJourneyId.put(
+          datedServiceJourney.getJourneyRef().getValue().getRef(),
+          datedServiceJourney
+        );
       } else if (it instanceof DeadRun deadRun) {
         deadRuns.add(deadRun);
       } else {
