@@ -246,7 +246,7 @@
                     <verbose>true</verbose>
                     <commitMessagePrefix>[ci skip]</commitMessagePrefix>
                     <gitFlowConfig>
-                        <developmentBranch>master</developmentBranch>
+                        <developmentBranch>3.x</developmentBranch>
                     </gitFlowConfig>
                 </configuration>
             </plugin>
