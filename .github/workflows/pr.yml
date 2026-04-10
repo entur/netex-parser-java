@@ -28,6 +28,6 @@ jobs:
       - name: Run maven build
         run: mvn package -PprettierCheck -Dprettier.nodePath=node -Dprettier.npmPath=npm
       - name: codecov
-        uses: codecov/codecov-action@v5
+        uses: codecov/codecov-action@v6
         with:
            files: ./target/site/jacoco/jacoco.xml
