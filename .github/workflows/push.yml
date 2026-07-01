@@ -67,3 +67,36 @@ jobs:
     with:
       push_to_repo: true
       snapshot: false
+  tag-release:
+    needs: publish-release
+    if: github.repository_owner == 'entur' && github.event_name == 'push'
+    name: Tag release on GitHub
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - name: Create and push release tag
+        run: |
+          set -euo pipefail
+          # publish-release has already pushed the release + next-SNAPSHOT bump
+          # commits to master, so fetch the latest tip rather than tagging the
+          # commit that triggered this run.
+          git fetch --quiet origin master
+          line=$(git log FETCH_HEAD --grep='Bump current version to' --format='%H %s' \
+                 | grep -v -- '-SNAPSHOT' | head -1 || true)
+          [ -n "$line" ] || { echo "::error::no release bump commit found"; exit 1; }
+          sha=${line%% *}
+          version=$(printf '%s\n' "$line" | sed -E 's/.*Bump current version to ([0-9]+\.[0-9]+\.[0-9]+).*/\1/')
+          tag="v${version}"
+          if git ls-remote --exit-code --tags origin "refs/tags/${tag}" >/dev/null 2>&1; then
+            echo "Tag ${tag} already exists; nothing to do."
+            exit 0
+          fi
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git tag -a "${tag}" -m "Release ${tag}" "${sha}"
+          git push origin "${tag}"
+          echo "Tagged ${tag} at ${sha}" >> "$GITHUB_STEP_SUMMARY"
