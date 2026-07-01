@@ -17,7 +17,7 @@ jobs:
     if: "!contains(github.event.head_commit.message, 'ci skip')"
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
         with:
           fetch-depth: 0
       - name: Copy maven settings
@@ -75,7 +75,7 @@ jobs:
     permissions:
       contents: write
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
         with:
           fetch-depth: 0
       - name: Create and push release tag
