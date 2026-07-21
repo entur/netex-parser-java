@@ -12,6 +12,7 @@ import org.entur.netex.index.api.NetexEntitiesIndex;
 import org.entur.netex.index.api.NetexEntityIndex;
 import org.entur.netex.index.api.VersionedNetexEntityIndex;
 import org.rutebanken.netex.model.Authority;
+import org.rutebanken.netex.model.AvailabilityCondition;
 import org.rutebanken.netex.model.Block;
 import org.rutebanken.netex.model.Branding;
 import org.rutebanken.netex.model.CompositeFrame;
@@ -102,6 +103,7 @@ public class NetexEntitiesIndexImpl implements NetexEntitiesIndex {
   public final VersionedNetexEntityIndex<FareZone> fareZoneById;
   public final VersionedNetexEntityIndex<GroupOfTariffZones> groupOfTariffZonesById;
   public final Multimap<String, Parking> parkingsByParentSiteRef;
+  public final Multimap<String, AvailabilityCondition> availabilityConditionsByParkingId;
 
   // Relations between entities - The Netex XML sometimes rely on the
   // nested structure of the XML document, rater than explicit references.
@@ -178,6 +180,8 @@ public class NetexEntitiesIndexImpl implements NetexEntitiesIndex {
     this.vehicleScheduleFrames = new HashSet<>();
     this.timetableFrames = new HashSet<>();
     this.parkingsByParentSiteRef =
+      Multimaps.synchronizedListMultimap(ArrayListMultimap.create());
+    this.availabilityConditionsByParkingId =
       Multimaps.synchronizedListMultimap(ArrayListMultimap.create());
   }
 
@@ -439,5 +443,10 @@ public class NetexEntitiesIndexImpl implements NetexEntitiesIndex {
   @Override
   public Multimap<String, Parking> getParkingsByParentSiteRefIndex() {
     return parkingsByParentSiteRef;
+  }
+
+  @Override
+  public Multimap<String, AvailabilityCondition> getAvailabilityConditionsByParkingIdIndex() {
+    return availabilityConditionsByParkingId;
   }
 }
