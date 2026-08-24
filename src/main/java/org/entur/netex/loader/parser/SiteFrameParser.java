@@ -43,6 +43,9 @@ class SiteFrameParser extends NetexParser<Site_VersionFrameStructure> {
   private final Multimap<String, Parking> parkingsByStopPlaceId =
     ArrayListMultimap.create();
 
+  private final Multimap<String, AvailabilityCondition> availabilityConditionsByParkingId =
+    ArrayListMultimap.create();
+
   @Override
   public void parse(Site_VersionFrameStructure frame) {
     if (frame.getStopPlaces() != null) {
@@ -119,6 +122,9 @@ class SiteFrameParser extends NetexParser<Site_VersionFrameStructure> {
     netexIndex.getQuayIndex().putAll(quays.values());
     netexIndex.getStopPlaceIdByQuayIdIndex().putAll(stopPlaceIdByQuayId);
     netexIndex.getParkingsByParentSiteRefIndex().putAll(parkingsByStopPlaceId);
+    netexIndex
+      .getAvailabilityConditionsByParkingIdIndex()
+      .putAll(availabilityConditionsByParkingId);
     netexIndex.getGroupOfTariffZonesIndex().putAll(groupsOfTariffZones);
   }
 
@@ -166,6 +172,18 @@ class SiteFrameParser extends NetexParser<Site_VersionFrameStructure> {
     for (Parking parking : parkingList) {
       parkings.add(parking);
       parkingsByStopPlaceId.put(parking.getParentSiteRef().getRef(), parking);
+      if (parking.getValidityConditions() != null) {
+        for (Object obj : parking
+          .getValidityConditions()
+          .getValidityConditionRefOrValidBetweenOrValidityCondition_()) {
+          if (
+            obj instanceof JAXBElement<?> jaxb &&
+            jaxb.getValue() instanceof AvailabilityCondition ac
+          ) {
+            availabilityConditionsByParkingId.put(parking.getId(), ac);
+          }
+        }
+      }
     }
   }
 
