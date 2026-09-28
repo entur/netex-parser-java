@@ -67,6 +67,10 @@ jobs:
     with:
       push_to_repo: true
       snapshot: false
+      # Check out the branch tip rather than the triggering commit: a run queued
+      # behind another publish must see that run's next-SNAPSHOT bump, or its own
+      # version bump conflicts with it on pull --rebase.
+      git_ref: ${{ github.ref_name }}
   tag-release:
     needs: publish-release
     if: github.repository_owner == 'entur' && github.event_name == 'push'
