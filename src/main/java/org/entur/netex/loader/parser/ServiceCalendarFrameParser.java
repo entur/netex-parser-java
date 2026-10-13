@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import org.entur.netex.index.api.NetexEntitiesIndex;
-import org.rutebanken.netex.model.*;
+import org.entur.netex2.model.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

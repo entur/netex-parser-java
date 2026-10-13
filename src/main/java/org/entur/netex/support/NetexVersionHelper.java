@@ -4,7 +4,7 @@ import static java.util.Comparator.comparingLong;
 
 import java.util.Collection;
 import java.util.Comparator;
-import org.rutebanken.netex.model.EntityInVersionStructure;
+import org.entur.netex2.model.EntityInVersionStructure;
 
 /**
  * Utility class to help working with versioned NeTEx element.

@@ -5,18 +5,18 @@ import static org.entur.netex.support.MultilingualStringHelper.getStringValue;
 import java.time.LocalDateTime;
 import java.util.Collection;
 import org.entur.netex.index.api.NetexEntitiesIndex;
+import org.entur.netex2.model.FareZone;
+import org.entur.netex2.model.GroupOfStopPlaces;
+import org.entur.netex2.model.Parking;
+import org.entur.netex2.model.PassengerStopAssignment;
+import org.entur.netex2.model.Quay;
+import org.entur.netex2.model.ScheduledStopPoint;
+import org.entur.netex2.model.StopPlace;
+import org.entur.netex2.model.TariffZone;
+import org.entur.netex2.model.TopographicPlace;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.rutebanken.netex.model.FareZone;
-import org.rutebanken.netex.model.GroupOfStopPlaces;
-import org.rutebanken.netex.model.Parking;
-import org.rutebanken.netex.model.PassengerStopAssignment;
-import org.rutebanken.netex.model.Quay;
-import org.rutebanken.netex.model.ScheduledStopPoint;
-import org.rutebanken.netex.model.StopPlace;
-import org.rutebanken.netex.model.TariffZone;
-import org.rutebanken.netex.model.TopographicPlace;
 
 class TestStopPlacesExport {
 

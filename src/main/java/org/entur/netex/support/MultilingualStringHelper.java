@@ -2,7 +2,7 @@ package org.entur.netex.support;
 
 import java.io.Serializable;
 import java.util.List;
-import org.rutebanken.netex.model.MultilingualString;
+import org.entur.netex2.model.MultilingualString;
 
 /**
  * Helper for extracting string values from {@link MultilingualString}.

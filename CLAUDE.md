@@ -15,13 +15,13 @@ Java library for parsing NeTEx (Network Timetable Exchange) XML files into a que
 - **Format code (prettier)**: `mvn prettier:write`
 - **Full build with formatting check (CI)**: `mvn verify -P prettierCheck`
 
-Requires Java 17+. Uses JUnit 5 and AssertJ for tests.
+Requires Java 21+. Uses JUnit 5 and AssertJ for tests.
 
 ## Architecture
 
 ### Parsing Pipeline
 
-1. **`NetexParser`** (entry point, `org.entur.netex`) — accepts a ZIP path or `InputStream`, uses JAXB to unmarshal NeTEx XML into `PublicationDeliveryStructure` objects from the `netex-java-model` dependency.
+1. **`NetexParser`** (entry point, `org.entur.netex`) — accepts a ZIP path or `InputStream`, uses JAXB to unmarshal NeTEx XML into `PublicationDeliveryStructure` objects from the `netex2-java-model` dependency.
 2. **`NetexDocumentParser`** — routes each NeTEx frame type to its specialized parser. Handles recursive `CompositeFrame` nesting.
 3. **Frame parsers** (`org.entur.netex.loader.parser`) — one per frame type (`ServiceFrameParser`, `TimeTableFrameParser`, `SiteFrameParser`, `ServiceCalendarFrameParser`, `ResourceFrameParser`, `FareFrameParser`, `VehicleScheduleFrameParser`). Each extends the abstract `NetexParser<T>` which enforces a two-step pattern: `parse(T node)` then `setResultOnIndex(NetexEntitiesIndex)`.
 
@@ -33,7 +33,7 @@ Requires Java 17+. Uses JUnit 5 and AssertJ for tests.
 
 ### Key Dependency
 
-`org.entur:netex-java-model` provides all JAXB-generated NeTEx model classes (`org.rutebanken.netex.model.*`).
+`org.entur:netex2-java-model` provides all JAXB-generated NeTEx model classes (`org.entur.netex2.model.*`).
 
 ## Adding Support for New NeTEx Entities
 

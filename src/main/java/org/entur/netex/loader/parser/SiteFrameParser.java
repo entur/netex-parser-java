@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Map;
 import org.entur.netex.index.api.NetexEntitiesIndex;
 import org.entur.netex.support.NetexVersionHelper;
-import org.rutebanken.netex.model.*;
+import org.entur.netex2.model.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

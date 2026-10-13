@@ -12,8 +12,8 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collectors;
 import org.entur.netex.index.api.VersionedNetexEntityIndex;
-import org.rutebanken.netex.model.EntityInVersionStructure;
-import org.rutebanken.netex.model.EntityStructure;
+import org.entur.netex2.model.EntityInVersionStructure;
+import org.entur.netex2.model.EntityStructure;
 
 public class VersionedNetexEntityIndexImpl<V extends EntityInVersionStructure>
   implements VersionedNetexEntityIndex<V> {

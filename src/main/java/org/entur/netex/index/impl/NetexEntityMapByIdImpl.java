@@ -4,7 +4,7 @@ import java.util.Collection;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import org.entur.netex.index.api.NetexEntityIndex;
-import org.rutebanken.netex.model.EntityStructure;
+import org.entur.netex2.model.EntityStructure;
 
 public class NetexEntityMapByIdImpl<V extends EntityStructure>
   implements NetexEntityIndex<V> {

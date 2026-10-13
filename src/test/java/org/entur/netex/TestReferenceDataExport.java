@@ -1,10 +1,10 @@
 package org.entur.netex;
 
 import org.entur.netex.index.api.NetexEntitiesIndex;
+import org.entur.netex2.model.RoutePoint;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.rutebanken.netex.model.RoutePoint;
 
 class TestReferenceDataExport {
 

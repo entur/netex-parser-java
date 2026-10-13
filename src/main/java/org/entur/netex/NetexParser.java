@@ -11,7 +11,7 @@ import org.entur.netex.index.api.NetexEntitiesIndex;
 import org.entur.netex.index.impl.NetexEntitiesIndexImpl;
 import org.entur.netex.loader.NetexXmlParser;
 import org.entur.netex.loader.parser.NetexDocumentParser;
-import org.rutebanken.netex.model.PublicationDeliveryStructure;
+import org.entur.netex2.model.PublicationDeliveryStructure;
 
 /**
  * Main entry point to the library. Used to parse a NeTEx publication
