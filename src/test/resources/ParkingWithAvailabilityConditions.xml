@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:ns2="http://www.opengis.net/gml/3.2" version="1">
+    <PublicationTimestamp>2026-07-21T10:00:00</PublicationTimestamp>
+    <ParticipantRef>FSR</ParticipantRef>
+    <dataObjects>
+        <SiteFrame version="1" id="FSR:SiteFrame:1">
+            <stopPlaces>
+                <StopPlace version="1" id="FSR:StopPlace:1">
+                    <Name lang="fin">Test Stop</Name>
+                    <Centroid>
+                        <Location>
+                            <Longitude>25.0</Longitude>
+                            <Latitude>60.0</Latitude>
+                        </Location>
+                    </Centroid>
+                </StopPlace>
+            </stopPlaces>
+            <parkings>
+                <Parking version="1" id="FSR:Parking:1">
+                    <validityConditions>
+                        <AvailabilityCondition version="1" id="FSR:AvailabilityCondition:1">
+                            <IsAvailable>true</IsAvailable>
+                            <dayTypes>
+                                <DayTypeRef ref="FSR:DayType:BusinessDay"/>
+                            </dayTypes>
+                            <timebands>
+                                <Timeband version="1" id="FSR:Timeband:1">
+                                    <StartTime>06:00:00</StartTime>
+                                    <EndTime>22:00:00</EndTime>
+                                </Timeband>
+                            </timebands>
+                        </AvailabilityCondition>
+                        <AvailabilityCondition version="1" id="FSR:AvailabilityCondition:2">
+                            <IsAvailable>false</IsAvailable>
+                            <dayTypes>
+                                <DayTypeRef ref="FSR:DayType:Sunday"/>
+                            </dayTypes>
+                        </AvailabilityCondition>
+                    </validityConditions>
+                    <Name lang="fin">Test Parking</Name>
+                    <Centroid>
+                        <Location>
+                            <Longitude>25.0</Longitude>
+                            <Latitude>60.0</Latitude>
+                        </Location>
+                    </Centroid>
+                    <ParkingType>urbanParking</ParkingType>
+                    <ParkingLayout>openSpace</ParkingLayout>
+                    <ParentSiteRef ref="FSR:StopPlace:1"/>
+                </Parking>
+                <Parking version="1" id="FSR:Parking:2">
+                    <Name lang="fin">Parking without opening hours</Name>
+                    <Centroid>
+                        <Location>
+                            <Longitude>25.1</Longitude>
+                            <Latitude>60.1</Latitude>
+                        </Location>
+                    </Centroid>
+                    <ParkingType>urbanParking</ParkingType>
+                    <ParkingLayout>openSpace</ParkingLayout>
+                    <ParentSiteRef ref="FSR:StopPlace:1"/>
+                </Parking>
+            </parkings>
+        </SiteFrame>
+    </dataObjects>
+</PublicationDelivery>
