@@ -72,7 +72,7 @@ class SiteFrameParser extends NetexParser<Site_VersionFrameStructure> {
     }
 
     if (frame.getParkings() != null) {
-      parseParkings(frame.getParkings().getParking_Dummy());
+      parseParkings(frame.getParkings().getParking());
     }
 
     if (frame.getGroupsOfTariffZones() != null) {
