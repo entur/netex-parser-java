@@ -5,7 +5,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import jakarta.xml.bind.JAXBElement;
 import java.time.LocalDateTime;
 import java.util.List;
-import javax.annotation.Nonnull;
 import javax.xml.namespace.QName;
 import org.entur.netex.index.impl.NetexEntitiesIndexImpl;
 import org.junit.jupiter.api.BeforeEach;
@@ -95,7 +94,7 @@ class ServiceCalendarFrameParserTest {
       );
   }
 
-  public static <T> JAXBElement<T> createJaxbElement(@Nonnull T value) {
+  public static <T> JAXBElement<T> createJaxbElement(T value) {
     return new JAXBElement(new QName("x"), value.getClass(), value);
   }
 
