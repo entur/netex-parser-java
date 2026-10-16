@@ -1,7 +1,7 @@
 package org.entur.netex.index.api;
 
 import java.util.Collection;
-import org.rutebanken.netex.model.EntityStructure;
+import org.entur.netex2.model.EntityStructure;
 
 /**
  * A simple index of NeTEx entities of a specific type

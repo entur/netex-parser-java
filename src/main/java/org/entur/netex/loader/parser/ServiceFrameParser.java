@@ -9,31 +9,31 @@ import java.util.HashMap;
 import java.util.Map;
 import org.entur.netex.index.api.NetexEntitiesIndex;
 import org.entur.netex.index.api.NetexEntityIndex;
-import org.rutebanken.netex.model.DestinationDisplay;
-import org.rutebanken.netex.model.DestinationDisplaysInFrame_RelStructure;
-import org.rutebanken.netex.model.FlexibleLine;
-import org.rutebanken.netex.model.FlexibleStopAssignment;
-import org.rutebanken.netex.model.FlexibleStopPlace;
-import org.rutebanken.netex.model.GroupOfLines;
-import org.rutebanken.netex.model.GroupsOfLinesInFrame_RelStructure;
-import org.rutebanken.netex.model.JourneyPattern;
-import org.rutebanken.netex.model.JourneyPatternsInFrame_RelStructure;
-import org.rutebanken.netex.model.Line;
-import org.rutebanken.netex.model.LinesInFrame_RelStructure;
-import org.rutebanken.netex.model.Network;
-import org.rutebanken.netex.model.NetworksInFrame_RelStructure;
-import org.rutebanken.netex.model.PassengerStopAssignment;
-import org.rutebanken.netex.model.Route;
-import org.rutebanken.netex.model.RoutePoint;
-import org.rutebanken.netex.model.RoutePointsInFrame_RelStructure;
-import org.rutebanken.netex.model.RoutesInFrame_RelStructure;
-import org.rutebanken.netex.model.ScheduledStopPoint;
-import org.rutebanken.netex.model.ScheduledStopPointsInFrame_RelStructure;
-import org.rutebanken.netex.model.ServiceJourneyPattern;
-import org.rutebanken.netex.model.ServiceLink;
-import org.rutebanken.netex.model.ServiceLinksInFrame_RelStructure;
-import org.rutebanken.netex.model.Service_VersionFrameStructure;
-import org.rutebanken.netex.model.StopAssignmentsInFrame_RelStructure;
+import org.entur.netex2.model.DestinationDisplay;
+import org.entur.netex2.model.DestinationDisplaysInFrame_RelStructure;
+import org.entur.netex2.model.FlexibleLine;
+import org.entur.netex2.model.FlexibleStopAssignment;
+import org.entur.netex2.model.FlexibleStopPlace;
+import org.entur.netex2.model.GroupOfLines;
+import org.entur.netex2.model.GroupsOfLinesInFrame_RelStructure;
+import org.entur.netex2.model.JourneyPattern;
+import org.entur.netex2.model.JourneyPatternsInFrame_RelStructure;
+import org.entur.netex2.model.Line;
+import org.entur.netex2.model.LinesInFrame_RelStructure;
+import org.entur.netex2.model.Network;
+import org.entur.netex2.model.NetworksInFrame_RelStructure;
+import org.entur.netex2.model.PassengerStopAssignment;
+import org.entur.netex2.model.Route;
+import org.entur.netex2.model.RoutePoint;
+import org.entur.netex2.model.RoutePointsInFrame_RelStructure;
+import org.entur.netex2.model.RoutesInFrame_RelStructure;
+import org.entur.netex2.model.ScheduledStopPoint;
+import org.entur.netex2.model.ScheduledStopPointsInFrame_RelStructure;
+import org.entur.netex2.model.ServiceJourneyPattern;
+import org.entur.netex2.model.ServiceLink;
+import org.entur.netex2.model.ServiceLinksInFrame_RelStructure;
+import org.entur.netex2.model.Service_VersionFrameStructure;
+import org.entur.netex2.model.StopAssignmentsInFrame_RelStructure;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -238,7 +238,7 @@ class ServiceFrameParser extends NetexParser<Service_VersionFrameStructure> {
   private void parseRoutes(RoutesInFrame_RelStructure routes) {
     if (routes == null) return;
 
-    for (JAXBElement<?> element : routes.getRoute_()) {
+    for (JAXBElement<?> element : routes.getRoute()) {
       if (element.getValue() instanceof Route route) {
         this.routes.add(route);
       }
@@ -283,7 +283,7 @@ class ServiceFrameParser extends NetexParser<Service_VersionFrameStructure> {
   private void parseLines(LinesInFrame_RelStructure lines) {
     if (lines == null) return;
 
-    for (JAXBElement<?> element : lines.getLine_()) {
+    for (JAXBElement<?> element : lines.getLine()) {
       if (element.getValue() instanceof Line) {
         this.lines.add((Line) element.getValue());
       } else if (element.getValue() instanceof FlexibleLine) {
@@ -299,7 +299,7 @@ class ServiceFrameParser extends NetexParser<Service_VersionFrameStructure> {
   ) {
     if (journeyPatterns == null) return;
 
-    for (JAXBElement<?> pattern : journeyPatterns.getJourneyPattern_OrJourneyPatternView()) {
+    for (JAXBElement<?> pattern : journeyPatterns.getJourneyPattern()) {
       if (pattern.getValue() instanceof JourneyPattern) {
         this.journeyPatterns.add((JourneyPattern) pattern.getValue());
       } else if (pattern.getValue() instanceof ServiceJourneyPattern) {

@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import org.entur.netex.index.api.NetexEntitiesIndex;
-import org.rutebanken.netex.model.*;
+import org.entur.netex2.model.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -67,14 +67,14 @@ class ServiceCalendarFrameParser
   //List<JAXBElement<? extends DataManagedObjectStructure>>
   private void parseDayTypes(DayTypesInFrame_RelStructure element) {
     if (element == null) return;
-    for (JAXBElement<?> dt : element.getDayType_()) {
+    for (JAXBElement<?> dt : element.getDayType()) {
       parseDayType(dt);
     }
   }
 
   private void parseDayTypes(DayTypes_RelStructure dayTypes) {
     if (dayTypes == null) return;
-    for (JAXBElement<?> dt : dayTypes.getDayTypeRefOrDayType_()) {
+    for (JAXBElement<?> dt : dayTypes.getDayTypeRefOrDayType()) {
       parseDayType(dt);
     }
   }

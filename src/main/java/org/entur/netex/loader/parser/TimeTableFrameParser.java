@@ -5,15 +5,16 @@ import com.google.common.collect.Multimap;
 import java.util.ArrayList;
 import java.util.List;
 import org.entur.netex.index.api.NetexEntitiesIndex;
-import org.rutebanken.netex.model.DatedServiceJourney;
-import org.rutebanken.netex.model.DeadRun;
-import org.rutebanken.netex.model.Interchange_VersionStructure;
-import org.rutebanken.netex.model.JourneyInterchangesInFrame_RelStructure;
-import org.rutebanken.netex.model.Journey_VersionStructure;
-import org.rutebanken.netex.model.JourneysInFrame_RelStructure;
-import org.rutebanken.netex.model.ServiceJourney;
-import org.rutebanken.netex.model.ServiceJourneyInterchange;
-import org.rutebanken.netex.model.Timetable_VersionFrameStructure;
+import org.entur.netex2.model.DatedServiceJourney;
+import org.entur.netex2.model.DeadRun;
+import org.entur.netex2.model.Interchange_VersionStructure;
+import org.entur.netex2.model.JourneyInterchangesInFrame_RelStructure;
+import org.entur.netex2.model.Journey_VersionStructure;
+import org.entur.netex2.model.JourneysInFrame_RelStructure;
+import org.entur.netex2.model.ServiceJourney;
+import org.entur.netex2.model.ServiceJourneyInterchange;
+import org.entur.netex2.model.ServiceJourneyRefStructure;
+import org.entur.netex2.model.Timetable_VersionFrameStructure;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -116,10 +117,16 @@ class TimeTableFrameParser
         serviceJourneys.add(serviceJourney);
       } else if (it instanceof DatedServiceJourney datedServiceJourney) {
         datedServiceJourneys.add(datedServiceJourney);
-        datedServiceJourneyByServiceJourneyId.put(
-          datedServiceJourney.getJourneyRef().getValue().getRef(),
-          datedServiceJourney
-        );
+        var journeyRef = datedServiceJourney.getJourneyRef();
+        if (
+          journeyRef != null &&
+          journeyRef.getValue() instanceof ServiceJourneyRefStructure
+        ) {
+          datedServiceJourneyByServiceJourneyId.put(
+            journeyRef.getValue().getRef(),
+            datedServiceJourney
+          );
+        }
       } else if (it instanceof DeadRun deadRun) {
         deadRuns.add(deadRun);
       } else {

@@ -4,11 +4,11 @@ import jakarta.xml.bind.JAXBElement;
 import java.util.ArrayList;
 import java.util.Collection;
 import org.entur.netex.index.api.NetexEntitiesIndex;
-import org.rutebanken.netex.model.DataManagedObjectStructure;
-import org.rutebanken.netex.model.Notice;
-import org.rutebanken.netex.model.NoticeAssignment;
-import org.rutebanken.netex.model.NoticeAssignmentsInFrame_RelStructure;
-import org.rutebanken.netex.model.NoticesInFrame_RelStructure;
+import org.entur.netex2.model.DataManagedObjectStructure;
+import org.entur.netex2.model.Notice;
+import org.entur.netex2.model.NoticeAssignment;
+import org.entur.netex2.model.NoticeAssignmentsInFrame_RelStructure;
+import org.entur.netex2.model.NoticesInFrame_RelStructure;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -33,7 +33,7 @@ class NoticeParser {
   void parseNoticeAssignments(NoticeAssignmentsInFrame_RelStructure na) {
     if (na == null) return;
 
-    for (JAXBElement<? extends DataManagedObjectStructure> it : na.getNoticeAssignment_()) {
+    for (JAXBElement<? extends DataManagedObjectStructure> it : na.getNoticeAssignment()) {
       NoticeAssignment noticeAssignment = (NoticeAssignment) it.getValue();
       boolean error = false;
 

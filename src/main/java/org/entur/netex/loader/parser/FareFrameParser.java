@@ -3,8 +3,8 @@ package org.entur.netex.loader.parser;
 import java.util.ArrayList;
 import java.util.Collection;
 import org.entur.netex.index.api.NetexEntitiesIndex;
-import org.rutebanken.netex.model.FareFrame_VersionFrameStructure;
-import org.rutebanken.netex.model.FareZone;
+import org.entur.netex2.model.FareFrame_VersionFrameStructure;
+import org.entur.netex2.model.FareZone;
 
 public class FareFrameParser
   extends NetexParser<FareFrame_VersionFrameStructure> {

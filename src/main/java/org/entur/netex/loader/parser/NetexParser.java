@@ -2,7 +2,7 @@ package org.entur.netex.loader.parser;
 
 import java.util.Collection;
 import org.entur.netex.index.api.NetexEntitiesIndex;
-import org.rutebanken.netex.model.VersionFrame_VersionStructure;
+import org.entur.netex2.model.VersionFrame_VersionStructure;
 import org.slf4j.Logger;
 
 /**

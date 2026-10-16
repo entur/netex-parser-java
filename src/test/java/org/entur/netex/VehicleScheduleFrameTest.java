@@ -5,13 +5,13 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import org.entur.netex.index.api.NetexEntitiesIndex;
+import org.entur.netex2.model.Block;
+import org.entur.netex2.model.DayTypeRefStructure;
+import org.entur.netex2.model.JourneyRefs_RelStructure;
+import org.entur.netex2.model.VehicleScheduleFrame;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.rutebanken.netex.model.Block;
-import org.rutebanken.netex.model.DayTypeRefStructure;
-import org.rutebanken.netex.model.JourneyRefs_RelStructure;
-import org.rutebanken.netex.model.VehicleScheduleFrame;
 
 class VehicleScheduleFrameTest {
 

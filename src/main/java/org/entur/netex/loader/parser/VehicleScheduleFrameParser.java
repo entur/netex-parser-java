@@ -3,11 +3,11 @@ package org.entur.netex.loader.parser;
 import java.util.ArrayList;
 import java.util.Collection;
 import org.entur.netex.index.api.NetexEntitiesIndex;
-import org.rutebanken.netex.model.Block;
-import org.rutebanken.netex.model.Block_VersionStructure;
-import org.rutebanken.netex.model.BlocksInFrame_RelStructure;
-import org.rutebanken.netex.model.DataManagedObjectStructure;
-import org.rutebanken.netex.model.VehicleSchedule_VersionFrameStructure;
+import org.entur.netex2.model.Block;
+import org.entur.netex2.model.Block_VersionStructure;
+import org.entur.netex2.model.BlocksInFrame_RelStructure;
+import org.entur.netex2.model.DataManagedObjectStructure;
+import org.entur.netex2.model.VehicleSchedule_VersionFrameStructure;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

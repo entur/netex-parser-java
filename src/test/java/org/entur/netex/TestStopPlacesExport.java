@@ -1,20 +1,22 @@
 package org.entur.netex;
 
+import static org.entur.netex.support.MultilingualStringHelper.getStringValue;
+
 import java.time.LocalDateTime;
 import java.util.Collection;
 import org.entur.netex.index.api.NetexEntitiesIndex;
+import org.entur.netex2.model.FareZone;
+import org.entur.netex2.model.GroupOfStopPlaces;
+import org.entur.netex2.model.Parking;
+import org.entur.netex2.model.PassengerStopAssignment;
+import org.entur.netex2.model.Quay;
+import org.entur.netex2.model.ScheduledStopPoint;
+import org.entur.netex2.model.StopPlace;
+import org.entur.netex2.model.TariffZone;
+import org.entur.netex2.model.TopographicPlace;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.rutebanken.netex.model.FareZone;
-import org.rutebanken.netex.model.GroupOfStopPlaces;
-import org.rutebanken.netex.model.Parking;
-import org.rutebanken.netex.model.PassengerStopAssignment;
-import org.rutebanken.netex.model.Quay;
-import org.rutebanken.netex.model.ScheduledStopPoint;
-import org.rutebanken.netex.model.StopPlace;
-import org.rutebanken.netex.model.TariffZone;
-import org.rutebanken.netex.model.TopographicPlace;
 
 class TestStopPlacesExport {
 
@@ -44,7 +46,7 @@ class TestStopPlacesExport {
     StopPlace stopPlace = index
       .getStopPlaceIndex()
       .getLatestVersion("NSR:StopPlace:337");
-    Assertions.assertEquals("Oslo S", stopPlace.getName().getValue());
+    Assertions.assertEquals("Oslo S", getStringValue(stopPlace.getName()));
     Assertions.assertEquals(
       "NSR:StopPlace:59872",
       stopPlace.getParentSiteRef().getRef()
@@ -70,7 +72,10 @@ class TestStopPlacesExport {
     GroupOfStopPlaces groupOfStopPlaces = index
       .getGroupOfStopPlacesIndex()
       .get("NSR:GroupOfStopPlaces:1");
-    Assertions.assertEquals("Oslo", groupOfStopPlaces.getName().getValue());
+    Assertions.assertEquals(
+      "Oslo",
+      getStringValue(groupOfStopPlaces.getName())
+    );
   }
 
   @Test
@@ -78,7 +83,7 @@ class TestStopPlacesExport {
     TariffZone tariffZone = index
       .getTariffZoneIndex()
       .getLatestVersion("MOR:TariffZone:108");
-    Assertions.assertEquals("Standal", tariffZone.getName().getValue());
+    Assertions.assertEquals("Standal", getStringValue(tariffZone.getName()));
   }
 
   @Test
@@ -88,7 +93,7 @@ class TestStopPlacesExport {
       .getLatestVersion("KVE:TopographicPlace:50");
     Assertions.assertEquals(
       "Trøndelag",
-      topographicPlace.getDescriptor().getName().getValue()
+      getStringValue(topographicPlace.getDescriptor().getName())
     );
     Assertions.assertEquals(
       "no",
@@ -99,7 +104,7 @@ class TestStopPlacesExport {
   @Test
   void testGetParking() {
     Parking parking = index.getParkingIndex().getLatestVersion("NSR:Parking:1");
-    Assertions.assertEquals("Drammen", parking.getName().getValue());
+    Assertions.assertEquals("Drammen", getStringValue(parking.getName()));
   }
 
   @Test
@@ -107,7 +112,10 @@ class TestStopPlacesExport {
     ScheduledStopPoint scheduledStopPoint = index
       .getScheduledStopPointIndex()
       .getLatestVersion("NSR:ScheduledStopPoint:S5");
-    Assertions.assertEquals("Gudå", scheduledStopPoint.getName().getValue());
+    Assertions.assertEquals(
+      "Gudå",
+      getStringValue(scheduledStopPoint.getName())
+    );
   }
 
   @Test
@@ -127,7 +135,7 @@ class TestStopPlacesExport {
     FareZone fareZone = index
       .getFareZoneIndex()
       .getLatestVersion("AKT:FareZone:27");
-    Assertions.assertEquals("Kviteseid", fareZone.getName().getValue());
+    Assertions.assertEquals("Kviteseid", getStringValue(fareZone.getName()));
   }
 
   @Test

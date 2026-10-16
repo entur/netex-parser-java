@@ -2,9 +2,9 @@ package org.entur.netex.support;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import org.entur.netex2.model.EntityInVersionStructure;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.rutebanken.netex.model.EntityInVersionStructure;
 
 class NetexVersionHelperTest {
 

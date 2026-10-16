@@ -5,8 +5,6 @@ on:
       - master
       - 3.x
 env:
-    JFROG_USER: ${{ secrets.ARTIFACTORY_AUTH_USER }}
-    JFROG_PASS: ${{ secrets.ARTIFACTORY_AUTH_TOKEN }}
     SONATYPE_GPG_KEY_BASE64: ${{ secrets.SONATYPE_GPG_KEY_BASE64 }}
     SONATYPE_USERNAME: ${{ secrets.SONATYPE_USERNAME }}
     SONATYPE_PASSWORD: ${{ secrets.SONATYPE_PASSWORD }}
@@ -25,7 +23,7 @@ jobs:
           wget https://raw.githubusercontent.com/entur/ror-maven-settings/master/.m2/settings_release_maven_central.xml -O .github/workflows/settings.xml
       - uses: actions/setup-java@v6.0.1
         with:
-          java-version: 17.0.13
+          java-version: 21
           distribution: liberica
       - name: Cache Maven dependencies
         uses: actions/cache@v6.1.0

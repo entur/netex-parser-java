@@ -2,13 +2,13 @@ package org.entur.netex;
 
 import java.util.Collection;
 import org.entur.netex.index.api.NetexEntitiesIndex;
+import org.entur.netex2.model.DatedServiceJourney;
+import org.entur.netex2.model.ServiceJourney;
+import org.entur.netex2.model.ServiceJourneyInterchange;
+import org.entur.netex2.model.ServiceJourneyPattern;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.rutebanken.netex.model.DatedServiceJourney;
-import org.rutebanken.netex.model.ServiceJourney;
-import org.rutebanken.netex.model.ServiceJourneyInterchange;
-import org.rutebanken.netex.model.ServiceJourneyPattern;
 
 class TestDelfiLineExport {
 

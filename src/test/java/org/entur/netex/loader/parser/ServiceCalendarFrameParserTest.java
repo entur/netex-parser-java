@@ -3,14 +3,15 @@ package org.entur.netex.loader.parser;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import jakarta.xml.bind.JAXBElement;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import javax.annotation.Nonnull;
 import javax.xml.namespace.QName;
 import org.entur.netex.index.impl.NetexEntitiesIndexImpl;
+import org.entur.netex2.model.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.rutebanken.netex.model.*;
 
 class ServiceCalendarFrameParserTest {
 
@@ -109,10 +110,12 @@ class ServiceCalendarFrameParserTest {
         .withServiceCalendar(
           new ServiceCalendar()
             .withId("ServiceCalendarId1")
-            .withOperatingDays(mockOperatingDaysRelStructure("1", january1st))
+            .withOperatingDays(
+              mockOperatingDaysRelStructure("1", january1st.toLocalDate())
+            )
         )
         .withOperatingDays(
-          mockOperatingDaysInFrameRelStructure("2", january2nd)
+          mockOperatingDaysInFrameRelStructure("2", january2nd.toLocalDate())
         )
     );
     parser.setResultOnIndex(index);
@@ -121,7 +124,7 @@ class ServiceCalendarFrameParserTest {
 
   private OperatingDays_RelStructure mockOperatingDaysRelStructure(
     String id,
-    LocalDateTime date
+    LocalDate date
   ) {
     return new OperatingDays_RelStructure()
       .withId(id)
@@ -132,7 +135,7 @@ class ServiceCalendarFrameParserTest {
 
   private OperatingDaysInFrame_RelStructure mockOperatingDaysInFrameRelStructure(
     String id,
-    LocalDateTime date
+    LocalDate date
   ) {
     return new OperatingDaysInFrame_RelStructure()
       .withId(id)
