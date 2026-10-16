@@ -4,7 +4,6 @@ on:
     branches:
       - master
       - 3.x
-      - 5.x
 env:
     SONATYPE_GPG_KEY_BASE64: ${{ secrets.SONATYPE_GPG_KEY_BASE64 }}
     SONATYPE_USERNAME: ${{ secrets.SONATYPE_USERNAME }}
@@ -64,15 +63,15 @@ jobs:
     uses: entur/gha-maven-central/.github/workflows/maven-publish.yml@v1.3.1
     secrets: inherit
     with:
-      push_to_repo: ${{ github.ref != 'refs/heads/5.x' }}
-      snapshot: ${{ github.ref == 'refs/heads/5.x' }}
+      push_to_repo: true
+      snapshot: false
       # Check out the branch tip rather than the triggering commit: a run queued
       # behind another publish must see that run's next-SNAPSHOT bump, or its own
       # version bump conflicts with it on pull --rebase.
       git_ref: ${{ github.ref_name }}
   tag-release:
     needs: publish-release
-    if: github.repository_owner == 'entur' && github.event_name == 'push' && github.ref != 'refs/heads/5.x'
+    if: github.repository_owner == 'entur' && github.event_name == 'push'
     name: Tag release on GitHub
     runs-on: ubuntu-24.04
     permissions:

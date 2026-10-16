@@ -6,7 +6,7 @@ import org.entur.netex2.model.MultilingualString;
 
 /**
  * Helper for extracting string values from {@link MultilingualString}.
- * In netex-java-model 3.x, MultilingualString uses a mixed content model
+ * In netex2-java-model, MultilingualString uses a mixed content model
  * where the text is stored in {@code getContent()} as a list of serializable objects.
  */
 public final class MultilingualStringHelper {
