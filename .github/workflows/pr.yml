@@ -15,7 +15,7 @@ jobs:
       - uses: actions/setup-java@v6.1.0
         with:
           java-version: 21
-          distribution: liberica
+          distribution: temurin
       - name: Cache Maven dependencies
         uses: actions/cache@v6.1.0
         with:
