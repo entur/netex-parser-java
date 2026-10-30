@@ -165,7 +165,12 @@ class SiteFrameParser extends NetexParser<Site_VersionFrameStructure> {
     for (JAXBElement<? extends Site_VersionStructure> jaxbParking : parkingList) {
       if (jaxbParking.getValue() instanceof Parking parking) {
         parkings.add(parking);
-        parkingsByStopPlaceId.put(parking.getParentSiteRef().getRef(), parking);
+        if (parking.getParentSiteRef() != null) {
+          parkingsByStopPlaceId.put(
+            parking.getParentSiteRef().getRef(),
+            parking
+          );
+        }
       }
     }
   }
