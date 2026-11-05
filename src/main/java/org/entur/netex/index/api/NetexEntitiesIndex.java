@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.Map;
 import org.entur.netex2.model.Authority;
+import org.entur.netex2.model.AvailabilityCondition;
 import org.entur.netex2.model.Block;
 import org.entur.netex2.model.Branding;
 import org.entur.netex2.model.CompositeFrame;
@@ -296,6 +297,13 @@ public interface NetexEntitiesIndex {
    * @return
    */
   Multimap<String, Parking> getParkingsByParentSiteRefIndex();
+
+  /**
+   * Get a Multimap of AvailabilityConditions by Parking id.
+   * The parser fills it from the {@code validityConditions} of each Parking.
+   * @return availability conditions keyed by Parking id, empty when none
+   */
+  Multimap<String, AvailabilityCondition> getAvailabilityConditionsByParkingIdIndex();
 
   /**
    * Get an entity index of FareZone
