@@ -44,9 +44,9 @@
                             <Latitude>60.0</Latitude>
                         </Location>
                     </Centroid>
+                    <ParentSiteRef ref="FSR:StopPlace:1"/>
                     <ParkingType>urbanParking</ParkingType>
                     <ParkingLayout>openSpace</ParkingLayout>
-                    <ParentSiteRef ref="FSR:StopPlace:1"/>
                 </Parking>
                 <Parking version="1" id="FSR:Parking:2">
                     <Name lang="fin">Parking without opening hours</Name>
@@ -56,9 +56,9 @@
                             <Latitude>60.1</Latitude>
                         </Location>
                     </Centroid>
+                    <ParentSiteRef ref="FSR:StopPlace:1"/>
                     <ParkingType>urbanParking</ParkingType>
                     <ParkingLayout>openSpace</ParkingLayout>
-                    <ParentSiteRef ref="FSR:StopPlace:1"/>
                 </Parking>
             </parkings>
         </SiteFrame>

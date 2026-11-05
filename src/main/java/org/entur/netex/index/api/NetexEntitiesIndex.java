@@ -300,8 +300,8 @@ public interface NetexEntitiesIndex {
 
   /**
    * Get a Multimap of AvailabilityConditions by Parking id.
-   * Populated from {@code validityConditions} on each parsed Parking.
-   * @return
+   * The parser fills it from the {@code validityConditions} of each Parking.
+   * @return availability conditions keyed by Parking id, empty when none
    */
   Multimap<String, AvailabilityCondition> getAvailabilityConditionsByParkingIdIndex();
 
