@@ -4,7 +4,7 @@
 
     <groupId>org.entur</groupId>
     <artifactId>netex-parser-java</artifactId>
-    <version>5.0.4-SNAPSHOT</version>
+    <version>5.0.7-SNAPSHOT</version>
 
     <name>netex-java-parser</name>
     <description>Library for parsing NeTEx files and looking up entities in an index.</description>
@@ -53,12 +53,12 @@
         <jdk.version>21</jdk.version>
 
         <netex2-java-model.version>3.0.0</netex2-java-model.version>
-        <guava.version>33.7.2-jre</guava.version>
+        <guava.version>33.8.0-jre</guava.version>
 
         <nexus-staging-maven-plugin.version>1.6.13</nexus-staging-maven-plugin.version>
         <maven-exec-plugin.version>1.6.0</maven-exec-plugin.version>
-        <maven-surefire-plugin.version>3.6.0</maven-surefire-plugin.version>
-        <maven-enforcer-plugin.version>3.6.3</maven-enforcer-plugin.version>
+        <maven-surefire-plugin.version>3.6.1</maven-surefire-plugin.version>
+        <maven-enforcer-plugin.version>3.7.0</maven-enforcer-plugin.version>
         <maven-source-plugin.version>3.4.0</maven-source-plugin.version>
         <maven-javadoc-plugin.version>3.12.0</maven-javadoc-plugin.version>
         <maven-release-plugin.version>2.5.3</maven-release-plugin.version>
@@ -73,12 +73,12 @@
         <maven-deploy-plugin.version>3.2.0</maven-deploy-plugin.version>
         <dependency-check-maven.version>13.0.0</dependency-check-maven.version>
         <gitflow-maven-plugin.version>1.21.0</gitflow-maven-plugin.version>
-        <sonar-maven-plugin.version>5.8.0.7211</sonar-maven-plugin.version>
+        <sonar-maven-plugin.version>5.9.0.7382</sonar-maven-plugin.version>
         <prettier-java.version>2.1.0</prettier-java.version>
         <prettier-maven-plugin.version>0.22</prettier-maven-plugin.version>
         <plugin.prettier.goal>write</plugin.prettier.goal>
-        <jacoco-maven-plugin.version>0.8.15</jacoco-maven-plugin.version>
-        <jreleaser-maven-plugin.version>1.26.0</jreleaser-maven-plugin.version>
+        <jacoco-maven-plugin.version>0.8.16</jacoco-maven-plugin.version>
+        <jreleaser-maven-plugin.version>1.27.0</jreleaser-maven-plugin.version>
         <!-- empty argLine property, the value is set up by Jacoco during unit tests execution -->
         <argLine />
 
